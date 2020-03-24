@@ -1,4 +1,11 @@
-
+<%= form_tag cafes_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Have a specific cafe in mind?"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 
 <div class="container">
   <div class="row">
