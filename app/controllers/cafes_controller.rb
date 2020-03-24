@@ -6,6 +6,7 @@ class CafesController < ApplicationController
       @cafes = Cafe.all
     end
     @user = current_user
+    @tags = Tag.where(tag_category: "ambience")
   end
 
   def show

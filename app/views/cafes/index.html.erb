@@ -7,6 +7,10 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
+<% @tags.each do |tag| %>
+  <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
+<% end %>
+
 <div class="container">
   <div class="row">
     <% @cafes.each do |cafe| %>
@@ -28,3 +32,25 @@
 
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
 <%= render 'shared/bottom_navbar', user: @user %>
+
+<%#= javascript_pack_tag "tags" %>
+
+<script>
+
+const inactiveTag = document.querySelectorAll('.tag-btn')
+const cafeCard = document.querySelectorAll('.card-cafe')
+// const selectedCafes = document.querySelectorAll('')
+
+// const showFilteredResults = () => {
+
+// };
+
+inactiveTag.forEach((tag) => {
+  tag.addEventListener('click', (e) => {
+    console.log("hello!");
+    e.currentTarget.classList.toggle('active');
+    // showFilteredResults();
+  })
+})
+
+</script>
