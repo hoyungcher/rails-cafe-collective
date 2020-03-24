@@ -11,7 +11,14 @@ class Cafe < ApplicationRecord
   validates :city, presence: true
   validates :category, presence: true
   validates :contact, presence: true, uniqueness: true
-end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+  against: [ :name ],
+  using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+  end
 
 # Cafe.create(user: User.find(User.first.id + 5), name: "Kevan's Restaurant",
 #   description: "nice korean food and stuff",
