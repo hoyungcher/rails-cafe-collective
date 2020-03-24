@@ -1,6 +1,7 @@
 class Cafe < ApplicationRecord
   belongs_to :user
   has_many :reviews
+  has_many :cafe_tags
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
