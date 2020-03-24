@@ -5,6 +5,7 @@ class CafesController < ApplicationController
     else
       @cafes = Cafe.all
     end
+    @user = current_user
   end
 
   def show
