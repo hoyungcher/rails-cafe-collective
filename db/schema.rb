@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_043121) do
   create_table "booked_hours", force: :cascade do |t|
     t.bigint "booking_id"
     t.bigint "hourly_slot_id"
-    t.boolean "paid?"
+    t.boolean "paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_booked_hours_on_booking_id"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_043121) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "owner?"
+    t.boolean "owner"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
