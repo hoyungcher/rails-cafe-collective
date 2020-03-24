@@ -6,11 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Destroying seeds.."
+Review.destroy_all
+CafeTag.destroy_all
+Tag.destroy_all
 User.destroy_all
 Cafe.destroy_all
 
+
 puts "Creating seeds..."
 
+
+puts "Creating users..."
 # list of owner users
 User.create(email: 'user1@gmail.com', password: 'pass1234', owner: true, first_name: "John", last_name: "Smith")
 User.create(email: 'user2@gmail.com', password: 'pass1234', owner: true, first_name: "Jason", last_name: "Bourne")
@@ -36,6 +42,7 @@ User.create(email: 'user19@gmail.com', password: 'pass1234', owner: true, first_
 User.create(email: 'user20@gmail.com', password: 'pass1234', owner: true, first_name: "Larry", last_name: "Bird")
 
 
+puts "Creating cafes..."
 #list of cafes linked to owner users
 Cafe.create(user: User.first, name: "The Clue-less Goat", description: "Established since 2013, we are inspired to serve great coffees with quality beans, hoping to bring a great end-to-end experiences for our customers in this fast pace country. We do believe that every cup matters and we are serious when it comes to our passion in making coffee, not to mention our dishes, which are delicious and well presented on your table.", neighbourhood: "Novena", address: "189 Thomson Rd, Singapore", city: "Singapore", category: "cafe", contact: "8283 0885")
 Cafe.create(user: User.find(User.first.id + 1), name: "Craftsmen Specialty Coffee", description: "Established since 2013, we are inspired to serve great coffees with quality beans, hoping to bring a great end-to-end experiences for our customers in this fast pace country. We do believe that every cup matters and we are serious when it comes to our passion in making coffee, not to mention our dishes, which are delicious and well presented on your table.", neighbourhood: "Novena", address: "173 Thomson Rd, Singapore", city: "Singapore", category: "cafe", contact: "9658 0769")
@@ -70,6 +77,46 @@ Cafe.create(user: User.find(User.first.id + 7), name: "Wala Wala", description: 
 Cafe.create(user: User.find(User.first.id + 8), name: "Oporto", description: "Inspired by the dining cultures of the East and West, we combine creative techniques of new age cooking with premium ingredients and edgy presentation.", neighbourhood: "Holland Village", address: "#01-01, No. 3 Lor Liput, Holland Piazza, 277725", city: "Singapore", category: "restaurant", contact: "3937 2983")
 Cafe.create(user: User.find(User.first.id + 9), name: "Baden Restaurant & Pub", description: "Our stunningly appointed cocktail bar serves fine wines, handcrafted cocktails and sweeping views of the city.", neighbourhood: "Holland Village", address: "42 Lor Mambong, Singapore 277696", city: "Singapore", category: "bar", contact: "6463 8127")
 
+
+puts "Creating tags..."
+#list of ambience tags
+Tag.create(tag_category: "ambience", name: "classic" )
+Tag.create(tag_category: "ambience", name: "elegant" )
+Tag.create(tag_category: "ambience", name: "energetic" )
+Tag.create(tag_category: "ambience", name: "friendly" )
+Tag.create(tag_category: "ambience", name: "minimalistic" )
+Tag.create(tag_category: "ambience", name: "industrial" )
+Tag.create(tag_category: "ambience", name: "modern" )
+Tag.create(tag_category: "ambience", name: "vintage" )
+Tag.create(tag_category: "ambience", name: "natural lighting" )
+Tag.create(tag_category: "ambience", name: "soft lighting" )
+Tag.create(tag_category: "ambience", name: "soft acoustic music" )
+Tag.create(tag_category: "ambience", name: "light jazz music" )
+
+#list of amenity tags
+Tag.create(tag_category: "amenity", name: "private rooms" )
+Tag.create(tag_category: "amenity", name: "daily storage space" )
+Tag.create(tag_category: "amenity", name: "booth seats" )
+Tag.create(tag_category: "amenity", name: "bar seats" )
+Tag.create(tag_category: "amenity", name: "free parking" )
+Tag.create(tag_category: "amenity", name: "nearby parking" )
+Tag.create(tag_category: "amenity", name: "lounge area" )
+Tag.create(tag_category: "amenity", name: "high-speed wifi" )
+
+
+puts "Creating cafe tags..."
+#list of cafe tags for each cafe
+Cafe.all.each do |cafe|
+  tag1 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
+  tag2 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
+  tag3 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
+  tag4 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..19)))
+  tag5 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..19)))
+end
+
+
+puts "Creating reviews..."
+#list of reviews for each cafe
 Cafe.all.each do |cafe|
   review1 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Great time here! Very friendly owner and staff. Would definitely recommend", rating: 5)
   review2 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Food was quite pricey but environment is pretty chill. Still a pretty decent place to head to.", rating: 4)
