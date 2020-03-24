@@ -1,0 +1,47 @@
+.cafe-name {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.cafe-tags {
+  margin-top: 10px;
+}
+
+.cafe-description, #map {
+  margin-top: 20px;
+}
+
+#map {
+  margin-bottom: 105px;
+}
+
+.show-schedule {
+  padding: 10px 15px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 5px;
+  height: 85px;
+  z-index: 100;
+  border-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.show-price {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+.view-schedule {
+  background-color: blue;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  font-weight: bold;
+}
