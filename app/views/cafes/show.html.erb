@@ -25,12 +25,20 @@
   <div class="cafe-tags"><%= "Tags" %></div>
   <div class="cafe-address"><%= @cafe.address %></div>
   <div class="cafe-description"><%= @cafe.description %></div>
-  <div class="cafe-reviews"><% @cafe.reviews.each do |reviews| %>
-    <p><%= review.user.first_name %></p>
+  <div class="cafe-reviews">
+    <p class="review-heading">Reviews</p>
+    <% @cafe.reviews.each do |review| %>
+    <div class="rating-name">
+      <p><% review.rating.times do  %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      </p>
+      <p><%= review.user.first_name %> <%= review.user.last_name %></p>
+    </div>
     <p><%= review.content %></p>
-    <p><%= review.rating %></p>
     <% end %>
   </div>
+  <p class="location">Location</p>
   <div
     id="map"
     style="width: 100%;
@@ -38,7 +46,7 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     >
-</div>
+  </div>
 
 </div>
 <div class="show-schedule">

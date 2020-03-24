@@ -8,11 +8,12 @@
   margin-top: 10px;
 }
 
-.cafe-description, #map {
+.cafe-description {
   margin-top: 20px;
 }
 
 #map {
+  margin-top: 10px;
   margin-bottom: 105px;
 }
 
@@ -45,3 +46,20 @@
   padding: 15px;
   font-weight: bold;
 }
+
+.review-heading, .location {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.rating-name {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.fas.fa-star {
+  color: #FEC602;
+}
+
+
