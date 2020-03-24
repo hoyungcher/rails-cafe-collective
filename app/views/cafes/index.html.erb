@@ -1,1 +1,8 @@
+<% @cafes.each do |cafe| %>
+<ul>
+  <p> <strong> <%= cafe.name %> </strong></p>
+  <li> <%= cafe.address %> </li>
+  <li> <%= cafe.description %> </li>
+</ul>
+<% end %>
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
