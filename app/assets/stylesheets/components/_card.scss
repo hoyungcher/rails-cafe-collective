@@ -1,0 +1,41 @@
+.card-cafe {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  margin: 16px auto;
+  border-radius: 4px;
+}
+
+.card-cafe > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-cafe h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-cafe p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-cafe .card-cafe-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-cafe-infos .card-cafe-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
