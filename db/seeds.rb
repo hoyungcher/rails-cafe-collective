@@ -70,4 +70,21 @@ Cafe.create(user: User.find(User.first.id + 7), name: "Wala Wala", description: 
 Cafe.create(user: User.find(User.first.id + 8), name: "Oporto", description: "Inspired by the dining cultures of the East and West, we combine creative techniques of new age cooking with premium ingredients and edgy presentation.", neighbourhood: "Holland Village", address: "#01-01, No. 3 Lor Liput, Holland Piazza, 277725", city: "Singapore", category: "restaurant", contact: "3937 2983")
 Cafe.create(user: User.find(User.first.id + 9), name: "Baden Restaurant & Pub", description: "Our stunningly appointed cocktail bar serves fine wines, handcrafted cocktails and sweeping views of the city.", neighbourhood: "Holland Village", address: "42 Lor Mambong, Singapore 277696", city: "Singapore", category: "bar", contact: "6463 8127")
 
+Cafe.all.each do |cafe|
+  review1 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Great time here! Very friendly owner and staff. Would definitely recommend", rating: 5)
+  review2 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Food was quite pricey but environment is pretty chill. Still a pretty decent place to head to.", rating: 4)
+  review3 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Neutral experience. Decent but could be better. Only come if there aren't better options.", rating: 3)
+  review4 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Don't visit. Waste of time. Food is bad and expensive.", rating: 2)
+  review5 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Terrible experience!! No chargers as claimed, lousy wifi and even though we paid for the seats the owner treated us like second-class citizens. GET YOURSELF TOGETHER PLEASE. ", rating: 1)
+  reviews = [review1, review2, review3, review4, review5]
+
+  sample1 = reviews.sample.save
+  reviews.delete(sample1)
+  sample2 = reviews.sample.save
+  reviews.delete(sample2)
+  sample3 = reviews.sample.save
+  reviews.delete(sample3)
+end
+
 puts "Seeds done!"
+
