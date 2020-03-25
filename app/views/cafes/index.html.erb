@@ -1,36 +1,36 @@
 <div id="main-index-section">
 
-<p id="expand-btn">Looking for a specific ambience?</p>
-<div class="tag-section hidden" >
-  <% @tags.each do |tag| %>
+  <p id="expand-btn">Looking for a specific ambience?</p>
+  <div class="tag-section d-flex flex-wrap justify-content-center hidden" >
+    <% @tags.each do |tag| %>
     <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <% @cafes.each do |cafe| %>
-    <div class="col-sm"></div>
-    <div class="card-cafe" data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>">
-      <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
-      <div class="card-cafe-infos">
-        <div>
-          <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
-          <p><%= cafe.category.capitalize %></p>
-        </div>
-        <h2 class="card-cafe-pricing"><%= cafe.neighbourhood %></h2>
-        <div class="ambience_tags d-flex">
-          <% cafe.cafe_tags.each do |cafetag| %>
+  <div class="container">
+    <div class="row">
+      <% @cafes.each do |cafe| %>
+      <div class="col-sm"></div>
+      <div class="card-cafe" data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>">
+        <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
+        <div class="card-cafe-infos">
+          <div>
+            <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
+            <p><%= cafe.category.capitalize %></p>
+          </div>
+          <h2 class="card-cafe-pricing"><%= cafe.neighbourhood %></h2>
+          <div class="ambience_tags d-flex">
+            <% cafe.cafe_tags.each do |cafetag| %>
             <% if cafetag.tag.tag_category == "ambience" %>
-              <div class="small-tag"><%= cafetag.tag.name %></div>
+            <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
             <% end %>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
+      <% end %>
     </div>
-  <% end %>
   </div>
-</div>
 </div>
 
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
