@@ -31,9 +31,15 @@
       <i class="far fa-star"></i>
       <% end %>
     </span>
-    </div>
+  </div>
 
-  <div class="cafe-tags"><%= "Tags" %></div>
+  <div class="cafe-tags d-flex flex-wrap">
+    <% @cafe.cafe_tags.each do |cafetag| %>
+      <% if cafetag.tag.tag_category == "ambience" %>
+        <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
+      <% end %>
+    <% end %>
+  </div>
   <div class="cafe-address"><%= @cafe.address %></div>
   <div class="cafe-description"><%= @cafe.description %></div>
   <div class="cafe-reviews">
@@ -60,7 +66,8 @@
   </div>
 
 </div>
-<div class="show-schedule">
+<!-- <div class="show-schedule">
   <p class="show-price">Price: <strong>$10</strong><span style="font-size: 20px;">/hr</span></p>
   <a class='view-schedule' href="#">View Schedule</a>
 </div>
+ -->

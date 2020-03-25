@@ -1,6 +1,8 @@
 const inactiveTags = document.querySelectorAll('.tag-btn')
 const cafeCards = document.querySelectorAll('.card-cafe')
 const selectedTags = []
+const expandButton = document.getElementById('expand-btn')
+const tagSection = document.querySelector('.tag-section')
 
 const hideCards = () => {
   cafeCards.forEach((cafe) => {
@@ -57,4 +59,10 @@ inactiveTags.forEach((tag) => {
       showCards();
     }
   })
+});
+
+expandButton.addEventListener('click', (e) => {
+  tagSection.classList.remove('hidden')
+  expandButton.classList.add('no-deco')
+  expandButton.innerText = "What's your preferred workspace ambience?"
 });

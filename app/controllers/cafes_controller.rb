@@ -1,6 +1,7 @@
 class CafesController < ApplicationController
   def index
     @unshow_banner = false
+    @unshow_menu_bar = false
     if params[:query].present?
       @cafes = Cafe.search_by_name(params[:query])
     else
@@ -11,6 +12,7 @@ class CafesController < ApplicationController
   end
 
   def show
+    @unshow_action_bar = false
     @cafe = Cafe.find(params[:id])
     @markers = [{lat: @cafe.latitude, lng: @cafe.longitude}]
     ratings = []
