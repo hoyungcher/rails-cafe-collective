@@ -22,6 +22,17 @@
 
 <div class="container">
   <div class="cafe-name"><%= @cafe.name %></div>
+  <div class="cafe-rating">
+    <span class="stars"> <% @rating.times do  %>
+      <i class="fas fa-star"></i>
+    <% end %>
+    </span>
+    <span class="empty-stars"><% @empty_stars.times do %>
+      <i class="far fa-star"></i>
+      <% end %>
+    </span>
+    </div>
+
   <div class="cafe-tags"><%= "Tags" %></div>
   <div class="cafe-address"><%= @cafe.address %></div>
   <div class="cafe-description"><%= @cafe.description %></div>

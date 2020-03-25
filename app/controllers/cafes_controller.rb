@@ -12,6 +12,12 @@ class CafesController < ApplicationController
   def show
     @cafe = Cafe.find(params[:id])
     @markers = [{lat: @cafe.latitude, lng: @cafe.longitude}]
+    ratings = []
+    @cafe.reviews.each do |review|
+      ratings << review.rating
+    end
+    @rating = ratings.sum / ratings.length
+    @empty_stars = 5 - @rating
   end
 
   def new
