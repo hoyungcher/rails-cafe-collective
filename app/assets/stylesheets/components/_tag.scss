@@ -1,0 +1,46 @@
+.tag-btn {
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.tag-btn:hover {
+  background-color: black;
+}
+
+
+.tag-btn .active {
+  background-color: gray;
+}
+
+.small-tag {
+  font-size: 12px;
+  border-radius: 4px;
+  background-color: $light-gray;
+  padding: 4px 8px;
+  text-align: center;
+  margin: 0 4px;
+}
+
+.ambience_tags {
+  position: absolute;
+  left: 8px;
+  bottom: 80px;
+}
+
+.hidden {
+  display: none;
+}
+
+#expand-btn {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.no-deco {
+  text-decoration: none;
+}
+
+.tag-section {
+  margin: 20px 0;
+}

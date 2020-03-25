@@ -1,8 +1,11 @@
 <div id="main-index-section">
 
-<% @tags.each do |tag| %>
-  <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
-<% end %>
+<p id="expand-btn">Looking for a specific ambience?</p>
+<div class="tag-section hidden" >
+  <% @tags.each do |tag| %>
+    <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row">
@@ -12,7 +15,7 @@
       <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
       <div class="card-cafe-infos">
         <div>
-          <h2><%= cafe.name %></h2>
+          <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
           <p><%= cafe.category.capitalize %></p>
         </div>
         <h2 class="card-cafe-pricing"><%= cafe.neighbourhood %></h2>
@@ -33,9 +36,5 @@
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
 </div>
 
-<%= render 'shared/bottom_navbar', user: @user %>
-
-
 <%= javascript_pack_tag "tags" %>
 <%= javascript_pack_tag "scroll" %>
-

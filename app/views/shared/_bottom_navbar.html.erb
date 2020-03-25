@@ -1,3 +1,4 @@
+<% if @unshow_menu_bar == false %>
 <div class="bottom-navbar">
   <a href="cafes">
     <div class="navbar-item align-middle active" id="search-tab">
@@ -20,3 +21,11 @@
     </div>
   </a>
 </div>
+<% end %>
+
+<% if @unshow_action_bar == false %>
+<div class="bottom-navbar justify-content-between p-3">
+  <h6 class="align-self-center m-0">Price: <strong>$10</strong>/hour</h6>
+  <a class='btn btn-primary align-self-center' href="#">View Availability</a>
+</div>
+<% end %>
