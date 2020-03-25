@@ -1,5 +1,5 @@
 <div class="banner">
-  <%= form_tag cafes_path, method: :get do %>
+  <%= form_tag cafes_path(anchor: "main-index-section"), method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
