@@ -12,6 +12,7 @@ const initBooking = () => {
           displayPrice();
         }
       } else if (document.querySelectorAll('.active').length === 1) {
+        if (!timeSlot.classList.contains('unavailable')) {
           event.currentTarget.classList.add('active');
           let arr = [];
           let schArr = Array.from(schedule.children);
@@ -33,10 +34,13 @@ const initBooking = () => {
             event.currentTarget.classList.add("active")
           }
           displayPrice();
+        }
       } else {
-        removeAllActive();
-        event.currentTarget.classList.add('active');
-        displayPrice();
+        if (!timeSlot.classList.contains('unavailable')) {
+          removeAllActive();
+          event.currentTarget.classList.add('active');
+          displayPrice();
+        }
       }
 
     })

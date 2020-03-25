@@ -1,7 +1,6 @@
 <h1>Booking for <%= @cafe.name %></h1>
 <h2><%= Date.today %></h2>
-<p id="start-time" style="display:block;">Select a start time</p>
-<p id="end-time" style="display:none;">Select an end time</p>
+<p id="start-time" style="display:block;">Select a start and end time slot</p>
 <div class="time-slots">
   <% @hourly_slots.each do |time, slot| %>
     <div class="time-slot <%= time + "00" %> <%= "unavailable" if slot.zero? %>" data-time="<%= time + "00" %>">
