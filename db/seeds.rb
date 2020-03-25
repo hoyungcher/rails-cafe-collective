@@ -23,11 +23,11 @@ User.create(email: 'user2@gmail.com', password: 'pass1234', owner: true, first_n
 User.create(email: 'user3@gmail.com', password: 'pass1234', owner: true, first_name: "Ellen", last_name: "Degeneres")
 User.create(email: 'user4@gmail.com', password: 'pass1234', owner: true, first_name: "Serena", last_name: "Williams")
 User.create(email: 'user5@gmail.com', password: 'pass1234', owner: true, first_name: "Jack", last_name: "Johnson")
-User.create(email: 'user6@gmail.com', password: 'pass1234', owner: true, first_name: "John", last_name: "Smith")
-User.create(email: 'user7@gmail.com', password: 'pass1234', owner: true, first_name: "Jason", last_name: "Bourne")
-User.create(email: 'user8@gmail.com', password: 'pass1234', owner: true, first_name: "Ellen", last_name: "Degeneres")
-User.create(email: 'user9@gmail.com', password: 'pass1234', owner: true, first_name: "Serena", last_name: "Williams")
-User.create(email: 'user10@gmail.com', password: 'pass1234', owner: true, first_name: "Jack", last_name: "Johnson")
+User.create(email: 'user6@gmail.com', password: 'pass1234', owner: true, first_name: "Beyonce", last_name: "Knowles")
+User.create(email: 'user7@gmail.com', password: 'pass1234', owner: true, first_name: "Michael", last_name: "Jackson")
+User.create(email: 'user8@gmail.com', password: 'pass1234', owner: true, first_name: "Rick", last_name: "Morty")
+User.create(email: 'user9@gmail.com', password: 'pass1234', owner: true, first_name: "Derek", last_name: "Shepherd")
+User.create(email: 'user10@gmail.com', password: 'pass1234', owner: true, first_name: "Meredith", last_name: "Grey")
 
 # list of non-owner users
 User.create(email: 'user11@gmail.com', password: 'pass1234', owner: true, first_name: "Will", last_name: "Smith")
