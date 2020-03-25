@@ -1,0 +1,22 @@
+.time-slot p {
+  margin: 0 4px;
+}
+
+
+.time-slot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(200, 200, 200);
+  align-items: center;
+  padding: 8px 0;
+  margin: 4px;
+}
+
+.time-slot.active {
+  background-color: green;
+}
+
+.time-slot.unavailable {
+  color: white;
+}

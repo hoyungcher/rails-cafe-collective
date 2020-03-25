@@ -1,12 +1,12 @@
-const inactiveTag = document.querySelectorAll('.tag-btn')
-const cafeCard = document.querySelectorAll('.card-cafe')
-const selectedActivites = document.querySelectorAll('  ')
+// const inactiveTag = document.querySelectorAll('.tag-btn')
+// const cafeCard = document.querySelectorAll('.card-cafe')
+// const selectedActivites = document.querySelectorAll('  ')
 
-const showFilteredResults = () => {
+// const showFilteredResults = () => {
 
-}
+// }
 
-inactiveTag.addEventListener("click", (e) => {
-  e.currentTarget.classList.toggle('active')
-  showFilteredResults()
-})
+// inactiveTag.addEventListener("click", (e) => {
+//   e.currentTarget.classList.toggle('active')
+//   showFilteredResults()
+// })

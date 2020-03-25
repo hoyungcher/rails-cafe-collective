@@ -1,2 +1,22 @@
-Booking for <%= @cafe.name %>
+<h1>Booking for <%= @cafe.name %></h1>
+<h2><%= Date.today %></h2>
+<p id="start-time" style="display:block;">Select a start time</p>
+<p id="end-time" style="display:none;">Select an end time</p>
+<% @hourly_slots.each do |time, slot| %>
+  <div class="time-slot <%= time + "00" %> <%= "unavailable" if slot.zero? %>" data-time="<%= time + "00" %>">
+    <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
+    <p>
+      <% if slot.zero? %>
+        <%= "Slots unavailable" %>
+      <% else %>
+        <%= "Slots available: " + slot.to_s %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
 
+<p id="total-price">Total price: $0</p>
+<form action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
+  <input id="booking-data" type="hidden">
+  <input type="submit">
+</form>
