@@ -3,7 +3,7 @@
 <p id="start-time" style="display:block;">Select a start and end time slot</p>
 <div class="time-slots">
   <% @hourly_slots.each do |time, slot| %>
-    <div class="time-slot <%= time + "00" %> <%= "unavailable" if slot.zero? %>" data-time="<%= time + "00" %>">
+    <div class="time-slot <%= time %> <%= "unavailable" if slot.zero? %>" data-time="<%= time %>">
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
         <% if slot.zero? %>
@@ -17,7 +17,8 @@
 </div>
 <p id="total-price">Total price: $0</p>
 <form action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
-  <input id="booking-data" type="hidden">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input id="booking-data" name="booking"type="hidden">
   <input type="submit">
 </form>
 
