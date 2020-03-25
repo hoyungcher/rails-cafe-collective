@@ -8,7 +8,6 @@
   background-color: black;
 }
 
-
 .tag-btn .active {
   background-color: gray;
 }
@@ -28,19 +27,15 @@
   bottom: 80px;
 }
 
-.hidden {
-  display: none;
-}
-
 #expand-btn {
   text-align: center;
   text-decoration: underline;
 }
 
-.no-deco {
-  text-decoration: none;
-}
-
 .tag-section {
   margin: 20px 0;
+}
+
+.hidden {
+  display: none;
 }
