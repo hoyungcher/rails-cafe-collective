@@ -4,22 +4,22 @@
     <form method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <p>Set default number of seats</p>
-    <input type="number" name="seats" value="0">
+    <input id="set-seats"type="number" name="seats" value="0">
     <%= @seats %>
     <p>Set default price</p>
-    <input type="number" name="price" value="0">
+    <input id="set-price" type="number" name="price" value="0">
 
     <div class="0800">
       <p>8.00am - 9.00am</p>
-      <input type="number" name="8" value=<%= @seats["8"] %>>
+      <input class="hourly-slots" type="number" name="8" value=<%= @seats["8"] %>>
     </div>
     <div class="0900">
       <p>9.00am - 10.00am</p>
-      <input type="number" name="9" value=<%= @seats["9"] %>>
+      <input class="hourly-slots" type="number" name="9" value=<%= @seats["9"] %>>
     </div>
     <div class="1000">
       <p>10.00am - 11.00am</p>
-      <input type="number" name="10" value=<%= @seats["10"] %>>
+      <input class="hourly-slots" type="number" name="10" value=<%= @seats["10"] %>>
     </div>
     <input type = "submit">
     </form>
