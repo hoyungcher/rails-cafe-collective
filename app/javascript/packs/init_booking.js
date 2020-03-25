@@ -15,21 +15,28 @@ const initBooking = () => {
           event.currentTarget.classList.add('active');
           let arr = [];
           let schArr = Array.from(schedule.children);
-          console.log(schArr)
           schArr.forEach((element, index) => {
             if (element.classList.contains("active")) {
               arr.push(index);
             }
           })
-          let sliced = schArr.slice(arr[0], arr[1])
+          let sliced = schArr.slice(arr[0], arr[1] + 1)
+          let unavailable = false;
           sliced.forEach(element => {
             element.classList.add('active');
+            if (element.classList.contains("unavailable")) {
+              unavailable = true;
+            }
           })
-          console.log(sliced)
+          if (unavailable) {
+            removeAllActive();
+            event.currentTarget.classList.add("active")
+          }
           displayPrice();
       } else {
         removeAllActive();
         event.currentTarget.classList.add('active');
+        displayPrice();
       }
 
     })
