@@ -7,7 +7,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-
+    @user = User.find(params[:user_id])
+    @data = params["booking"].split(",")
+    @booking = Booking.new(user: @user, date: Date.today, start_time: @data[0].to_i, duration: @data[1].to_i)
+    @booking.save
+    raise
   end
 
   def index
