@@ -1,11 +1,4 @@
-<%= form_tag cafes_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Have a specific cafe in mind?"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div id="main-index-section">
 
 <% @tags.each do |tag| %>
   <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
@@ -38,7 +31,11 @@
 </div>
 
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
+</div>
+
 <%= render 'shared/bottom_navbar', user: @user %>
 
+
 <%= javascript_pack_tag "tags" %>
+<%= javascript_pack_tag "scroll" %>
 

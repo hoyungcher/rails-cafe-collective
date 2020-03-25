@@ -1,5 +1,6 @@
 class CafesController < ApplicationController
   def index
+    @unshow_banner = false
     if params[:query].present?
       @cafes = Cafe.search_by_name(params[:query])
     else
