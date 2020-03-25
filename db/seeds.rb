@@ -107,11 +107,11 @@ Tag.create(tag_category: "amenity", name: "high-speed wifi" )
 puts "Creating cafe tags..."
 #list of cafe tags for each cafe
 Cafe.all.each do |cafe|
-  tag1 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
-  tag2 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
-  tag3 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..11)))
-  tag4 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..19)))
-  tag5 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..19)))
+  tag1 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..5)))
+  tag2 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(6..9)))
+  tag3 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(10..11)))
+  tag4 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..15)))
+  tag5 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(16..19)))
 end
 
 

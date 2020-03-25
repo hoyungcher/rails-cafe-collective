@@ -23,6 +23,13 @@
           <p><%= cafe.category.capitalize %></p>
         </div>
         <h2 class="card-cafe-pricing"><%= cafe.neighbourhood %></h2>
+        <div class="ambience_tags d-flex">
+          <% cafe.cafe_tags.each do |cafetag| %>
+            <% if cafetag.tag.tag_category == "ambience" %>
+              <div class="small-tag"><%= cafetag.tag.name %></div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
