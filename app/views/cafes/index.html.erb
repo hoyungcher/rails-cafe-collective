@@ -13,9 +13,7 @@
     <div class="row">
       <% @cafes.each do |cafe| %>
       <div class="card-cafe"
-        data-tags="<% cafe.cafe_tags.each do |cafetag| %>
-          <%=cafetag.tag.name%>,
-        <% end %>"
+        data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>"
         data-rating="<% ratings = [] %>
         <% cafe.reviews.each do |review| %>
           <% ratings << review.rating %>
