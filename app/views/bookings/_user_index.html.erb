@@ -1,28 +1,43 @@
-<div class="container">
-  <h1>Hello <%= @user.first_name %>,</h1>
+  <h1 class="mb-4">Hey <%= @user.first_name %>!</h1>
 
-  <p>These are your upcoming bookings:</p>
-  <div class="bookings-index d-flex flex-column align-items-center p-0">
+  <h4>Upcoming Bookings</h4>
+
+  <% @bookings.each do |booking| %>
+
+    <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
+    <% if booking.date >= Date.today %>
+      <% if booking.start_time > 12 %>
+          <% start_time_string = "#{booking.start_time - 12} pm" %>
+        <% elsif booking.start_time < 12 %>
+          <% start_time_string = "#{booking.start_time} am" %>
+        <% else %>
+          <% start_time_string = "#{booking.start_time} pm" %>
+        <% end %>
+         <% time_end = booking.start_time + booking.duration %>
+        <% if time_end > 12 %>
+          <% end_time_string = "#{time_end - 12} pm" %>
+        <% elsif time_end < 12 %>
+          <% end_time_string = "#{time_end} am" %>
+        <% else %>
+          <% end_time_string = "#{time_end} pm" %>
+        <% end %>
+
+  <div class="card-cafe mb-2">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-cafe-infos">
+      <div>
+        <h2><%= "#{cafe.name}" %></h2>
+        <p>Short description here!</p>
+      </div>
+      <h2 class="card-cafe-pricing"><%= "#{start_time_string} - #{end_time_string}" %></h2>
+    </div>
+  </div>
+  <% end %>
+
+
+
+  <div class="bookings-index d-flex flex-column align-items-center p-0 mb-4">
     <% @bookings.each do |booking| %>
-      <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
-      <% if booking.date >= Date.today %>
-        <% if booking.start_time > 12 %>
-            <% start_time_string = "#{booking.start_time - 12}.00pm" %>
-          <% elsif booking.start_time < 12 %>
-            <% start_time_string = "#{booking.start_time}.00am" %>
-          <% else %>
-            <% start_time_string = "#{booking.start_time}.00pm" %>
-          <% end %>
-
-          <% time_end = booking.start_time + booking.duration %>
-
-          <% if time_end > 12 %>
-            <% end_time_string = "#{time_end - 12}.00pm" %>
-          <% elsif time_end < 12 %>
-            <% end_time_string = "#{time_end}.00am" %>
-          <% else %>
-            <% end_time_string = "#{time_end}.00pm" %>
-          <% end %>
 
         <div class="card" style="width: 100%;">
           <img class="card-img-top" src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap">
@@ -40,5 +55,12 @@
     <% end %>
   </div>
 
-  <h2>Booking history</h2>
+
+  <h4>Booking History</h4>
+  <div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2>Product name</h2>
+    <p>Product description with <strong>relevant info</strong> only.</p>
+  </div>
 </div>
