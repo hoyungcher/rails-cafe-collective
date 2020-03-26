@@ -2,6 +2,7 @@ class Cafe < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :cafe_tags
+  has_many :tags, through: :cafe_tags
   has_many :hourly_slots, dependent: :destroy
   has_many :booked_hours, through: :hourly_slots
   has_many :bookings, through: :booked_hours
