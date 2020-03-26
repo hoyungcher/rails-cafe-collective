@@ -21,6 +21,8 @@ class BookingsController < ApplicationController
   def index
     @user = current_user
     @bookings = @user.bookings
+    @cafe =
+    @cafe_bookings = @cafe.bookings
   end
 
   def show

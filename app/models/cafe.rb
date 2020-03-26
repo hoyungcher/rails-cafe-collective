@@ -3,6 +3,9 @@ class Cafe < ApplicationRecord
   has_many :reviews
   has_many :cafe_tags
   has_many :hourly_slots, dependent: :destroy
+  has_many :booked_hours, through: :hourly_slots
+  has_many :bookings, through: :booked_hours
+  has_many :bookmarks, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 

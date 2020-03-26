@@ -3,8 +3,7 @@ class Booking < ApplicationRecord
   has_many :booked_hours, dependent: :destroy
 
   validates :date, presence: true
-  validates :start_time, presence: true, uniqueness: { scope: :date,
-    message: "should not have two multiple bookings on the same day" }
+  validates :start_time, presence: true
   validates :duration, presence: true
 end
 
