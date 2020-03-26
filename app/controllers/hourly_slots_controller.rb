@@ -15,6 +15,7 @@ class HourlySlotsController < ApplicationController
       slot = HourlySlot.new(cafe: @cafe, start_time: time.to_i, total_seats: @time_slots_seats[index].to_i, price_per_hour: params["price"].to_i, date: Date.today)
       slot.save
     end
+    redirect_to user_bookings_path(@user)
   end
 
   def get_hourly_seats(cafe, date)
