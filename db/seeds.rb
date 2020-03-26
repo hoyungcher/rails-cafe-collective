@@ -135,6 +135,7 @@ end
 
 puts "Creating Hourly Slots..."
 
+#list of hourly slots
 Cafe.all do |cafe|
   price = rand(5..10)
   5.times do |index|
@@ -143,7 +144,7 @@ Cafe.all do |cafe|
 end
 
 puts "Creating Bookings and Booked Hours..."
-#Creating user bookings
+#list of user bookings
   users = User.where(owner: false)
   users.each_with_index do |user, index|
     time1 = 8

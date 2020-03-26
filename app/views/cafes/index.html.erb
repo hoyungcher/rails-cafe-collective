@@ -9,18 +9,33 @@
 
   Sort by: <a class="sort-rating btn btn-primary mr-2">Rating</a><a class="sort-price btn btn-primary mr-2">Price</a><a class="sort-distance btn btn-primary">Distance</a>
 
-  <div class="container">
+  <div class="cafe-container">
     <div class="row">
       <% @cafes.each do |cafe| %>
       <div class="col-sm"></div>
-      <div class="card-cafe" data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>">
+      <div class="card-cafe"
+        data-tags="<% cafe.cafe_tags.each do |cafetag| %>
+          <%=cafetag.tag.name%>,
+        <% end %>"
+        data-rating="<% ratings = [] %>
+        <% cafe.reviews.each do |review| %>
+          <% ratings << review.rating %>
+        <% end %>
+        <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>"
+        >
         <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
         <div class="card-cafe-infos">
           <div>
             <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
             <p><%= cafe.category.capitalize %></p>
           </div>
-          <h2 class="card-cafe-pricing"><%= cafe.neighbourhood %></h2>
+          <h2 class="card-cafe-pricing">
+            <% ratings = [] %>
+            <% cafe.reviews.each do |review | %>
+              <% ratings << review.rating %>
+            <% end %>
+            <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>
+          </h2>
           <div class="ambience_tags d-flex">
             <% cafe.cafe_tags.each do |cafetag| %>
             <% if cafetag.tag.tag_category == "ambience" %>
