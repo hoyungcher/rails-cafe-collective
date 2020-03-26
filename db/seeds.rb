@@ -134,7 +134,7 @@ Cafe.all.each do |cafe|
 end
 
 puts "Creating Bookings"
-#Creating user bookings
+#list of user bookings
   users = User.where(owner: false)
   users.each do |user|
     Booking.create(user: user, date: Date.today, start_time: 8, duration: 3, special_requests: "Window Seat")
