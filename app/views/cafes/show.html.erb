@@ -20,7 +20,6 @@
   </a>
 </div>
 
-<div class="container">
   <div class="cafe-name"><%= @cafe.name %></div>
   <div class="cafe-rating">
     <span class="stars"> <% @rating.times do  %>
@@ -36,18 +35,32 @@
   <div class="cafe-tags d-flex flex-wrap">
     <% @cafe.cafe_tags.each do |cafetag| %>
       <% if cafetag.tag.tag_category == "ambience" %>
-        <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
+        <div class="small-tag mr-2 mb-2"><%= cafetag.tag.name %></div>
       <% end %>
     <% end %>
   </div>
-  <div class="cafe-address"><%= @cafe.address %></div>
+  <div class="cafe-address"><strong>Address</strong>: <%= @cafe.address %></div>
   <div class="cafe-description"><%= @cafe.description %></div>
+
+  <div class="cafe-amenities">
+  <p class="show-heading">Amenities</p>
+    <% @cafe.cafe_tags.each do |cafetag| %>
+      <% if cafetag.tag.tag_category == "amenity" %>
+        <div>+ <%= cafetag.tag.name.capitalize %></div>
+      <% end %>
+    <% end %>
+
+  </div>
+
   <div class="cafe-reviews">
-    <p class="review-heading">Reviews</p>
+    <p class="show-heading">Reviews</p>
     <% @cafe.reviews.each do |review| %>
     <div class="rating-name">
       <p><% review.rating.times do  %>
         <i class="fas fa-star"></i>
+      <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="far fa-star"></i>
       <% end %>
       </p>
       <p><%= review.user.first_name %> <%= review.user.last_name %></p>
@@ -55,7 +68,7 @@
     <p><%= review.content %></p>
     <% end %>
   </div>
-  <p class="location">Location</p>
+  <p class="show-heading">Location</p>
   <div
     id="map"
     style="width: 100%;
@@ -65,7 +78,6 @@
     >
   </div>
 
-</div>
 <!-- <div class="show-schedule">
   <p class="show-price">Price: <strong>$10</strong><span style="font-size: 20px;">/hr</span></p>
   <a class='view-schedule' href="#">View Schedule</a>
