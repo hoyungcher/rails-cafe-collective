@@ -2,6 +2,10 @@ const timeSlots = document.querySelectorAll('.time-slot');
 const unavailable = document.querySelector('.unavailable');
 const totalPrice = document.getElementById('total-price');
 const schedule = document.querySelector('.time-slots');
+const booked = document.querySelector('.time-booked');
+
+
+
 
 const initBooking = () => {
   timeSlots.forEach((timeSlot) => {
@@ -68,4 +72,4 @@ const updateValues = () => {
   bookingData.value = `${startTime},${duration}`;
 }
 
-export { initBooking };
+initBooking();

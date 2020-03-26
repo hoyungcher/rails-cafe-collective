@@ -3,8 +3,8 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSlot } from './init_slot';
-import { initBooking } from './init_booking';
+// import { initBooking } from './init_booking';
 
 initMapbox();
 initSlot();
-initBooking();
+// initBooking();
