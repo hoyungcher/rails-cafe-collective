@@ -1,6 +1,6 @@
 const sortRatingBtn = document.querySelector('.sort-rating');
 const sortPriceBtn = document.querySelector('.sort-price');
-const sortDistanceBtn = document.querySelector('.sort-distance');
+// const sortDistanceBtn = document.querySelector('.sort-distance');
 
 let cafesToSort = document.querySelectorAll('.card-cafe');
 cafesToSort = Array.prototype.slice.call(cafesToSort, 0);
@@ -12,7 +12,7 @@ const sortByRating = () => {
     let bord = +parseInt(b.dataset.rating);
     return bord - aord;
   })
-  let parent = document.querySelector('.cafe-container');
+  let parent = document.querySelector('.cafe-container .row');
   parent.innerHTML = "";
   for(let i = 0, l = cafesToSort.length; i < l; i++) {
     parent.appendChild(cafesToSort[i]);
@@ -20,8 +20,25 @@ const sortByRating = () => {
 }
 
 sortRatingBtn.addEventListener('click', (e) => {
+  const activeBtn = document.querySelectorAll('.active-sort-btn');
+  activeBtn.forEach((button) => {
+    button.classList.remove('active-sort-btn')
+    // activeBtn.classList.add('inactive-sort-btn')
+  });
+  e.currentTarget.classList.add('active-sort-btn')
   sortByRating();
 })
+
+sortPriceBtn.addEventListener('click', (e) => {
+  const activeBtn = document.querySelectorAll('.active-sort-btn');
+  activeBtn.forEach((button) => {
+    button.classList.remove('active-sort-btn')
+    // activeBtn.classList.add('inactive-sort-btn')
+  });
+  e.currentTarget.classList.add('active-sort-btn')
+  sortByRating();
+})
+
 
 // sort by price
 
