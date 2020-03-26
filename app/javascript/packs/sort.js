@@ -6,6 +6,7 @@ let cafesToSort = document.querySelectorAll('.card-cafe');
 cafesToSort = Array.prototype.slice.call(cafesToSort, 0);
 
 // sort by rating
+
 const sortByRating = () => {
   cafesToSort.sort(function(a, b) {
     let aord = +parseInt(a.dataset.rating);
@@ -29,6 +30,23 @@ sortRatingBtn.addEventListener('click', (e) => {
   sortByRating();
 })
 
+
+
+// sort by price
+
+const sortByPrice = () => {
+  cafesToSort.sort(function(a, b) {
+    let aord = +parseInt(a.dataset.price);
+    let bord = +parseInt(b.dataset.price);
+    return aord - bord;
+  })
+  let parent = document.querySelector('.cafe-container .row');
+  parent.innerHTML = "";
+  for(let i = 0, l = cafesToSort.length; i < l; i++) {
+    parent.appendChild(cafesToSort[i]);
+  }
+}
+
 sortPriceBtn.addEventListener('click', (e) => {
   const activeBtn = document.querySelectorAll('.active-sort-btn');
   activeBtn.forEach((button) => {
@@ -36,26 +54,5 @@ sortPriceBtn.addEventListener('click', (e) => {
     // activeBtn.classList.add('inactive-sort-btn')
   });
   e.currentTarget.classList.add('active-sort-btn')
-  sortByRating();
+  sortByPrice();
 })
-
-
-// sort by price
-
-// const sortByPrice = () => {
-//   cafesToSort.sort(function(a, b) {
-//     let aord = +parseInt(a.dataset.price);
-//     let bord = +parseInt(b.dataset.price);
-//     return aord - bord;
-//   })
-//   let parent = document.querySelector('.cafe-container');
-//   parent.innerHTML = "";
-//   for(let i = 0, l = cafesToSort.length; i < l; i++) {
-//     parent.appendChild(cafesToSort[i]);
-//   }
-// }
-
-// sortPriceBtn.addEventListener('click', (e) => {
-//   console.log("hello");
-//   sortByPrice();
-// })
