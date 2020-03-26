@@ -1,10 +1,40 @@
-<h1>Hello <%= @user.first_name %>,</h1>
+<div class="container">
+  <h1>Hello <%= @user.first_name %>,</h1>
 
-<div class="bookings-index">
-<h3>These are your bookings for today:</h3>
-<% @bookings.each do |booking| %>
-  <p>booking.date</p>
-<% end %>
+  <p>These are your bookings for today:</p>
+  <div class="bookings-index d-flex flex-column align-items-center p-0">
+    <% @bookings.each do |booking| %>
+      <% if booking.date >= Date.today %>
+        <% if booking.start_time > 12 %>
+            <% start_time_string = "#{booking.start_time - 12}.00pm" %>
+          <% elsif booking.start_time < 12 %>
+            <% start_time_string = "#{booking.start_time}.00am" %>
+          <% else %>
+            <% start_time_string = "#{booking.start_time}.00pm" %>
+          <% end %>
+
+          <% time_end = booking.start_time + booking.duration %>
+
+          <% if time_end > 12 %>
+            <% end_time_string = "#{time_end - 12}.00pm" %>
+          <% elsif time_end < 12 %>
+            <% end_time_string = "#{time_end}.00am" %>
+          <% else %>
+            <% end_time_string = "#{time_end}.00pm" %>
+          <% end %>
+
+        <div class="card" style="width: 100%;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= booking.date.strftime("%b %d") %></h5>
+            <p class="card-text"><%= "#{start_time_string} - #{end_time_string}" %></p>
+            <p class="card-text"><%= "Address: " %></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2>Booking history</h2>
 </div>
-
-<h2>Booking history</h2>
