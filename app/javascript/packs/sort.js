@@ -39,6 +39,7 @@ sortPriceBtn.addEventListener('click', (e) => {
   sortByRating();
 })
 
+
 // sort by price
 
 // const sortByPrice = () => {
