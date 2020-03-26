@@ -8,10 +8,16 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [ :show] do
+    resources :bookmarks, only: [ :index, :create ]
     resources :cafes, only: [ :new, :create, :edit, :update, :destroy ] do
+      resources :bookmarks, only: [:create, :destroy]
       resources :hourly_slots, only: [ :new, :create, :destroy ]
     end
     resources :bookings, only: [ :show, :index ]
+  end
+
+  resources :cafes do
+    resources :bookmarks, only: [:create, :destroy]
   end
 end
 
