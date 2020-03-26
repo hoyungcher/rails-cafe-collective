@@ -1,5 +1,10 @@
-<h1>Hello <%= @user.first_name %></h1>
+<h1>Hello <%= @user.first_name %>,</h1>
 
-<h2>Your upcoming Booking</h2>
+<div class="bookings-index">
+<h3>These are your bookings for today:</h3>
+<% @bookings.each do |booking| %>
+  <p>booking.date</p>
+<% end %>
+</div>
 
 <h2>Booking history</h2>
