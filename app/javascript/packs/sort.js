@@ -56,3 +56,5 @@ sortPriceBtn.addEventListener('click', (e) => {
   e.currentTarget.classList.add('active-sort-btn')
   sortByPrice();
 })
+
+

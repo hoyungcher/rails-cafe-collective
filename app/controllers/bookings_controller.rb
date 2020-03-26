@@ -27,6 +27,8 @@ class BookingsController < ApplicationController
   end
 
   def index
+    @unshow_menu_bar = false
+
     @user = current_user
     @bookings = @user.bookings.uniq
     @cafe = Cafe.where(user: current_user).first

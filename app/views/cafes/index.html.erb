@@ -12,17 +12,15 @@
   <div class="cafe-container">
     <div class="row">
       <% @cafes.each do |cafe| %>
-      <div class="col-sm"></div>
       <div class="card-cafe"
-        data-tags="<% cafe.cafe_tags.each do |cafetag| %>
-          <%=cafetag.tag.name%>,
-        <% end %>"
+        data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>"
         data-rating="<% ratings = [] %>
         <% cafe.reviews.each do |review| %>
           <% ratings << review.rating %>
         <% end %>
-        <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>"
-        >
+        <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>">
+
+        <div class="bookmark" data-id="<%= cafe.id %>"><i class="<%= @bookmarks.include?(cafe.id) ? "fas" : "far" %> fa-bookmark"></i></div>
         <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
         <div class="card-cafe-infos">
           <div>
@@ -38,9 +36,9 @@
           </h2>
           <div class="ambience_tags d-flex">
             <% cafe.cafe_tags.each do |cafetag| %>
-            <% if cafetag.tag.tag_category == "ambience" %>
-            <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
-            <% end %>
+              <% if cafetag.tag.tag_category == "ambience" %>
+                <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -53,6 +51,6 @@
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
 </div>
 
+<%= javascript_pack_tag "sort" %>
 <%= javascript_pack_tag "tags" %>
 <%#= javascript_pack_tag "scroll" %>
-<%= javascript_pack_tag "sort" %>

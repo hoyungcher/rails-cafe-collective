@@ -29,6 +29,7 @@ const removeFromArray = (value) => {
 
 const cardIsInSelection = (arrayOne, arrayTwo) => {
   let intersection = arrayOne.filter(value => -1 !== arrayTwo.indexOf(value))
+  console.log(intersection);
   if (intersection[0] === undefined ) {
     return false
   } else {

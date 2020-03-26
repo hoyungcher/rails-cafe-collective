@@ -12,6 +12,8 @@ class CafesController < ApplicationController
     end
 
     @user = current_user
+    @bookmarks = @user.bookmarks.map(&:cafe_id)
+    # raise
     @tags = Tag.where(tag_category: "ambience")
   end
 
