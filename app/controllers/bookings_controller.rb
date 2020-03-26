@@ -11,7 +11,11 @@ class BookingsController < ApplicationController
     @data = params["booking"].split(",")
     @booking = Booking.new(user: @user, date: Date.today, start_time: @data[0].to_i, duration: @data[1].to_i)
     @booking.save
-    raise
+    @cafe = Cafe.find(params[:cafe_id])
+    @booking.duration.times do |index|
+      @booked_hour = BookedHour.new(booking: @booking, hourly_slot: HourlySlot.where( "date = ? AND start_time = ? AND cafe_id = ?", Date.today, @booking.start_time + index, @cafe.id).first, paid: true)
+      @booked_hour.save
+    end
   end
 
   def index
