@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :user
+  has_many :booked_hours, dependent: :destroy
 
   validates :date, presence: true
   validates :start_time, presence: true, uniqueness: { scope: :date,
