@@ -13,7 +13,7 @@ const sortByRating = () => {
     let bord = +parseInt(b.dataset.rating);
     return bord - aord;
   })
-  let parent = document.querySelector('.cafe-container .row');
+  let parent = document.querySelector('.cafe-container');
   parent.innerHTML = "";
   for(let i = 0, l = cafesToSort.length; i < l; i++) {
     parent.appendChild(cafesToSort[i]);
@@ -40,7 +40,7 @@ const sortByPrice = () => {
     let bord = +parseInt(b.dataset.price);
     return aord - bord;
   })
-  let parent = document.querySelector('.cafe-container .row');
+  let parent = document.querySelector('.cafe-container');
   parent.innerHTML = "";
   for(let i = 0, l = cafesToSort.length; i < l; i++) {
     parent.appendChild(cafesToSort[i]);
