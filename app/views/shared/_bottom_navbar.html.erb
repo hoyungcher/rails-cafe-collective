@@ -24,8 +24,8 @@
 <% end %>
 
 <% if @unshow_action_bar == false %>
-<div class="bottom-navbar justify-content-between p-3">
-  <h6 class="align-self-center m-0">Price: <strong>$10</strong>/hour</h6>
-  <a class='btn btn-primary align-self-center' href="#">View Availability</a>
-</div>
+  <div class="bottom-navbar justify-content-between p-3">
+    <h6 class="align-self-center m-0">Price: <strong>$10</strong>/hour</h6>
+    <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
+  </div>
 <% end %>
