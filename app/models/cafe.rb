@@ -21,7 +21,3 @@ class Cafe < ApplicationRecord
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
   end
-
-# Cafe.create(user: User.find(User.first.id + 5), name: "Kevan's Restaurant",
-#   description: "nice korean food and stuff",
-#   neighbourhood: "East", address: "31 Amber Gardens, Singapore", city: "Singapore", category: "cafe", contact: "98921302")

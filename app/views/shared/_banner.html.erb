@@ -1,10 +1,15 @@
 <div class="banner">
   <%= form_tag cafes_path(anchor: "main-index-section"), method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Cafe name"
+    <%= text_field_tag :address,
+    params[:address],
+    class: "form-control",
+    placeholder: "Your Location"
+    %>
+    <%#= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Cafe name"
     %>
     <%= submit_tag "Search", class: "btn btn-primary btn-block mt-2 search" %>
-  <% end %>
+    <% end %>
 </div>

@@ -2,11 +2,15 @@ class CafesController < ApplicationController
   def index
     @unshow_banner = false
     @unshow_menu_bar = false
-    if params[:query].present?
-      @cafes = Cafe.search_by_name(params[:query])
+
+    if params[:address].present?
+      @cafes = Cafe.near(params[:address], 1)
+    # elsif params[:query].present?
+    #   @cafes = Cafe.search_by_name(params[:query])
     else
       @cafes = Cafe.all
     end
+
     @user = current_user
     @tags = Tag.where(tag_category: "ambience")
   end
