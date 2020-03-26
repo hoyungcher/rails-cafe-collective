@@ -1,5 +1,12 @@
 <h1>Booking for <%= @cafe.name %></h1>
 <h2><%= Date.today %></h2>
+<% arr = [] %>
+<% @user_bookings.each do |booking| %>
+  <% booking.duration.times do |index| %>
+    <% arr << (booking.start_time + index) %>
+  <% end %>
+<% end %>
+<div class="time-booked"> <%= arr.uniq.sort.join(",") %> </div>
 <p id="start-time" style="display:block;">Select a start and end time slot</p>
 <div class="time-slots">
   <% @hourly_slots.each do |time, slot| %>
@@ -21,4 +28,4 @@
   <input id="booking-data" name="booking"type="hidden">
   <input type="submit">
 </form>
-
+<%= javascript_pack_tag 'init_booking' %>

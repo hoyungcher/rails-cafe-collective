@@ -4,17 +4,24 @@ class BookingsController < ApplicationController
     @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])
     @hourly_slots = get_hourly_seats(@cafe, Date.today)
+    @user_bookings = @cafe.bookings.where(user: @user).uniq
   end
 
   def create
+    @cafe = Cafe.find(params[:cafe_id])
     @user = User.find(params[:user_id])
     @data = params["booking"].split(",")
+    @test_booking = Booking.where("date = ? AND start_time = ? AND user_id = ?", Date.today, @data[0].to_i, @user )
+    if @test_booking
+      @test_booking.destroy_all
+    end
     @booking = Booking.new(user: @user, date: Date.today, start_time: @data[0].to_i, duration: @data[1].to_i)
-    @booking.save
     @cafe = Cafe.find(params[:cafe_id])
-    @booking.duration.times do |index|
-      @booked_hour = BookedHour.new(booking: @booking, hourly_slot: HourlySlot.where( "date = ? AND start_time = ? AND cafe_id = ?", Date.today, @booking.start_time + index, @cafe.id).first, paid: true)
-      @booked_hour.save
+    if @booking.save
+      @booking.duration.times do |index|
+        @booked_hour = BookedHour.new(booking: @booking, hourly_slot: HourlySlot.where( "date = ? AND start_time = ? AND cafe_id = ?", Date.today, @booking.start_time + index, @cafe.id).first, paid: true)
+        @booked_hour.save
+      end
     end
     redirect_to user_bookings_path(@user)
   end
