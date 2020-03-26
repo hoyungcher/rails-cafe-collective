@@ -30,16 +30,16 @@ User.create(email: 'user9@gmail.com', password: 'pass1234', owner: true, first_n
 User.create(email: 'user10@gmail.com', password: 'pass1234', owner: true, first_name: "Meredith", last_name: "Grey")
 
 # list of non-owner users
-User.create(email: 'user11@gmail.com', password: 'pass1234', owner: true, first_name: "Will", last_name: "Smith")
-User.create(email: 'user12@gmail.com', password: 'pass1234', owner: true, first_name: "Phoebe", last_name: "Buffay")
-User.create(email: 'user13@gmail.com', password: 'pass1234', owner: true, first_name: "Jennifer", last_name: "Lopez")
-User.create(email: 'user14@gmail.com', password: 'pass1234', owner: true, first_name: "Trevor", last_name: "Noah")
-User.create(email: 'user15@gmail.com', password: 'pass1234', owner: true, first_name: "Justin", last_name: "Bieber")
-User.create(email: 'user16@gmail.com', password: 'pass1234', owner: true, first_name: "Selena", last_name: "Gomez")
-User.create(email: 'user17@gmail.com', password: 'pass1234', owner: true, first_name: "Paul", last_name: "McCartney")
-User.create(email: 'user18@gmail.com', password: 'pass1234', owner: true, first_name: "Chris", last_name: "Paul")
-User.create(email: 'user19@gmail.com', password: 'pass1234', owner: true, first_name: "Kobe", last_name: "Bryant")
-User.create(email: 'user20@gmail.com', password: 'pass1234', owner: true, first_name: "Larry", last_name: "Bird")
+User.create(email: 'user11@gmail.com', password: 'pass1234', owner: false, first_name: "Will", last_name: "Smith")
+User.create(email: 'user12@gmail.com', password: 'pass1234', owner: false, first_name: "Phoebe", last_name: "Buffay")
+User.create(email: 'user13@gmail.com', password: 'pass1234', owner: false, first_name: "Jennifer", last_name: "Lopez")
+User.create(email: 'user14@gmail.com', password: 'pass1234', owner: false, first_name: "Trevor", last_name: "Noah")
+User.create(email: 'user15@gmail.com', password: 'pass1234', owner: false, first_name: "Justin", last_name: "Bieber")
+User.create(email: 'user16@gmail.com', password: 'pass1234', owner: false, first_name: "Selena", last_name: "Gomez")
+User.create(email: 'user17@gmail.com', password: 'pass1234', owner: false, first_name: "Paul", last_name: "McCartney")
+User.create(email: 'user18@gmail.com', password: 'pass1234', owner: false, first_name: "Chris", last_name: "Paul")
+User.create(email: 'user19@gmail.com', password: 'pass1234', owner: false, first_name: "Kobe", last_name: "Bryant")
+User.create(email: 'user20@gmail.com', password: 'pass1234', owner: false, first_name: "Larry", last_name: "Bird")
 
 
 puts "Creating cafes..."
@@ -133,5 +133,20 @@ Cafe.all.each do |cafe|
   reviews.delete(sample3)
 end
 
+puts "Creating Bookings"
+#Creating user bookings
+  users = User.where(owner: false)
+  users.each do |user|
+    Booking.create(user: user, date: Date.today, start_time: 8, duration: 3, special_requests: "Window Seat")
+    Booking.create(user: user, date: Date.today + 1, start_time: 10, duration: 5)
+    Booking.create(user: user, date: Date.today + 2, start_time: 14, duration: 2, special_requests: "Sofa Seat")
+  end
+
 puts "Seeds done!"
 
+    # t.date "date"
+    # t.integer "start_time"
+    # t.integer "duration"
+    # t.string "special_requests"
+    # t.integer "total_credits"
+    # t.integer "remaining_credits"
