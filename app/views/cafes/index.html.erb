@@ -18,21 +18,23 @@
         <% cafe.reviews.each do |review| %>
           <% ratings << review.rating %>
         <% end %>
-        <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>">
-
+        <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size) %>"
+        data-price="<% prices = [] %>
+        <% cafe.hourly_slots.each do |slot| %>
+          <% prices << slot.price_per_hour %>
+        <% end %>
+        <%= (prices.inject{ |sum, el| sum + el }.to_f / prices.size) %>">
         <div class="bookmark" data-id="<%= cafe.id %>"><i class="<%= @bookmarks.include?(cafe.id) ? "fas" : "far" %> fa-bookmark"></i></div>
         <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
         <div class="card-cafe-infos">
+
           <div>
             <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
             <p><%= cafe.category.capitalize %></p>
           </div>
           <h2 class="card-cafe-pricing">
-            <% ratings = [] %>
-            <% cafe.reviews.each do |review | %>
-              <% ratings << review.rating %>
-            <% end %>
-            <%= (ratings.inject{ |sum, el| sum + el }.to_f / ratings.size).round(1) %>
+            <%= cafe.neighbourhood %>
+
           </h2>
           <div class="ambience_tags d-flex">
             <% cafe.cafe_tags.each do |cafetag| %>
