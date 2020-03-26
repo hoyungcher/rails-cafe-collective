@@ -16,13 +16,13 @@ class BookingsController < ApplicationController
       @booked_hour = BookedHour.new(booking: @booking, hourly_slot: HourlySlot.where( "date = ? AND start_time = ? AND cafe_id = ?", Date.today, @booking.start_time + index, @cafe.id).first, paid: true)
       @booked_hour.save
     end
+    redirect_to user_bookings_path(@user)
   end
 
   def index
     @user = current_user
-    @bookings = @user.bookings
-    @cafe =
-    @cafe_bookings = @cafe.bookings
+    @bookings = @user.bookings.uniq
+    @cafe = Cafe.where(user: current_user).first
   end
 
   def show
