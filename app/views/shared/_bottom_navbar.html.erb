@@ -12,7 +12,11 @@
   </a>
   <a href="/users/<%= @user.id %>/bookmarks">
     <div class="navbar-item align-middle" id="bookmarks-tab">
-      <i class="far fa-bookmark"></i>
+      <% if current_user.owner %>
+        <i class="fas fa-coffee"></i>
+      <% else %>
+        <i class="far fa-bookmark"></i>
+      <% end %>
     </div>
   </a>
   <a href="#">
