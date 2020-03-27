@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
   def new
+    @show_booking_bar = true
     @booking = Booking.new
     @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])
-    @hourly_slots = get_hourly_seats(@cafe, Date.today)
+    @hourly_slots = get_hourly_seats(@cafe, Date.today).sort {|a,b| a[0].to_i}
     @user_bookings = @cafe.bookings.where(user: @user).uniq
   end
 
@@ -11,7 +12,7 @@ class BookingsController < ApplicationController
     @cafe = Cafe.find(params[:cafe_id])
     @user = User.find(params[:user_id])
     @data = params["booking"].split(",")
-    @test_booking = Booking.where("date = ? AND start_time = ? AND user_id = ?", Date.today, @data[0].to_i, @user )
+    @test_booking = Booking.where("date = ? AND user_id = ? AND start_time = ?", Date.today, @user, @data[0].to_i )
     if @test_booking
       @test_booking.destroy_all
     end

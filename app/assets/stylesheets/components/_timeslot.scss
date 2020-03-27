@@ -9,16 +9,28 @@
   justify-content: space-between;
   background-color: rgb(200, 200, 200);
   align-items: center;
-  padding: 8px 0;
-  margin: 4px;
+  padding: 8px 10px;
+  margin: 4px 0px;
+  border-radius: 5px;
 }
 
 .time-slot.active {
-  background-color: green;
+  background-color: $blue;
+  color: white;
 }
 
 .time-slot.unavailable {
   color: white;
+  background-color: #abbff2;
+}
+
+.time-slot.booked {
+  background-color: #6fdc79;
+  color: white
+}
+
+.time-slot.active {
+  background-color: $blue;
 }
 
 .slot-container {
@@ -37,4 +49,18 @@
 
 .slots {
   margin-top: 12px;
+}
+
+#total-price {
+  margin-top: 30px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.hidden {
+  display: hidden;
+}
+
+.booking-container {
+  margin-bottom: 100px;
 }

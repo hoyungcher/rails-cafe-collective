@@ -3,11 +3,13 @@ const unavailable = document.querySelector('.unavailable');
 const totalPrice = document.getElementById('total-price');
 const schedule = document.querySelector('.time-slots');
 const booked = document.querySelector('.time-booked');
+const dynamicPrice = document.getElementById('current-price');
 
 
 
 
 const initBooking = () => {
+  updateBookedValues();
   timeSlots.forEach((timeSlot) => {
     timeSlot.addEventListener('click', (event) => {
       if (document.querySelectorAll('.active').length === 0) {
@@ -57,11 +59,27 @@ const removeAllActive = () => {
   })
 };
 
+const updateBookedValues = () => {
+  if (booked) {
+    const bookedArr = booked.innerText.split(",").map((el) => {return el})
+    bookedArr.forEach((el) => {
+      let timeSlot;
+      if (el.length === 1) {
+        timeSlot = document.querySelector(`.time-slot.\\3${el}`)
+      } else {
+        timeSlot = document.querySelector(`.time-slot.\\3${el[0]}\\3${el[1]}`)
+      }
+      timeSlot.classList.add("booked");
+      timeSlot.classList.add("unavailable");
+      timeSlot.lastElementChild.innerText = "Booked"
+    });
+  }
+}
 
 
 const displayPrice = () => {
   const activeSlots = Array.from(document.querySelectorAll('.time-slot.active')).length;
-  totalPrice.innerText = `Total price: $${ 10 * activeSlots }`;
+  dynamicPrice.innerText = `$${ 10 * activeSlots }`;
   updateValues();
 };
 
