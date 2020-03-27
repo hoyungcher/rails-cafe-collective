@@ -1,13 +1,16 @@
 <div id="main-index-section">
 
-  <p id="expand-btn">Looking for a specific ambience?</p>
-  <div class="tag-section hidden" >
+  <p id="expand-btn"><i class="fas fa-caret-down"></i><i class="fas fa-caret-up hidden"></i></i>&nbsp;&nbsp;Looking for a specific ambience?&nbsp;&nbsp;<i class="fas fa-caret-down"></i><i class="fas fa-caret-up hidden"></i></i></p>
+  <div class="tag-section mb-6 hidden" >
     <% @tags.each do |tag| %>
     <button type="button" class="btn btn-outline-secondary m-1 tag-btn"><%= tag.name %></button>
     <% end %>
   </div>
 
+
+  <div class="mt-4 mb-4">
   Sort by: <a class="sort-rating sort-btn mr-2">Rating</a><a class="sort-price sort-btn mr-2">Price</a>
+  </div>
 
   <div class="cafe-container">
       <% @cafes.each do |cafe| %>
