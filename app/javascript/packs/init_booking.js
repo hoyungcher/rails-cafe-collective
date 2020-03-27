@@ -60,7 +60,7 @@ const removeAllActive = () => {
 };
 
 const updateBookedValues = () => {
-  if (booked) {
+  if (booked.innerText) {
     const bookedArr = booked.innerText.split(",").map((el) => {return el})
     bookedArr.forEach((el) => {
       let timeSlot;
