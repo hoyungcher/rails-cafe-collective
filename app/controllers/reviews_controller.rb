@@ -9,12 +9,12 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @user = User.find(params[:user_id])
     @booking = Booking.find(params[:booking_id])
+    @cafe = @booking.booked_hours.first.hourly_slot.cafe
     @review.user = @user
-    @review.booking = @review
-    @raise
+    @review.cafe = @cafe
     @review.save
 
-    # redirect_to(user_bookings_path)
+    redirect_to(cafe_path(@cafe))
   end
 
   private
