@@ -27,7 +27,7 @@
     <div class="time-slot <%= time %> <%= "unavailable" if slot.zero? %>" data-time="<%= time %>">
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
-        <% if slot.zero? %>
+        <% if slot <= 0 %>
           <%= "Slots unavailable" %>
         <% else %>
           <%= "Slots available: " + (slot).to_s %>
