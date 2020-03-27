@@ -11,9 +11,12 @@ const noresultsMessage = document.getElementById('noresults-message')
 
 const displayMessage = () => {
   const displayedCard = document.querySelectorAll(`.card-cafe[style="display: block;"]`)
+  console.log(displayedCard);
   if (displayedCard.length === 0) {
     noresultsMessage.style.display = 'block';
-  };
+  } else {
+    noresultsMessage.style.display = 'none';
+  }
 }
 
 displayMessage();
@@ -69,6 +72,7 @@ inactiveTags.forEach((tag) => {
         cafe.style.display = "block";
       }
     })
+    displayMessage();
 
     if (selectedTags.length === 0) {
       showCards();
