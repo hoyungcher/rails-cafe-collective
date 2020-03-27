@@ -29,3 +29,16 @@
     <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
   </div>
 <% end %>
+
+
+<% if @show_booking_bar == true %>
+  <div class="bottom-navbar justify-content-between p-3">
+    <h6 class="align-self-center m-0"><span id="total-price">Total price: <strong><span id="current-price">$0</span></strong></span></h6>
+    <form class="d-flex flex-column align-items-center" action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input id="booking-data" name="booking"type="hidden">
+      <input class="btn btn-primary" type="submit">
+    </form>
+  </div>
+
+<% end %>

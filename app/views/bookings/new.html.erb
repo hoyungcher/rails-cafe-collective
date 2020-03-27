@@ -1,31 +1,44 @@
-<h1>Booking for <%= @cafe.name %></h1>
-<h2><%= Date.today %></h2>
-<% arr = [] %>
-<% @user_bookings.each do |booking| %>
-  <% booking.duration.times do |index| %>
-    <% arr << (booking.start_time + index) %>
+<div class="container booking-container"><h1>New Booking</h1>
+<h3 class="mt-4"><%= @cafe.name %> on <%= Date.today.strftime("%b %d") %></h3>
+<%= javascript_pack_tag 'init_booking' %>
+
+<!-- hidden field for current user bookings-->
+
+  <% arr = [] %>
+  <% @user_bookings.each do |booking| %>
+    <% booking.duration.times do |index| %>
+      <% arr << (booking.start_time + index) %>
+    <% end %>
   <% end %>
-<% end %>
-<div class="time-booked"> <%= arr.uniq.sort.join(",") %> </div>
-<p id="start-time" style="display:block;">Select a start and end time slot</p>
+  <div class="time-booked m-0" style="color: rgba(255,255,255,0)"> <%= arr.uniq.sort.join(",") %> </div>
+
+
+<p id="start-time" class="mb-4" style="display:block;">Select a start and end time:</p>
 <div class="time-slots">
   <% @hourly_slots.each do |time, slot| %>
+    <% booked =  HourlySlot.where(cafe:@cafe, start_time: time).first.booked_hours.count  %>
+
+    <% if (Time.now.hour > time.to_i) %>
+      <% slot = 0 %>
+    <% else %>
+      <% slot = slot - booked %>
+    <% end %>
+
     <div class="time-slot <%= time %> <%= "unavailable" if slot.zero? %>" data-time="<%= time %>">
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
         <% if slot.zero? %>
           <%= "Slots unavailable" %>
         <% else %>
-          <%= "Slots available: " + slot.to_s %>
+          <%= "Slots available: " + (slot).to_s %>
         <% end %>
       </p>
     </div>
   <% end %>
 </div>
-<p id="total-price">Total price: $0</p>
-<form action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <input id="booking-data" name="booking"type="hidden">
-  <input type="submit">
-</form>
-<%= javascript_pack_tag 'init_booking' %>
+
+
+
+</div>
+
+

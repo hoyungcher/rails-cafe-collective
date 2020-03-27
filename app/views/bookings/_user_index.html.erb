@@ -4,6 +4,7 @@
 
   <% @bookings.each do |booking| %>
     <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
+
     <% if booking.date >= Date.today %>
       <% if booking.start_time > 12 %>
         <% start_time_string = "#{booking.start_time - 12} pm" %>
