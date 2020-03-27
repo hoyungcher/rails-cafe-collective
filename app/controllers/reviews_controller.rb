@@ -3,6 +3,9 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @user = User.find(params[:user_id])
     @booking = Booking.find(params[:booking_id])
+    @cafe = @booking.booked_hours.first.hourly_slot.cafe
+
+    @unshow_menu_bar = false
   end
 
   def create
