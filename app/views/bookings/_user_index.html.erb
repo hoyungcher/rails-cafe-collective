@@ -27,7 +27,7 @@
     <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
     <div class="card-cafe-infos">
       <div>
-        <h2><%= "#{cafe.name}" %></h2>
+        <h2><%= link_to cafe.name, cafe_path(cafe) %></h2>
         <p><%= "#{cafe.address}" %></p>
       </div>
       <div>
