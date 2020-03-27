@@ -166,13 +166,13 @@ users.each_with_index do |user|
   time4 = 10
   booking4 = Booking.create(user: user, date: (Date.today - 4), start_time: time4, duration: 3)
   time2.times do |index|
-    BookedHour.create(booking: booking2, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time2 + index).first, paid: true)
+    BookedHour.create(booking: booking2, hourly_slot: Cafe.find(Cafe.first.id + index + 1).hourly_slots.where(start_time: time2 + index).first, paid: true)
   end
   time3.times do |index|
-    BookedHour.create(booking: booking3, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time3 + index).first, paid: true)
+    BookedHour.create(booking: booking3, hourly_slot: Cafe.find(Cafe.first.id + index + 3).hourly_slots.where(start_time: time3 + index).first, paid: true)
   end
   time4.times do |index|
-    BookedHour.create(booking: booking4, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time4 + index).first, paid: true)
+    BookedHour.create(booking: booking4, hourly_slot: Cafe.find(Cafe.first.id + index + 5).hourly_slots.where(start_time: time4 + index).first, paid: true)
   end
 end
 
