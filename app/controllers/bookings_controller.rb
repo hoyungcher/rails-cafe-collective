@@ -5,7 +5,8 @@ class BookingsController < ApplicationController
     @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])
     @hourly_slots = get_hourly_seats(@cafe, Date.today).sort {|a,b| a[0].to_i}
-    @user_bookings = @cafe.bookings.where(user: @user).uniq
+    @user_bookings = @cafe.bookings.where(user: @user, date: Date.today).uniq
+    raise
   end
 
   def create
