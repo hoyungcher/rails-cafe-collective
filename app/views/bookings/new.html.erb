@@ -1,6 +1,7 @@
 <%= javascript_pack_tag 'init_booking' %>
 <div class="container booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
 <h5 class="mt-4 text-center"><%= Date.today.strftime("%b %d") %></h5>
+<h5 class="cafe-price mt-4 text-center hidden"><%= @cafe.hourly_slots.first.price_per_hour %></h5>
 
 <!-- hidden field for current user bookings-->
 
@@ -11,7 +12,6 @@
     <% end %>
   <% end %>
   <div class="time-booked m-0" style="color: rgba(255,255,255,0)"> <%= arr.uniq.sort.join(",") %> </div>
-
 
 <p id="start-time" class="mb-4 text-center" style="display:block;">Select a start and end time:</p>
 <div class="time-slots">

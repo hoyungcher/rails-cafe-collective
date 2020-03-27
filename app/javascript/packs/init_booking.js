@@ -79,7 +79,7 @@ const updateBookedValues = () => {
 
 const displayPrice = () => {
   const activeSlots = Array.from(document.querySelectorAll('.time-slot.active')).length;
-  dynamicPrice.innerText = `$${ 10 * activeSlots }`;
+  dynamicPrice.innerText = `$${ Number(document.querySelector('.cafe-price').innerText) * activeSlots }`;
   updateValues();
 };
 
