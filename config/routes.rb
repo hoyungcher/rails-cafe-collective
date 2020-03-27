@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       resources :bookmarks, only: [:create, :destroy]
       resources :hourly_slots, only: [ :new, :create, :destroy ]
     end
-    resources :bookings, only: [ :show, :index ]
+    resources :bookings, only: [ :show, :index ] do
+      resources :reviews, only: [ :new, :create, ]
+    end
   end
 
   resources :cafes do

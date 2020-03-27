@@ -38,7 +38,7 @@
   <% end %>
   <% end %>
 
-  <h4 class="mt-4">Past Bookings</h4>
+  <h4 class="mt-4 mb-4">Past Bookings</h4>
 
   <% @bookings.each do |booking| %>
     <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
@@ -63,9 +63,14 @@
 
       <div class="card-product mb-2">
         <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
-        <div class="card-product-infos">
-          <h2><%= "#{cafe.name}" %></h2>
-          <p><strong><%= "#{start_time_string} - #{end_time_string}" %></strong> on <strong><%= booking.date.strftime("%b %d") %></strong></p>
+        <div class="card-product-infos d-flex justify-content-between">
+          <div>
+            <h2 class="mb-0"><%= "#{cafe.name}" %></h2>
+            <p class="mb-0 mt-0"><%= booking.date.strftime("%b %d") %> | <%= "#{start_time_string} - #{end_time_string}" %></p>
+          </div>
+          <div>
+            <%= link_to "Review", new_user_booking_review_path(booking.user, booking) %>
+          </div>
         </div>
       </div>
   <% end %>
