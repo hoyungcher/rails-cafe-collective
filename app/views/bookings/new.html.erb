@@ -1,6 +1,6 @@
 <%= javascript_pack_tag 'init_booking' %>
-<div class="container booking-container"><h1>New Booking</h1>
-<h3 class="mt-4"><%= @cafe.name %> on <%= Date.today.strftime("%b %d") %></h3>
+<div class="container booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
+<h5 class="mt-4 text-center"><%= Date.today.strftime("%b %d") %></h5>
 
 <!-- hidden field for current user bookings-->
 
@@ -13,7 +13,7 @@
   <div class="time-booked m-0" style="color: rgba(255,255,255,0)"> <%= arr.uniq.sort.join(",") %> </div>
 
 
-<p id="start-time" class="mb-4" style="display:block;">Select a start and end time:</p>
+<p id="start-time" class="mb-4 text-center" style="display:block;">Select a start and end time:</p>
 <div class="time-slots">
   <% @hourly_slots.each do |time, slot| %>
     <% booked =  HourlySlot.where(cafe:@cafe, start_time: time).first.booked_hours.count  %>
@@ -37,7 +37,9 @@
   <% end %>
 </div>
 
-
+<div class="home-button mt-4">
+  <%= link_to "Back to Home", root_path%>
+</div>
 
 </div>
 
