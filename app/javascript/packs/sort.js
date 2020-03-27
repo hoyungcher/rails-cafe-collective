@@ -9,8 +9,8 @@ cafesToSort = Array.prototype.slice.call(cafesToSort, 0);
 
 const sortByRating = () => {
   cafesToSort.sort(function(a, b) {
-    let aord = +parseInt(a.dataset.rating);
-    let bord = +parseInt(b.dataset.rating);
+    let aord = +parseFloat(a.dataset.rating);
+    let bord = +parseFloat(b.dataset.rating);
     return bord - aord;
   })
   let parent = document.querySelector('.cafe-container');
@@ -36,8 +36,8 @@ sortRatingBtn.addEventListener('click', (e) => {
 
 const sortByPrice = () => {
   cafesToSort.sort(function(a, b) {
-    let aord = +parseInt(a.dataset.price);
-    let bord = +parseInt(b.dataset.price);
+    let aord = +parseFloat(a.dataset.price);
+    let bord = +parseFloat(b.dataset.price);
     return aord - bord;
   })
   let parent = document.querySelector('.cafe-container');
