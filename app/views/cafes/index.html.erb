@@ -11,10 +11,12 @@
   Sort by: <a class="sort-rating sort-btn mr-2">Rating</a><a class="sort-price sort-btn mr-2">Price</a>
   </div>
 
+  <% if !params[:address].nil? %>
   <div>
     <h6 class="mb-0">Places near</h6>
-    <h4 class="mt-0"><%= params[:address].capitalize %></h4>
+    <h4 class="mt-0"><%= params[:address] %></h4>
   </div>
+  <% end %>
 
   <div class="cafe-container">
       <% @cafes.each do |cafe| %>
