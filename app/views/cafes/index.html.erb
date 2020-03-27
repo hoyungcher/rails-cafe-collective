@@ -19,6 +19,9 @@
   <% end %>
 
   <div class="cafe-container">
+      <div id="noresults-message" style="display:none;">
+        <p>No results found for cafes with selected filters. Please remove a filter or <%= link_to 'search everywhere', cafes_path %></p>
+      </div>
       <% @cafes.each do |cafe| %>
       <!-- average review rating -->
       <% ratings = [] %>

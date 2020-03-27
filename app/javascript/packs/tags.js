@@ -5,6 +5,18 @@ const expandButton = document.getElementById('expand-btn')
 const tagSection = document.querySelector('.tag-section')
 const downIcons = document.querySelectorAll('.fa-caret-down')
 const upIcons = document.querySelectorAll('.fa-caret-up')
+const noresultsMessage = document.getElementById('noresults-message')
+
+
+
+const displayMessage = () => {
+  const displayedCard = document.querySelectorAll(`.card-cafe[style="display: block;"]`)
+  if (displayedCard.length === 0) {
+    noresultsMessage.style.display = 'block';
+  };
+}
+
+displayMessage();
 
 const hideCards = () => {
   cafeCards.forEach((cafe) => {
@@ -60,6 +72,7 @@ inactiveTags.forEach((tag) => {
 
     if (selectedTags.length === 0) {
       showCards();
+      displayMessage();
     }
   })
 });
