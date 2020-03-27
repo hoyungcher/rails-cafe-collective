@@ -38,12 +38,37 @@
   <% end %>
   <% end %>
 
-<!--   <h4>Booking History</h4>
-  <div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
-  </div>
+  <h4 class="mt-4">Past Bookings</h4>
+
+  <% @bookings.each do |booking| %>
+    <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
+    <% if booking.date < Date.today %>
+      <% if booking.start_time > 12 %>
+        <% start_time_string = "#{booking.start_time - 12} pm" %>
+      <% elsif booking.start_time < 12 %>
+        <% start_time_string = "#{booking.start_time} am" %>
+      <% else %>
+        <% start_time_string = "#{booking.start_time} pm" %>
+      <% end %>
+      <% time_end = booking.start_time + booking.duration %>
+
+      <% if time_end > 12 %>
+        <% end_time_string = "#{time_end - 12} pm" %>
+      <% elsif time_end < 12 %>
+        <% end_time_string = "#{time_end} am" %>
+      <% else %>
+        <% end_time_string = "#{time_end} pm" %>
+      <% end %>
+
+
+      <div class="card-product mb-2">
+        <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
+        <div class="card-product-infos">
+          <h2><%= "#{cafe.name}" %></h2>
+          <p><strong><%= "#{start_time_string} - #{end_time_string}" %></strong> on <strong><%= booking.date.strftime("%b %d") %></strong></p>
+        </div>
+      </div>
+  <% end %>
+  <% end %>
 </div>
- -->
+
