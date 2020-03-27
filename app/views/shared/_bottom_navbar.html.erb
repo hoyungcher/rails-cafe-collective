@@ -1,21 +1,21 @@
 <% if @unshow_menu_bar == false %>
 <div class="bottom-navbar">
-  <a href="cafes">
+  <a href="/cafes">
     <div class="navbar-item align-middle active" id="search-tab">
       <i class="fas fa-search"></i>
     </div>
   </a>
-  <a href="users/<%= @user.id %>/bookings">
+  <a href="/users/<%= @user.id %>/bookings">
     <div class="navbar-item align-middle" id="bookings-tab">
       <i class="far fa-calendar-alt"></i>
     </div>
   </a>
-  <a href="#">
+  <a href="/users/<%= @user.id %>/bookmarks">
     <div class="navbar-item align-middle" id="bookmarks-tab">
       <i class="far fa-bookmark"></i>
     </div>
   </a>
-  <a href="users/sign_out">
+  <a href="#">
     <div class="navbar-item align-middle" id="profile-tab">
       <i class="far fa-user-circle"></i>
     </div>
