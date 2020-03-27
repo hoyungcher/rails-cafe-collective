@@ -74,7 +74,7 @@ Cafe.create(user: User.find(User.first.id + 4), name: "The Other Room", descript
 Cafe.create(user: User.find(User.first.id + 5), name: "Breko Cafe", description: "Established since 2013, we are inspired to serve great coffees with quality beans, hoping to bring a great end-to-end experiences for our customers in this fast pace country. We do believe that every cup matters and we are serious when it comes to our passion in making coffee, not to mention our dishes, which are delicious and well presented on your table.", neighbourhood: "Holland Village", address: "38 Lorong Mambong, Singapore 277694", city: "Singapore", category: "cafe", contact: "6468 4424")
 Cafe.create(user: User.find(User.first.id + 6), name: "Sunday Folks", description: "Established since 2013, we are inspired to serve great coffees with quality beans, hoping to bring a great end-to-end experiences for our customers in this fast pace country. We do believe that every cup matters and we are serious when it comes to our passion in making coffee, not to mention our dishes, which are delicious and well presented on your table.", neighbourhood: "Holland Village", address: "44 Jalan Merah Saga, Singapore 278116", city: "Singapore", category: "cafe", contact: "6479 9166")
 Cafe.create(user: User.find(User.first.id + 7), name: "Wala Wala", description: "Established since 2013, we are inspired to serve great coffees with quality beans, hoping to bring a great end-to-end experiences for our customers in this fast pace country. We do believe that every cup matters and we are serious when it comes to our passion in making coffee, not to mention our dishes, which are delicious and well presented on your table.", neighbourhood: "Holland Village", address: "31 Lorong Mambong, Singapore 277689", city: "Singapore", category: "cafe", contact: "6462 4288")
-Cafe.create(user: User.find(User.first.id + 8), name: "Oporto", description: "Inspired by the dining cultures of the East and West, we combine creative techniques of new age cooking with premium ingredients and edgy presentation.", neighbourhood: "Holland Village", address: "3 Lorong Liput, Holland Piazza, 277725", city: "Singapore", category: "restaurant", contact: "3937 2983")
+Cafe.create(user: User.find(User.first.id + 8), name: "Oporto", description: "Inspired by the dining cultures of the East and West, we combine creative techniques of new age cooking with premium ingredients and edgy presentation.", neighbourhood: "Holland Village", address: "3 Lorong Liput, Holland Village, 277725", city: "Singapore", category: "restaurant", contact: "3937 2983")
 Cafe.create(user: User.find(User.first.id + 9), name: "Baden Restaurant & Pub", description: "Our stunningly appointed cocktail bar serves fine wines, handcrafted cocktails and sweeping views of the city.", neighbourhood: "Holland Village", address: "42 Lorong Mambong, Singapore 277696", city: "Singapore", category: "bar", contact: "6463 8127")
 
 
@@ -143,19 +143,39 @@ end
 
 puts "Creating Bookings and Booked Hours..."
 #list of user bookings
-  users = User.where(owner: false)
-  users.each_with_index do |user, index|
-    time1 = 8
-    booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat")
-    BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first, paid: true)
-    BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
-    # time2 = 10
-    # booking2 = Booking.create(user: user, date: Date.today + 1, start_time: time2, duration: 2)
-    # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 2 + index).hourly_slots.where(start_time: time2).first, paid: true)
-    # time3 = 11
-    # booking3 = Booking.create(user: user, date: Date.today + 2, start_time: time3, duration: 1, special_requests: "Sofa Seat")
-    # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 3 + index).hourly_slots.where(start_time: time3).first, paid: true)
+users = User.where(owner: false)
+users.each_with_index do |user, index|
+  time1 = 8
+  booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat")
+  BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first, paid: true)
+  BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
+  # time2 = 10
+  # booking2 = Booking.create(user: user, date: Date.today + 1, start_time: time2, duration: 2)
+  # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 2 + index).hourly_slots.where(start_time: time2).first, paid: true)
+  # time3 = 11
+  # booking3 = Booking.create(user: user, date: Date.today + 2, start_time: time3, duration: 1, special_requests: "Sofa Seat")
+  # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 3 + index).hourly_slots.where(start_time: time3).first, paid: true)
+end
+
+#list of past bookings
+users.each_with_index do |user|
+  time2 = 9
+  booking2 = Booking.create(user: user, date: (Date.today - 2), start_time: time2, duration: 4)
+  time3 = 8
+  booking3 = Booking.create(user: user, date: (Date.today - 3), start_time: time3, duration: 5)
+  time4 = 10
+  booking4 = Booking.create(user: user, date: (Date.today - 4), start_time: time4, duration: 3)
+  time2.times do |index|
+    BookedHour.create(booking: booking2, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time2 + index).first, paid: true)
   end
+  time3.times do |index|
+    BookedHour.create(booking: booking3, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time3 + index).first, paid: true)
+  end
+  time4.times do |index|
+    BookedHour.create(booking: booking4, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time4 + index).first, paid: true)
+  end
+end
+
 
 puts "Seeds done!"
 
