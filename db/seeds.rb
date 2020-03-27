@@ -143,19 +143,39 @@ end
 
 puts "Creating Bookings and Booked Hours..."
 #list of user bookings
-  users = User.where(owner: false)
-  users.each_with_index do |user, index|
-    time1 = 8
-    booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat")
-    BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first, paid: true)
-    BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
-    # time2 = 10
-    # booking2 = Booking.create(user: user, date: Date.today + 1, start_time: time2, duration: 2)
-    # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 2 + index).hourly_slots.where(start_time: time2).first, paid: true)
-    # time3 = 11
-    # booking3 = Booking.create(user: user, date: Date.today + 2, start_time: time3, duration: 1, special_requests: "Sofa Seat")
-    # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 3 + index).hourly_slots.where(start_time: time3).first, paid: true)
+users = User.where(owner: false)
+users.each_with_index do |user, index|
+  time1 = 8
+  booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat")
+  BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first, paid: true)
+  BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
+  # time2 = 10
+  # booking2 = Booking.create(user: user, date: Date.today + 1, start_time: time2, duration: 2)
+  # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 2 + index).hourly_slots.where(start_time: time2).first, paid: true)
+  # time3 = 11
+  # booking3 = Booking.create(user: user, date: Date.today + 2, start_time: time3, duration: 1, special_requests: "Sofa Seat")
+  # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 3 + index).hourly_slots.where(start_time: time3).first, paid: true)
+end
+
+#list of past bookings
+users.each_with_index do |user|
+  time2 = 9
+  booking2 = Booking.create(user: user, date: (Date.today - 2), start_time: time2, duration: 4)
+  time3 = 8
+  booking3 = Booking.create(user: user, date: (Date.today - 3), start_time: time3, duration: 5)
+  time4 = 10
+  booking4 = Booking.create(user: user, date: (Date.today - 4), start_time: time4, duration: 3)
+  time2.times do |index|
+    BookedHour.create(booking: booking2, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time2 + index).first, paid: true)
   end
+  time3.times do |index|
+    BookedHour.create(booking: booking3, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time3 + index).first, paid: true)
+  end
+  time4.times do |index|
+    BookedHour.create(booking: booking4, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time4 + index).first, paid: true)
+  end
+end
+
 
 puts "Seeds done!"
 
