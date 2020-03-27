@@ -1,12 +1,20 @@
 class ReviewsController < ApplicationController
   def new
     @review = Review.new
+    @user = User.find(params[:user_id])
+    @booking = Booking.find(params[:booking_id])
   end
 
   def create
     @review = Review.new(review_params)
+    @user = User.find(params[:user_id])
+    @booking = Booking.find(params[:booking_id])
+    @review.user = @user
+    @review.booking = @review
+    @raise
+    @review.save
 
-    redirect_to()
+    # redirect_to(user_bookings_path)
   end
 
   private
@@ -15,15 +23,3 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content, :rating)
   end
 end
-
-
-  # create_table "reviews", force: :cascade do |t|
-  #   t.bigint "user_id"
-  #   t.bigint "cafe_id"
-  #   t.string "content"
-  #   t.integer "rating"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.index ["cafe_id"], name: "index_reviews_on_cafe_id"
-  #   t.index ["user_id"], name: "index_reviews_on_user_id"
-  # end
