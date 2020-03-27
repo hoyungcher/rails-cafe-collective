@@ -69,7 +69,7 @@
             <p class="mb-0 mt-0"><%= booking.date.strftime("%b %d") %> | <%= "#{start_time_string} - #{end_time_string}" %></p>
           </div>
           <div>
-            <%= link_to "Review", new_user_booking_review_path(booking.user, booking) %>
+            <%= link_to "Review", new_user_booking_review_path(booking.user, booking), class: "btn btn-primary review-btn" %>
           </div>
         </div>
       </div>
