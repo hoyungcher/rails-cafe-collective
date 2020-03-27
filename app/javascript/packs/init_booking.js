@@ -70,6 +70,7 @@ const updateBookedValues = () => {
         timeSlot = document.querySelector(`.time-slot.\\3${el[0]}\\3${el[1]}`)
       }
       timeSlot.classList.add("booked");
+      timeSlot.classList.add("unavailable");
       timeSlot.lastElementChild.innerText = "Booked"
     });
   }

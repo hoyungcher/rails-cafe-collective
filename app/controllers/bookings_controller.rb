@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @cafe = Cafe.find(params[:cafe_id])
     @user = User.find(params[:user_id])
     @data = params["booking"].split(",")
-    @test_booking = Booking.where("date = ? AND user_id = ?", Date.today, @user )
+    @test_booking = Booking.where("date = ? AND user_id = ? AND start_time = ?", Date.today, @user, @data[0].to_i )
     if @test_booking
       @test_booking.destroy_all
     end
