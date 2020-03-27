@@ -1,7 +1,8 @@
-<h1>Leave a review!</h1>
+<h3 class="mb-0">Leave a review for</h3>
+<h3 class="mt-0 mb-4"><strong><%= @cafe.name %></strong></h3>
 
 <%= simple_form_for [@user, @booking, @review] do |f| %>
   <%= f.input :content, label: 'How was your experience?' %>
   <%= f.input :rating %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
