@@ -20,7 +20,8 @@ const initBookmark = () => {
         .then(response => response.json())
         .then(data => {
           if (data.message === 'OK') {
-            bookmarkElement.innerHTML = '<i class="fas fa-bookmark"></i>'
+            bookmarkElement.innerHTML = '<i class="fas fa-bookmark"></i>';
+            bookmarkElement.classList.add('saved');
           }
         })
     })

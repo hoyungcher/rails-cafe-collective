@@ -9,6 +9,9 @@ class BookmarksController < ApplicationController
   end
 
   def index
+    @unshow_menu_bar = false
+    @user = current_user
+    @bookmarks = @user.bookmarks
   end
 
   def destroy
