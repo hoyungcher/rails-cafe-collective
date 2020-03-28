@@ -2,7 +2,16 @@
 <h3 class="mt-0 mb-4"><strong><%= @cafe.name %></strong></h3>
 
 <%= simple_form_for [@user, @booking, @review] do |f| %>
-  <%= f.input :content, label: 'How was your experience?' %>
-  <%= f.input :rating %>
+  <label>How was your experience?</label>
+  <p class="total-stars">
+    <% 5.times do |index|%>
+    <span class="star <%= "star-#{index}" %>"><i class="far fa-star"></i></span>
+    <% end %>
+  </p>
+
+  <%= f.input :content, as: :text, label: 'Leave a description of your rating!' %>
+
+  <%= f.input :rating, as: :hidden%>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
+<%= javascript_pack_tag '_review' %>

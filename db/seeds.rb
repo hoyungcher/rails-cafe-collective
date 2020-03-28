@@ -136,8 +136,9 @@ end
 puts "Creating hourly Slots..."
 #list of hourly slots
 Cafe.all.each do |cafe|
+  price = rand(5..10)
   12.times do |index|
-    HourlySlot.create(cafe: cafe, start_time: 8 + index, total_seats: rand(3..5), price_per_hour: [5,6,8,10,12].sample, date: Date.today)
+    HourlySlot.create(cafe: cafe, start_time: 8 + index, total_seats: rand(3..5), price_per_hour: price, date: Date.today)
   end
 end
 

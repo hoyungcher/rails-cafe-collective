@@ -23,7 +23,7 @@
       <% slot = slot - booked %>
     <% end %>
 
-    <div class="time-slot <%= time %> <%= "unavailable" if slot.zero? %>" data-time="<%= time %>">
+    <div class="time-slot <%= time %> <%= "unavailable" if slot <= 0 %>" data-time="<%= time %>">
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
         <% if slot <= 0 %>
@@ -41,8 +41,12 @@
 </div>
 
 </div>
+
+<!-- extra closing div to block the main container so my nav bar will appear -->
 </div>
 <div>
+<!-- extra closing div to block the main container so my nav bar will appear -->s
+
 <% if @show_booking_bar == true %>
   <div class="bottom-navbar justify-content-between p-3">
     <h6 class="align-self-center m-0"><span id="total-price">Total price: <strong><span id="current-price">$0</span></strong></span></h6>
@@ -53,6 +57,8 @@
     </form>
   </div>
 <% end %>
+
+<!-- tag must be at the bottom so the javascript can load -->
 <%= javascript_pack_tag 'init_booking' %>
 
 
