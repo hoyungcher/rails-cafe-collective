@@ -1,10 +1,10 @@
 class BookmarksController < ApplicationController
   def create
     cafe = Cafe.find(params[:cafe_id])
-    Bookmark.create(user: current_user, cafe: cafe)
+    @bookmark = Bookmark.create(user: current_user, cafe: cafe)
 
     respond_to do |format|
-      format.json  { render :json => {message: 'OK'} }
+      format.json  { render :json => {message: 'OK', bookmarkid: @bookmark.id} }
     end
   end
 
@@ -15,5 +15,10 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
+    cafe = Cafe.find(params[:cafe_id])
+    @bookmark = Bookmark.where(user: current_user, cafe: cafe)
+    respond_to do |format|
+      format.json  { render :json => {message: 'Deleted'} }
+    end
   end
 end
