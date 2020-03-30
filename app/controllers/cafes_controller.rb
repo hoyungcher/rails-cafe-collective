@@ -60,6 +60,12 @@ class CafesController < ApplicationController
     end
   end
 
+  def destroy
+    @cafe = Cafe.find(params[:id])
+    @cafe.destroy
+    redirect_to user_bookings_path(current_user)
+  end
+
   private
 
   def cafe_params
