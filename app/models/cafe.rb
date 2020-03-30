@@ -7,6 +7,8 @@ class Cafe < ApplicationRecord
   has_many :booked_hours, through: :hourly_slots
   has_many :bookings, through: :booked_hours
   has_many :bookmarks, dependent: :destroy
+  has_many :menu_items, dependent: :destroy
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 

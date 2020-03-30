@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Destroying seeds.."
+MenuItem.destroy_all
+Order.destroy_all
 Review.destroy_all
 CafeTag.destroy_all
 Tag.destroy_all
@@ -177,12 +179,16 @@ users.each_with_index do |user|
   end
 end
 
-
-puts "Seeds done!"
-
-    # t.date "date"
-    # t.integer "start_time"
-    # t.integer "duration"
-    # t.string "special_requests"
     # t.integer "total_credits"
     # t.integer "remaining_credits"
+
+puts "Creating menu items..."
+Cafe.all.each do |cafe|
+  MenuItem.create(name: "burger", description: "juicy meaty beef burger", category: "food", price: 8 )
+  MenuItem.create(name: "french fries", description: "the best shoestring fries you'll ever taste outside of McDonald's", category: "food", price: 9 )
+  MenuItem.create(name: "soy latte", description: "dairy free coffee option for vegans and the health-conscious", category: "drink", price: 3 )
+  MenuItem.create(name: "capuccino", description: "your average cup a joe with froth", category: "drink", price: 4 )
+end
+
+
+puts "Seeds done!"
