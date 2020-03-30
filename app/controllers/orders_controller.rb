@@ -7,20 +7,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @menu_item = MenuItem.find(params[:id])
+    @order = Order.new()
+    @menu_item = MenuItem.find_by_name(params["order"]["menu_item"])
     @booking = Booking.find(params[:booking_id])
-    @cafe = Cafe.find(params[:cafe_id])
     @order.menu_item = @menu_item
     @order.booking = @booking
-    @order.save
+    @order.save!
 
+    @booking.remaining_credits = @booking.remaining_credits - @menu_item.price
+
+    @cafe = @order.menu_item.cafe
     redirect_to cafe_user_booking_path(@cafe, @booking.user, @booking)
   end
 
   private
 
-  def order_params
-
-  end
+  # def order_params
+  #   params.require(:order).permit(:menu_item, :booking)
+  # end
 end

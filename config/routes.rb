@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'cafes#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :bookings, only: [:show] do
+    resources :orders, only: [:create]
+  end
   resources :cafes, only: [ :index, :show ] do
     resources :users, only: [:show] do
-      resources :bookings, only: [:new, :create, :show ] do
-        resources :orders, only: [:create]
-      end
+      resources :bookings, only: [:new, :create, :show ]
     end
   end
   resources :users, only: [ :show] do
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
       resources :reviews, only: [ :new, :create, ]
     end
   end
-
   resources :cafes do
     resources :bookmarks, only: [:create, :destroy]
   end
