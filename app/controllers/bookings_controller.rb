@@ -37,6 +37,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @cafe = Cafe.find(params[:cafe_id])
   end
 
   def get_hourly_seats(cafe, date)

@@ -1,0 +1,46 @@
+<h4 class="mb-0">Welcome to</h4>
+<h2 class="mt-0"><%= @cafe.name %>!</h2>
+
+<div class="booking-info-card">
+  <% if @booking.start_time > 12 %>
+    <% start_time_string = "#{@booking.start_time - 12} pm" %>
+  <% elsif @booking.start_time < 12 %>
+    <% start_time_string = "#{@booking.start_time} am" %>
+  <% else %>
+    <% start_time_string = "#{@booking.start_time} pm" %>
+  <% end %>
+    <% time_end = @booking.start_time + @booking.duration %>
+  <% if time_end > 12 %>
+    <% end_time_string = "#{time_end - 12} pm" %>
+  <% elsif time_end < 12 %>
+    <% end_time_string = "#{time_end} am" %>
+  <% else %>
+    <% end_time_string = "#{time_end} pm" %>
+  <% end %>
+
+  <h1 class="text-center">Booking Details</h1>
+
+  <div class="d-flex justify-content-between">
+    <p>Date:</p>
+    <p><%= @booking.date.strftime("%b %d") %></p>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <p>Time:</p>
+    <p><%= start_time_string %> - <%= end_time_string %></p>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <p>Total credit:</p>
+    <p>$<%= @booking.total_credits %> for <%= pluralize( @booking.duration, "hours" ) %></p>
+  </div>
+</div>
+
+<div class="booking-info-card">
+  <h1 class="text-center">Cafe Orders</h1>
+  <div class="d-flex justify-content-between">
+    <p>Remaining credit:</p>
+    <p>$<%= @booking.remaining_credits %></p>
+  </div>
+  <h1 class="text-center mt-3">Menu</h1>
+</div>
