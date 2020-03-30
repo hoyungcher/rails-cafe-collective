@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_072313) do
+ActiveRecord::Schema.define(version: 2020_03_30_104217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_072313) do
     t.integer "remaining_credits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -83,6 +84,26 @@ ActiveRecord::Schema.define(version: 2020_03_26_072313) do
     t.index ["cafe_id"], name: "index_hourly_slots_on_cafe_id"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "category"
+    t.integer "price"
+    t.bigint "cafe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cafe_id"], name: "index_menu_items_on_cafe_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "menu_item_id"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_orders_on_booking_id"
+    t.index ["menu_item_id"], name: "index_orders_on_menu_item_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "cafe_id"
@@ -125,6 +146,9 @@ ActiveRecord::Schema.define(version: 2020_03_26_072313) do
   add_foreign_key "cafe_tags", "tags"
   add_foreign_key "cafes", "users"
   add_foreign_key "hourly_slots", "cafes"
+  add_foreign_key "menu_items", "cafes"
+  add_foreign_key "orders", "bookings"
+  add_foreign_key "orders", "menu_items"
   add_foreign_key "reviews", "cafes"
   add_foreign_key "reviews", "users"
 end
