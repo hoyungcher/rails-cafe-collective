@@ -18,7 +18,7 @@
       data-tags="<% bookmark.cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>"
       data-rating="<%= avg_rating %>" data-price="<%= avg_price %>">
 
-        <div class="<%= @bookmarks.where(user: @user).map {|bookmark| bookmark.cafe_id }.include?(bookmark.cafe.id) ? "saved" : "" %> bookmark" data-id="<%= bookmark.cafe.id %>"><i class="<%= @bookmarks.where(user: @user).map {|bookmark| bookmark.cafe_id }.include?(bookmark.cafe.id) ? "fas" : "far" %> fa-bookmark"></i></div>
+        <div data-bookmarknumber="<%= bookmark.id %>" class="<%= @bookmarks.where(user: @user).map {|bookmark| bookmark.cafe_id }.include?(bookmark.cafe.id) ? "saved" : "unsaved" %> bookmark" data-id="<%= bookmark.cafe.id %>"><i class="<%= @bookmarks.where(user: @user).map {|bookmark| bookmark.cafe_id }.include?(bookmark.cafe.id) ? "fas" : "far" %> fa-bookmark"></i></div>
         <div class="cafe-price">
           $<%= avg_price.round(0) %> per hour
         </div>
