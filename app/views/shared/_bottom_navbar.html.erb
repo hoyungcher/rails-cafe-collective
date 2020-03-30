@@ -35,12 +35,22 @@
   <% @cafe.hourly_slots.each do |slot| %>
     <% average_price_arr << slot.price_per_hour %>
   <% end %>
-  <% average_price = average_price_arr.sum / average_price_arr.length %>
-
-  <div class="bottom-navbar justify-content-between p-3">
+  <% if average_price_arr.length == 0 %>
+    <% average_price = 0 %>
+    <div class="bottom-navbar justify-content-between p-3">
+      <h6 class="align-self-center m-0"><strong>No Availabilities for this Cafe yet!</strong></h6>
+      <%= link_to "Home", root_path, class: 'btn btn-primary align-self-center' %>
+    </div>
+  <% else %>
+    <% average_price = average_price_arr.sum / average_price_arr.length %>
+    <div class="bottom-navbar justify-content-between p-3">
     <h6 class="align-self-center m-0">Price: <strong>$<%= @cafe.hourly_slots.first.price_per_hour %></strong>/hour</h6>
     <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
-  </div>
+    </div>
+  <% end %>
+
+
+
 <% end %>
 
 

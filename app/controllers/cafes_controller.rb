@@ -26,7 +26,7 @@ class CafesController < ApplicationController
     @cafe.reviews.each do |review|
       ratings << review.rating
     end
-    @rating = ratings.sum / ratings.length
+    (ratings.length == 0) ? @rating = 0 : @rating = ratings.sum / ratings.length
     @empty_stars = 5 - @rating
   end
 
@@ -36,7 +36,7 @@ class CafesController < ApplicationController
 
   def create
     @cafe = Cafe.new(cafe_params)
-    @cafe.user = current.user
+    @cafe.user = current_user
 
     if @cafe.save
       redirect_to cafe_path(@cafe)
