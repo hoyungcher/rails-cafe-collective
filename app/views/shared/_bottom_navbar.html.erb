@@ -1,47 +1,69 @@
-<% if @unshow_menu_bar == false %>
-<div class="bottom-navbar">
-  <a href="/cafes">
-    <div class="navbar-item align-middle active" id="search-tab">
-      <i class="fas fa-search"></i>
-    </div>
-  </a>
-  <a href="/users/<%= @user.id %>/bookings">
-    <div class="navbar-item align-middle" id="bookings-tab">
-      <i class="far fa-calendar-alt"></i>
-    </div>
-  </a>
-  <a href="/users/<%= @user.id %>/bookmarks">
-    <div class="navbar-item align-middle" id="bookmarks-tab">
-      <% if current_user.owner %>
+<% if current_user.owner %>
+  <div class="bottom-navbar active">
+    <a href="/users/<%= @user.id %>/bookings">
+      <div class="navbar-item align-middle" id="cafe-tab">
         <i class="fas fa-coffee"></i>
-      <% else %>
-        <i class="far fa-bookmark"></i>
-      <% end %>
-    </div>
-  </a>
-  <a href="#">
-    <div class="navbar-item align-middle" id="profile-tab">
-      <i class="far fa-user-circle"></i>
-    </div>
-  </a>
-</div>
-<% end %>
-
-
-
-<% if @unshow_action_bar == false %>
-<!-- get average price -->
-  <% average_price_arr = [] %>
-  <% @cafe.hourly_slots.each do |slot| %>
-    <% average_price_arr << slot.price_per_hour %>
-  <% end %>
-  <% average_price = average_price_arr.sum / average_price_arr.length %>
-
-  <div class="bottom-navbar justify-content-between p-3">
-    <h6 class="align-self-center m-0">Price: <strong>$<%= @cafe.hourly_slots.first.price_per_hour %></strong>/hour</h6>
-    <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
+      </div>
+    </a>
+    <a href="/users/<%= @user.id %>/bookings">
+      <div class="navbar-item align-middle" id="home-tab">
+        <i class="far fa-calendar-alt"></i>
+      </div>
+    </a>
+    <a href="#">
+      <div class="navbar-item align-middle" id="analytics-tab">
+        <i class="fas fa-chart-bar"></i>
+      </div>
+    </a>
+    <a href="#">
+      <div class="navbar-item align-middle" id="profile-tab">
+        <i class="far fa-user-circle"></i>
+      </div>
+    </a>
   </div>
-<% end %>
 
+
+<% else %>
+  <% if @unshow_menu_bar == false %>
+  <div class="bottom-navbar">
+    <a href="/cafes">
+      <div class="navbar-item align-middle active" id="search-tab">
+        <i class="fas fa-search"></i>
+      </div>
+    </a>
+    <a href="/users/<%= @user.id %>/bookings">
+      <div class="navbar-item align-middle" id="bookings-tab">
+        <i class="far fa-calendar-alt"></i>
+      </div>
+    </a>
+    <a href="/users/<%= @user.id %>/bookmarks">
+      <div class="navbar-item align-middle" id="bookmarks-tab">
+        <i class="far fa-bookmark"></i>
+      </div>
+    </a>
+    <a href="#">
+      <div class="navbar-item align-middle" id="profile-tab">
+        <i class="far fa-user-circle"></i>
+      </div>
+    </a>
+  </div>
+  <% end %>
+
+
+
+  <% if @unshow_action_bar == false %>
+  <!-- get average price -->
+    <% average_price_arr = [] %>
+    <% @cafe.hourly_slots.each do |slot| %>
+      <% average_price_arr << slot.price_per_hour %>
+    <% end %>
+    <% average_price = average_price_arr.sum / average_price_arr.length %>
+
+    <div class="bottom-navbar justify-content-between p-3">
+      <h6 class="align-self-center m-0">Price: <strong>$<%= @cafe.hourly_slots.first.price_per_hour %></strong>/hour</h6>
+      <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
+    </div>
+  <% end %>
+<% end %>
 
 
