@@ -2,12 +2,12 @@
 <% if current_user %>
 <% if current_user.owner %>
   <div class="bottom-navbar active">
-    <a href="/users/<%= @user.id %>/bookings">
+    <a href="/users/<%= current_user.id %>/cafes/dashboard">
       <div class="navbar-item align-middle" id="cafe-tab">
         <i class="fas fa-coffee"></i>
       </div>
     </a>
-    <a href="/users/<%= @user.id %>/bookings">
+    <a href="/users/<%= current_user.id %>/bookings">
       <div class="navbar-item align-middle" id="home-tab">
         <i class="far fa-calendar-alt"></i>
       </div>
