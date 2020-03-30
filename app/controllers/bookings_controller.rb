@@ -46,5 +46,4 @@ class BookingsController < ApplicationController
     end
     new_hash
   end
-
 end
