@@ -7,6 +7,10 @@ class Booking < ApplicationRecord
     message: "should happen once per year" }
   validates :start_time, presence: true
   validates :duration, presence: true
+
+  def x_credits
+    total_credits - orders.map(&:menu_item).map(&:price).sum
+  end
 end
 
 
