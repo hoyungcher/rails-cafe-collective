@@ -7,5 +7,13 @@
   <%= f.input :city, placeholder: "Singapore" %>
   <%= f.input :category, collection: ["Bar", "Restaurant", "Cafe"] %>
   <%= f.input :contact, placeholder: "98989898" %>
+  <label for="amenities">Amenities</label>
+  <input class="w-100 mb-3" type="text" name="amenities" placeholder="Wifi, Free Coffee, Free Parking">
+  <label for="tags">Tags:</label>
+  <select class="form-control select w-100 mb-5" name="tags[]" multiple>
+    <% Tag.where(tag_category: "ambience").each do |tag| %>
+      <option value="<%= tag.name %>"><%= tag.name.capitalize %></option>
+    <% end %>
+  </select>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

@@ -1,5 +1,4 @@
 <div id="main-index-section">
-
   <p id="expand-btn"><i class="fas fa-caret-down"></i><i class="fas fa-caret-up hidden"></i></i>&nbsp;&nbsp;Looking for a specific ambience?&nbsp;&nbsp;<i class="fas fa-caret-down"></i><i class="fas fa-caret-up hidden"></i></i></p>
   <div class="tag-section mb-6 hidden" >
     <% @tags.each do |tag| %>
@@ -76,7 +75,5 @@
 </div>
 <%= link_to 'log out', destroy_user_session_path, method: :delete  %>
 
-<%= javascript_pack_tag "sort" %>
-<%= javascript_pack_tag "tags" %>
 <%#= javascript_pack_tag "scroll" %>
 
