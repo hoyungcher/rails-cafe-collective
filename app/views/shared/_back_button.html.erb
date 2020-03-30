@@ -1,1 +1,7 @@
-<%= link_to "<", root_path, class: "back-btn" %>
+<% if @unshow_back_to_home == false %>
+  <%= link_to "<", root_path, class: "back-btn" %>
+<% end %>
+
+<% if @unshow_back_to_cafe == false %>
+  <%= link_to "<", cafe_path(@cafe), class: "back-btn" %>
+<% end %>
