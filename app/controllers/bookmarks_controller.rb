@@ -16,9 +16,11 @@ class BookmarksController < ApplicationController
 
   def destroy
     cafe = Cafe.find(params[:cafe_id])
-    @bookmark = Bookmark.where(user: current_user, cafe: cafe)
+    @bookmark = Bookmark.where(user: current_user, cafe: cafe).first
+    @bookmark.destroy
     respond_to do |format|
       format.json  { render :json => {message: 'Deleted'} }
     end
   end
 end
+

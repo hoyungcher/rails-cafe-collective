@@ -57,9 +57,6 @@ const initBookmark = () => {
     })
   })
 
-
-
-
 }
 
 export { initBookmark };
