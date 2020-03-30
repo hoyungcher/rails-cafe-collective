@@ -1,0 +1,17 @@
+<h2>Add a new Cafe:</h2>
+<%= simple_form_for @cafe do |f| %>
+  <%= f.input :name, placeholder: "Papa's Chicken" %>
+  <%= f.input :description, placeholder: "Fusion Mexican Restaurant.." %>
+  <%= f.input :neighbourhood, placeholder: "Orchard" %>
+  <%= f.input :address, placeholder: "1 Orchard Rd, Singapore" %>
+  <%= f.input :city, placeholder: "Singapore" %>
+  <%= f.input :category, collection: ["Bar", "Restaurant", "Cafe"] %>
+  <%= f.input :contact, placeholder: "98989898" %>
+  <label>Amenities</label>
+  <br>
+  <select>
+    <option>Test</option>
+  </select>
+  <br>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
