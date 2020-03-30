@@ -1,6 +1,34 @@
-<h1>Hello <%= @user.first_name %></h1>
+<h1>Welcome <%= @user.first_name %></h1>
+<h5>What do you want to do today?</h5>
+<%= link_to root_path do %>
+<div class='add-cafe'><i class="fas fa-plus"></i> Add a new Cafe </div>
+<% end %>
 
-<h2>Your Bookings for today</h2>
-@cafe_bookings.unique
+<h5>Your cafes:</h5>
+<% @cafes.each do |cafe| %>
+  <div class="card-cafe mb-2">
+    <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
+    <div class="card-cafe-infos">
+      <div class="cafe-name-description">
+        <h3 class="card-cafe-pricing"><%= link_to cafe.name, cafe_path(cafe) %></h3>
+        <h3 class="card-cafe-pricing"><%= cafe.address %></h3>
+        <h3 class="card-cafe-pricing">Add Menu</h3>
+      </div>
+      <div class="cafe-edit-delete">
+        <%= link_to edit_user_cafe_path(@current_user, cafe) do %>
+        <i class="fas fa-edit"></i>
+        <% end %>
 
-<h2>Booking history</h2>
+        <%= link_to user_cafe_path(@current_user, cafe), data: { confirm: 'Are you sure?' }, method: :delete do %>
+         <i class="far fa-trash-alt"></i>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<h5>Your bookings:</h5>
+<h5>Availabilities</h5>
+<p>Set a cafe's availability</p>
+<p>Link to: Orders</p>
