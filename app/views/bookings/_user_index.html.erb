@@ -30,10 +30,15 @@
         <h2><%= link_to cafe.name, cafe_path(cafe) %></h2>
         <p><%= "#{cafe.address}" %></p>
       </div>
+
+      <% if Time.now > Time.at(booking.start_time * 60 * 60) || Time.now < Time.at((booking.start_time + booking.duration) * 60 * 60) %>
+        <%= link_to "Check In", cafe_user_booking_path(cafe, booking.user, booking), class: "btn btn-primary review-btn" %>
+      <% else %>
       <div>
         <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%b %d") %></h3>
         <h3 class="card-cafe-pricing text-right"><%= "#{start_time_string} - #{end_time_string}" %></h3>
       </div>
+      <% end %>
     </div>
   </div>
   <% end %>

@@ -185,10 +185,10 @@ end
 
 puts "Creating menu items..."
 Cafe.all.each do |cafe|
-  MenuItem.create(name: "burger", description: "juicy meaty beef burger", category: "food", price: 8 )
-  MenuItem.create(name: "french fries", description: "the best shoestring fries you'll ever taste outside of McDonald's", category: "food", price: 9 )
-  MenuItem.create(name: "soy latte", description: "dairy free coffee option for vegans and the health-conscious", category: "drink", price: 3 )
-  MenuItem.create(name: "capuccino", description: "your average cup a joe with froth", category: "drink", price: 4 )
+  MenuItem.create(name: "burger", description: "The juiciest beef burger on the island", category: "food", price: 8, cafe: cafe)
+  MenuItem.create(name: "french fries", description: "The best shoestring fries you'll ever taste outside of McDonald's", category: "food", price: 9, cafe: cafe)
+  MenuItem.create(name: "soy latte", description: "Dairy-free coffee option for vegans and the health-conscious", category: "drink", price: 3, cafe: cafe)
+  MenuItem.create(name: "capuccino", description: "Your average cup a joe with some nice froth", category: "drink", price: 4, cafe: cafe)
 end
 
 
