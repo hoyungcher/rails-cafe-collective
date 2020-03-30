@@ -43,4 +43,12 @@
     <p>$<%= @booking.remaining_credits %></p>
   </div>
   <h1 class="text-center mt-3">Menu</h1>
+
+
+  <% @cafe.menu_items.each do |item| %>
+  <div class="d-flex justify-content-between">
+    <p><%= item.name.capitalize %></p>
+    <p>$<%= item.price %></p>
+  </div>
+  <% end %>
 </div>

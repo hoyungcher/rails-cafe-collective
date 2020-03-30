@@ -18,7 +18,7 @@ class CafesController < ApplicationController
   end
 
   def show
-    @unshow_action_bar = false
+    @unshow_book_bar = false
     @unshow_back_to_home = false
     @cafe = Cafe.find(params[:id])
     @markers = [{lat: @cafe.latitude, lng: @cafe.longitude}]
