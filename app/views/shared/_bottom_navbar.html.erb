@@ -1,3 +1,5 @@
+
+<% if current_user %>
 <% if current_user.owner %>
   <div class="bottom-navbar active">
     <a href="/users/<%= @user.id %>/bookings">
@@ -48,7 +50,8 @@
     </a>
   </div>
   <% end %>
-
+  <% end %>
+<% end %>
 
 <% if @unshow_action_bar == false %>
 <!-- get average price -->
@@ -68,7 +71,7 @@
     <h6 class="align-self-center m-0">Price: <strong>$<%= @cafe.hourly_slots.first.price_per_hour %></strong>/hour</h6>
     <%= link_to "View Availability", new_cafe_user_booking_path(Cafe.find(params[:id]), current_user), class: 'btn btn-primary align-self-center' %>
     </div>
-
+  <% end %>
 <% end %>
 
 
