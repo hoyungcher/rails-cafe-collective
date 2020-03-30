@@ -15,3 +15,16 @@
 .review-btn {
   font-size: 14px;
 }
+
+.back-btn {
+  padding: 8px 14px;
+  background-color: $blue;
+  color: white;
+  border-radius: 50px;
+  font-size: 20px;
+  position: sticky;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+  z-index: 9999;
+}

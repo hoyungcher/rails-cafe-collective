@@ -1,3 +1,5 @@
+<%= render '/shared/back_button' %>
+
 <div class="container booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
 <h5 class="mt-4 text-center"><%= Date.today.strftime("%b %d") %></h5>
 <h5 class="cafe-price mt-4 text-center hidden"><%= @cafe.hourly_slots.first.price_per_hour %></h5>
@@ -35,11 +37,6 @@
     </div>
   <% end %>
 </div>
-
-<div class="home-button mt-4">
-  <%= link_to "Back to Home", root_path%>
-</div>
-
 </div>
 
 <!-- extra closing div to block the main container so my nav bar will appear -->

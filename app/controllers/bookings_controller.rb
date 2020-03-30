@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def new
     @show_booking_bar = true
+    @unshow_back_to_cafe = false
     @booking = Booking.new
     @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])

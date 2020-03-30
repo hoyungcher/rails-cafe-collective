@@ -1,18 +1,18 @@
 <div class="banner">
 
-<div class="text-center">
-  <h5 class="mb-0">Welcome to the</h5>
-  <h1 class="mt-0 mb-4"><strong>Cafe Collective</strong></h1>
-  <p>Where would you like to work today?</p>
+  <div class="text-center">
+    <h5 class="mb-0">Welcome to the</h5>
+    <h1 class="mt-0 mb-4"><strong>Cafe Collective</strong></h1>
+    <p>Where would you like to work today?</p>
 
 
-  <div class="m1-2 mr-1">
-  <%= form_tag cafes_path(anchor: "main-index-section"), method: :get do %>
-    <%= text_field_tag :address,
-    params[:address],
-    class: "form-control",
-    placeholder: "e.g. Wheelock Place, Singapore"
-    %>
+    <div class="m1-2 mr-1">
+      <%= form_tag cafes_path(anchor: "main-index-section"), method: :get do %>
+      <%= text_field_tag :address,
+      params[:address],
+      class: "form-control",
+        placeholder: "e.g. Wheelock Place, Singapore"
+        %>
     <%#= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -20,6 +20,10 @@
     %>
     <%= submit_tag "Search", class: "btn btn-primary btn-block mt-2 search" %>
     <% end %>
+
+    <p class="mt-4">or</p>
+
+    <a href="#main-index-section">See all cafes</a>
   </div>
-  </div>
+</div>
 </div>
