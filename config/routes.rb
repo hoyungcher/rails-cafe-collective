@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'cafes#index'
    get '/users/:id/cafes/dashboard', to: 'cafes#dashboard', as: 'dashboard'
+   patch '/users/:user_id/cafes/:cafe_id/orders/:order_id', to: 'orders#mark_as_delivered', as: 'mark_as_delivered'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :bookings, only: [:show] do
     resources :orders, only: [:create]

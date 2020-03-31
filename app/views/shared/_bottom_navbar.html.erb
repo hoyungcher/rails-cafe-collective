@@ -8,18 +8,18 @@
       </div>
     </a>
     <a href="/users/<%= current_user.id %>/bookings">
-      <div class="navbar-item align-middle" id="home-tab">
+      <div class="navbar-item align-middle" id="bookings-tab">
         <i class="far fa-calendar-alt"></i>
+      </div>
+    </a>
+    <a href="/users/<%= current_user.id %>/cafes/<%= current_user.cafes.first.id %>/orders">
+      <div class="navbar-item align-middle" id="orders-tab">
+        <i class="far fa-list-alt"></i>
       </div>
     </a>
     <a href="#">
       <div class="navbar-item align-middle" id="analytics-tab">
         <i class="fas fa-chart-bar"></i>
-      </div>
-    </a>
-    <a href="#">
-      <div class="navbar-item align-middle" id="profile-tab">
-        <i class="far fa-user-circle"></i>
       </div>
     </a>
   </div>
