@@ -27,14 +27,10 @@ class OrdersController < ApplicationController
     # @bookings.each do |booking|
     #   (@orders << booking.orders).flatten!
     # end
+    @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])
     @bookings = @cafe.bookings.where(active: false).uniq
     @orders = []
-    @bookings.each do |booking|
-      @orders << booking.orders
-      @orders.flatten
-      return @orders
-    end
 
   end
 
@@ -43,7 +39,7 @@ class OrdersController < ApplicationController
     @cafe = Cafe.find(params[:cafe_id])
     @order = Order.find(params[:order_id])
     @order.delivered = true
-    @order.update!
+    @order.save
     redirect_to user_cafe_orders_path(@user, @cafe)
   end
 
