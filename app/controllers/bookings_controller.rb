@@ -25,6 +25,8 @@ class BookingsController < ApplicationController
         @booked_hour.save
       end
     end
+    @booking.total_credits = (@booking.duration * @booking.booked_hours.first.hourly_slot.price_per_hour)
+    @booking.save
     redirect_to user_bookings_path(@user)
   end
 
