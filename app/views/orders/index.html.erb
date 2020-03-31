@@ -1,0 +1,28 @@
+
+
+
+
+<h1>Pending orders</h1>
+
+<table>
+  <tr>
+    <th>Booking ID</th>
+    <th>Customer Name</th>
+    <th>Menu item</th>
+    <th>Mark as delivered</th>
+  </tr>
+  <% @bookings.each do |booking|%>
+    <% booking.orders.each do |order| %>
+      <tr>
+        <td><%= order.booking.id %></td>
+        <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+        <td><%= order.menu_item.name %></td>
+        <td>
+          <%= link_to mark_as_delivered_path(@user, @cafe, @order) do %>
+            <i class="fas fa-check"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

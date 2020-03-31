@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   def new
-    @order = Order.new()
+    @order = Order.new
     @menu_item = MenuItem.find(params[:id])
     @booking = Booking.find(params[:booking_id])
     @cafe = Cafe.find(params[:cafe_id])
   end
 
   def create
-    @order = Order.new()
+    @order = Order.new
     @menu_item = MenuItem.find_by_name(params["order"]["menu_item"])
     @booking = Booking.find(params[:booking_id])
     @order.menu_item = @menu_item
@@ -22,17 +22,35 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @bookings = @user.bookings.uniq
+    # @bookings = @user.bookings.uniq
+    # @orders = []
+    # @bookings.each do |booking|
+    #   (@orders << booking.orders).flatten!
+    # end
+    @cafe = Cafe.find(params[:cafe_id])
+    @bookings = @cafe.bookings.where(active: false).uniq
     @orders = []
     @bookings.each do |booking|
-      (@orders << booking.orders).flatten!
+      @orders << booking.orders
+      @orders.flatten
+      return @orders
     end
+
   end
-  
+
+  def mark_as_delivered
+    @user = User.find(params[:user_id])
+    @cafe = Cafe.find(params[:cafe_id])
+    @order = Order.find(params[:order_id])
+    @order.delivered = true
+    @order.update!
+    redirect_to user_cafe_orders_path(@user, @cafe)
+  end
+
   private
 
   # def order_params
   #   params.require(:order).permit(:menu_item, :booking)
   # end
-  
+
 end
