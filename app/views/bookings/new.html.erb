@@ -1,5 +1,3 @@
-<%= render '/shared/back_button' %>
-
 <div class="container booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
 <h5 class="mt-4 text-center"><%= Date.today.strftime("%b %d") %></h5>
 <h5 class="cafe-price mt-4 text-center hidden"><%= @cafe.hourly_slots.first.price_per_hour %></h5>

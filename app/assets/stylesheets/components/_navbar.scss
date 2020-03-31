@@ -27,3 +27,35 @@ a {
 .far {
   font-size: 24px;
 }
+
+.top-navbar {
+  width: 100vw;
+  height: 60px;
+  top: 0;
+  display: flex;
+  background: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-navbar:hover {
+  cursor: pointer
+}
+
+.top-navbar p {
+  margin: 0;
+  padding: 0
+}
+
+.coffee-logo {
+  display: flex;
+  font-family: 'Pacifico', cursive;
+  a {
+    color: black;
+  }
+}
+
+.sign-in-out {
+  font-size: 14px;
+}
+

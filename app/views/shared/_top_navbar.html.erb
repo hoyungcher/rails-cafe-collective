@@ -1,0 +1,17 @@
+<div class="top-navbar">
+  <div class="back-button-div">
+    <%= render 'shared/back_button' %>
+  </div>
+  <div class="coffee-logo ml-3" id="cafe-collective-logo">
+    <%= link_to "Cafe Collective", root_path %>
+  </div>
+  <div class="sign-in-out mr-3">
+    <p>
+      <% if current_user %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+      <% end %>
+    </p>
+  </div>
+</div>
