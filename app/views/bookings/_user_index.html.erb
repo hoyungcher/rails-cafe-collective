@@ -37,7 +37,7 @@
       </div>
 
       <% if ((Time.now.hour >= booking.start_time) && (Time.now.hour < (booking.start_time + booking.duration))) %>
-        <%= link_to "Check In", cafe_user_booking_path(cafe, booking.user, booking), class: "btn btn-primary review-btn" %>
+        <%= link_to "Check In", check_in_path(cafe, booking.user, booking), class: "btn btn-primary review-btn" %>
       <% else %>
       <div>
         <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%b %d") %></h3>
