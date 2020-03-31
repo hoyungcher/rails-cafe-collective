@@ -46,7 +46,7 @@
       <% if @booking.x_credits - item.price < 0 %>
         <p class="order-btn ml-3 inactive">Order</p>
       <% else %>
-        <%= simple_form_for [@booking, @order] do |f| %>
+        <%= simple_form_for @order, url: cafe_user_booking_orders_path(@cafe, current_user, @booking), method: :post do |f| %>
           <%= f.hidden_field :menu_item, value: "#{item.name}", type: :hidden %>
           <%= f.button :submit, 'Order', class: "order-btn ml-3", data: { confirm: 'Are you sure you would like to make this order?' } %>
         <% end %>
@@ -64,7 +64,7 @@
       <% if @booking.x_credits - item.price < 0 %>
         <p class="order-btn ml-3 inactive">Order</p>
       <% else %>
-        <%= simple_form_for [@booking, @order] do |f| %>
+        <%= simple_form_for @order, url: cafe_user_booking_orders_path(@cafe, current_user, @booking), method: :post do |f| %>
           <%= f.hidden_field :menu_item, value: "#{item.name}", type: :hidden %>
           <%= f.button :submit, 'Order', class: "order-btn ml-3", data: { confirm: 'Are you sure you would like to make this order?' } %>
         <% end %>
