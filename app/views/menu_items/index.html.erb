@@ -12,11 +12,12 @@
 <% end %>
 
 <h2>Add a menu item</h2>
+
 <%= simple_form_for([@user, @cafe, @menu_item]) do |form| %>
   <%= form.input :name, as: :text %>
   <%= form.input :description, as: :text %>
-  <%= form.input :category, as: :text %>
+  <%= form.input :category, priority: ["drink"], collection: [ "food", "drink"]%>
   <%= form.input :price, as: :integer %>
-  <%= form.button :submit %>
+  <%= form.button :submit, class: "btn btn-primary" %>
 <% end %>
 

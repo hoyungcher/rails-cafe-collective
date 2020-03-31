@@ -11,6 +11,11 @@ class MenuItemsController < ApplicationController
     @cafe = Cafe.find(params[:cafe_id])
     @menu_item = MenuItem.new(menu_item_params)
     @menu_item.cafe = @cafe
+    if @menu_item.save
+      redirect_to user_cafe_menu_items_path(@user, @cafe)
+    else
+      render :new
+    end
   end
 
   def destroy
