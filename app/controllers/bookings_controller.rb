@@ -67,4 +67,12 @@ class BookingsController < ApplicationController
     end
     new_hash
   end
+
+  def check_in
+    @booking = Booking.find(params[:id])
+    @booking.active = true
+    @booking.save
+    @cafe = Cafe.find(params[:cafe_id])
+    redirect_to cafe_user_booking_path(@cafe, current_user, @booking)
+  end
 end
