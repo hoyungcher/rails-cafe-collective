@@ -21,7 +21,7 @@
             <h3 class="card-cafe-pricing my-1"><%= link_to cafe.name, cafe_path(cafe) %></h3>
             <h3 class="card-cafe-pricing my-1"><%= cafe.address %></h3>
             <div class="menu-seats">
-              <%= link_to root_path do %>
+              <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
                 <h4 class='my-1 view-menu'>View Menu</h4>
               <% end %>
               <%= link_to root_path class: 'my-1' do %>
@@ -29,8 +29,6 @@
               <% end %>
             </div>
            </div>
-
-
 
           <div class="cafe-edit-delete">
             <%= link_to edit_user_cafe_path(@current_user, cafe) do %>

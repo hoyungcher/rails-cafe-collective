@@ -19,6 +19,11 @@ class MenuItemsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @cafe = Cafe.find(params[:cafe_id])
+    @menu_item = MenuItem.find(params[:id])
+    @menu_item.destroy
+    redirect_to user_cafe_menu_items_path(@user, @cafe)
   end
 
   private
