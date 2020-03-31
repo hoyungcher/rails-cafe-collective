@@ -1,6 +1,6 @@
 <h2>Pending orders</h2>
-
-<table>
+<p id="no-pending-orders">No pending orders</p>
+<table class="undelivered-orders">
   <tr>
     <th>Booking ID</th>
     <th>Customer Name</th>
@@ -9,7 +9,7 @@
   </tr>
   <% @bookings.each do |booking|%>
     <% booking.orders.select {|o| !o.delivered }.each do |order| %>
-      <tr>
+      <tr class="undelivered-order">
         <td><%= order.booking.id %></td>
         <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
         <td><%= order.menu_item.name %></td>
@@ -23,9 +23,9 @@
   <% end %>
 </table>
 
-
 <h2>Delivered orders</h2>
-<table>
+<p id="no-delivered-orders">No pending orders</p>
+<table class="delivered-orders">
   <tr>
     <th>Booking ID</th>
     <th>Customer Name</th>
@@ -34,7 +34,7 @@
   </tr>
   <% @bookings.each do |booking|%>
     <% booking.orders.select {|o| o.delivered }.each do |order| %>
-      <tr>
+      <tr class="delivered-order">
         <td><%= order.booking.id %></td>
         <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
         <td><%= order.menu_item.name %></td>
@@ -45,3 +45,5 @@
     <% end %>
   <% end %>
 </table>
+
+<%= javascript_pack_tag "orders" %>
