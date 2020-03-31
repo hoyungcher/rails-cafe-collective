@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     # end
     @user = User.find(params[:user_id])
     @cafe = Cafe.find(params[:cafe_id])
-    @bookings = @cafe.bookings.where(active: false).uniq
+    @bookings = @cafe.bookings.where(active: true).uniq
     @orders = []
 
   end
