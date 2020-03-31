@@ -89,8 +89,27 @@
 .slot-container label {
   text-align: center;
   min-width: 158px;
-  background-color: $blue;
+  // background-color: $blue;
   border-radius: 10px;
   padding: 5px 10px;
+}
+.slot-container .morning {
+  background-color: #F5DD90;
+  color: black;
+}
+
+.slot-container .afternoon {
+  background-color: #F68E5F;
+  color: black;
+}
+
+.slot-container .evening {
+  background-color: #F76C5E;
   color: white;
 }
+
+.slot-container .night {
+  background-color: #586BA4;
+  color: white;
+}
+

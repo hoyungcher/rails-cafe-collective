@@ -1,3 +1,95 @@
-<div class="container">
-  <h1>Your bookings</h1>
+<div class="container d-flex flex-column">
+
+  <h4>Today's Bookings</h4>
+
+
+  <% if @bookings.filter{|booking| booking.date == Date.today}.empty?  %>
+    <div class="no-results mt-3">
+      <p>You currently have no bookings for today.</p>
+    </div>
+  <% else %>
+    <% @bookings.each do |booking| %>
+      <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
+
+      <% if booking.date >= Date.today %>
+        <% if booking.start_time > 12 %>
+          <% start_time_string = "#{booking.start_time - 12} pm" %>
+        <% elsif booking.start_time < 12 %>
+          <% start_time_string = "#{booking.start_time} am" %>
+        <% else %>
+          <% start_time_string = "#{booking.start_time} pm" %>
+        <% end %>
+        <% time_end = booking.start_time + booking.duration %>
+
+        <% if time_end > 12 %>
+          <% end_time_string = "#{time_end - 12} pm" %>
+        <% elsif time_end < 12 %>
+          <% end_time_string = "#{time_end} am" %>
+        <% else %>
+          <% end_time_string = "#{time_end} pm" %>
+        <% end %>
+
+      <div class="card-cafe mb-2">
+
+        <div class="card-cafe-infos align-items-center">
+          <div class="customer-info">
+
+            <div>
+              <h2><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
+              <p><%= link_to cafe.name, cafe_path(cafe) %></p>
+            </div>
+          </div>
+          <div>
+            <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%b %d") %></h3>
+            <h3 class="card-cafe-pricing text-right"><%= "#{start_time_string} - #{end_time_string}" %></h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+
+  <div class="past-bookings">
+    <h4 class="mt-4 mb-4">Booking History</h4>
+    <% if @bookings.filter{|booking| booking.date < Date.today}.empty?  %>
+      <div class="no-results">
+        <p>You currently have no past bookings.</p>
+      </div>
+    <% else %>
+      <% @bookings.each do |booking| %>
+        <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
+        <% if booking.date < Date.today %>
+          <% if booking.start_time > 12 %>
+            <% start_time_string = "#{booking.start_time - 12} pm" %>
+          <% elsif booking.start_time < 12 %>
+            <% start_time_string = "#{booking.start_time} am" %>
+          <% else %>
+            <% start_time_string = "#{booking.start_time} pm" %>
+          <% end %>
+          <% time_end = booking.start_time + booking.duration %>
+
+          <% if time_end > 12 %>
+            <% end_time_string = "#{time_end - 12} pm" %>
+          <% elsif time_end < 12 %>
+            <% end_time_string = "#{time_end} am" %>
+          <% else %>
+            <% end_time_string = "#{time_end} pm" %>
+          <% end %>
+
+
+          <div class="card-product mb-2">
+            <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
+            <div class="card-product-infos d-flex justify-content-between">
+              <div>
+                <h2 class="mb-0"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
+                <p class="mb-0 mt-0"><%= "#{cafe.name} | #{booking.date.strftime('%b %d')}" %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
