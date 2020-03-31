@@ -135,16 +135,16 @@ Cafe.all.each do |cafe|
   reviews.delete(sample3)
 end
 
-puts "Creating hourly Slots..."
+puts "Creating hourly slots..."
 #list of hourly slots
 Cafe.all.each do |cafe|
-  price = rand(5..10)
+  price = rand(4..8)
   12.times do |index|
     HourlySlot.create(cafe: cafe, start_time: 8 + index, total_seats: rand(3..5), price_per_hour: price, date: Date.today)
   end
 end
 
-puts "Creating Bookings and Booked Hours..."
+puts "Creating bookings and booked hours..."
 #list of user bookings
 users = User.where(owner: false)
 users.each_with_index do |user, index|
@@ -185,10 +185,16 @@ end
 
 puts "Creating menu items..."
 Cafe.all.each do |cafe|
-  MenuItem.create(name: "burger", description: "The juiciest beef burger on the island", category: "food", price: 8, cafe: cafe)
-  MenuItem.create(name: "french fries", description: "The best shoestring fries you'll ever taste outside of McDonald's", category: "food", price: 9, cafe: cafe)
-  MenuItem.create(name: "soy latte", description: "Dairy-free coffee option for vegans and the health-conscious", category: "drink", price: 3, cafe: cafe)
-  MenuItem.create(name: "capuccino", description: "Your average cup a joe with some nice froth", category: "drink", price: 4, cafe: cafe)
+  MenuItem.create(name: "croque monsieur", category: "food", price: 10, cafe: cafe)
+  MenuItem.create(name: "egg & cheese sandwich", category: "food", price: 7, cafe: cafe)
+  MenuItem.create(name: "ham & cheese croissant", category: "food", price: 8, cafe: cafe)
+  MenuItem.create(name: "french fries", category: "food", price: 6, cafe: cafe)
+  MenuItem.create(name: "caesar salad", category: "food", price: 7, cafe: cafe)
+  MenuItem.create(name: "tiramisu cup", category: "food", price: 6, cafe: cafe)
+  MenuItem.create(name: "espresso", category: "drink", price: 3, cafe: cafe)
+  MenuItem.create(name: "flat white", category: "drink", price: 4, cafe: cafe)
+  MenuItem.create(name: "mocha", category: "drink", price: 4, cafe: cafe)
+  MenuItem.create(name: "chai latte", category: "drink", price: 5, cafe: cafe)
 end
 
 
