@@ -31,7 +31,7 @@
   </div>
 
   <div class="d-flex justify-content-between">
-    <p>Total credit:</p>
+    <p>Total credits:</p>
     <p>$<%= @booking.total_credits %> for <%= pluralize( @booking.duration, "hours" ) %></p>
   </div>
 </div>
@@ -43,9 +43,13 @@
   <div class="d-flex justify-content-between align-items-center">
     <p class="flex-grow-1"><%= item.name.capitalize %></p>
     <p>$<%= item.price %></p>
-    <%= simple_form_for [@booking, @order] do |f| %>
-      <%= f.hidden_field :menu_item, value: "#{item.name}", type: :hidden %>
-      <%= f.button :submit, 'Order', class: "order-btn ml-3", data: { confirm: 'Are you sure you would like to make this order?' } %>
+    <% if @booking.x_credits - item.price < 0 %>
+      <p class="order-btn ml-3 inactive">Order</p>
+    <% else %>
+      <%= simple_form_for [@booking, @order] do |f| %>
+        <%= f.hidden_field :menu_item, value: "#{item.name}", type: :hidden %>
+        <%= f.button :submit, 'Order', class: "order-btn ml-3", data: { confirm: 'Are you sure you would like to make this order?' } %>
+      <% end %>
     <% end %>
   </div>
   <% end %>
@@ -53,7 +57,7 @@
   <h1 class="text-center mt-3">Orders Made</h1>
 
   <% Order.all.each do |order| %>
-    <% if order.menu_item.cafe = @cafe %>
+    <% if order.menu_item.cafe == @cafe %>
     <div class="d-flex justify-content-between">
       <p><%= order.menu_item.name.capitalize %></p>
       <p>$<%= order.menu_item.price %></p>
@@ -62,7 +66,7 @@
   <% end %>
 
   <div class="d-flex justify-content-between mt-2">
-    <p><strong>Remaining credit:</strong></p>
-    <p><strong>$<%= @booking.x_credits %></strong></p>
+    <p><strong>Remaining credits:</strong></p>
+    <p class="remaining-credits"><strong>$<%= @booking.x_credits %></strong></p>
   </div>
 </div>

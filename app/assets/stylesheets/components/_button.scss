@@ -39,6 +39,16 @@
   font-size: 14px;
 }
 
+.order-btn.inactive {
+  opacity: .3;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
 .order-btn:hover {
   text-decoration: underline;
+}
+
+.order-btn.inactive {
+  text-decoration: none;
 }
