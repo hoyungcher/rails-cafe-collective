@@ -57,7 +57,7 @@ class CafesController < ApplicationController
         end
         CafeTag.create!(tag: tag, cafe: @cafe)
       end
-      redirect_to cafe_path(@cafe)
+      redirect_to dashboard_path(@cafe)
     else
       render :new
     end
@@ -103,7 +103,7 @@ class CafesController < ApplicationController
   def destroy
     @cafe = Cafe.find(params[:id])
     @cafe.destroy
-    redirect_to user_bookings_path(current_user)
+    redirect_to dashboard_path(current_user)
   end
 
   def dashboard

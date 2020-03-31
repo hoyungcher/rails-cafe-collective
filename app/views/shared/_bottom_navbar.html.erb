@@ -12,7 +12,11 @@
         <i class="far fa-calendar-alt"></i>
       </div>
     </a>
-    <a href="/users/<%= current_user.id %>/cafes/<%= current_user.cafes.first.id %>/orders">
+    <% if current_user.cafes.empty? %>
+      <a href="#">
+    <% else %>
+      <a href="/users/<%= current_user.id %>/cafes/<%= current_user.cafes.first.id %>/orders">
+    <% end %>
       <div class="navbar-item align-middle" id="orders-tab">
         <i class="far fa-list-alt"></i>
       </div>
