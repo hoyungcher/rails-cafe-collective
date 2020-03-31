@@ -1,0 +1,9 @@
+<h1><%= @cafe.name.capitalize %> Menu</h1>
+<% @menu_items.each do |menu_item|%>
+  <div class="menu-item">
+    <h3><%= menu_item.name.capitalize %></h3>
+    <%= menu_item.category %>
+    <%= menu_item.description %>
+    <%= "$" + menu_item.price.to_s + ".00" %>
+  </div>
+<% end %>
