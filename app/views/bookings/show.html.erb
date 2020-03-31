@@ -66,28 +66,3 @@
     <p><strong>$<%= @booking.x_credits %></strong></p>
   </div>
 </div>
-
-<div class="booking-info-card">
-  <h1 class="text-center">Menu</h1>
-
-  <% @cafe.menu_items.each do |item| %>
-  <div class="d-flex justify-content-between align-items-center">
-    <p class="flex-grow-1"><%= item.name.capitalize %></p>
-    <p>$<%= item.price %></p>
-    <%= simple_form_for [@booking, @order] do |f| %>
-      <%= f.hidden_field :menu_item, value: "#{item.name}", type: :hidden %>
-      <%= f.button :submit, 'Order', class: "order-btn ml-3", data: { confirm: 'Are you sure you would like to make this order?' } %>
-    <% end %>
-  </div>
-  <% end %>
-
-  <h1 class="text-center mt-3">Orders Made</h1>
-
-  <% Order.all.each do |order| %>
-    <% if order.menu_item.cafe = @cafe %>
-    <div class="d-flex justify-content-between">
-      <p><%= order.menu_item.name.capitalize %></p>
-      <p>$<%= order.menu_item.price %></p>
-    </div>
-    <% end %>
-  <% end %>
