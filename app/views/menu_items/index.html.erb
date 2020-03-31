@@ -7,6 +7,10 @@
     </div>
     <div class="menu-price">
       <h3><%= "$" + menu_item.price.to_s + ".00" %></h3>
+      <%= link_to user_cafe_menu_item_path(@user, @cafe, menu_item.id), data: { confirm: 'Are you sure?' }, method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+
     </div>
   </div>
 <% end %>
