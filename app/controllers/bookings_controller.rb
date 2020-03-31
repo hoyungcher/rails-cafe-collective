@@ -41,6 +41,7 @@ class BookingsController < ApplicationController
 
   def show
     @unshow_order_bar == false
+    @unshow_back_to_cafe = false
 
     @booking = Booking.find(params[:id])
     @order = Order.new()

@@ -25,6 +25,11 @@
 
   <div class="card-cafe mb-2">
     <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
+    <% if ((Time.now.hour >= booking.start_time) && (Time.now.hour < (booking.start_time + booking.duration))) %>
+    <div class="cafe-price">
+      $<%= booking.x_credits %> credit to spend!
+    </div>
+    <% end %>
     <div class="card-cafe-infos">
       <div>
         <h2><%= link_to cafe.name, cafe_path(cafe) %></h2>
