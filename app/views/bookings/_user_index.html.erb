@@ -1,6 +1,6 @@
   <h1 class="mb-4">Hey <%= @user.first_name %>!</h1>
 
-  <h4>Upcoming Bookings</h4>
+  <h4>Today's Bookings</h4>
 
   <% @bookings.each do |booking| %>
     <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
@@ -31,7 +31,7 @@
         <p><%= "#{cafe.address}" %></p>
       </div>
 
-      <% if Time.now > Time.at(booking.start_time * 60 * 60) || Time.now < Time.at((booking.start_time + booking.duration) * 60 * 60) %>
+      <% if ((Time.now.hour > booking.start_time) && (Time.now.hour < (booking.start_time + booking.duration))) %>
         <%= link_to "Check In", cafe_user_booking_path(cafe, booking.user, booking), class: "btn btn-primary review-btn" %>
       <% else %>
       <div>
@@ -44,7 +44,7 @@
   <% end %>
   <% end %>
 
-  <h4 class="mt-4 mb-4">Past Bookings</h4>
+  <h4 class="mt-4 mb-4">Booking History</h4>
 
   <% @bookings.each do |booking| %>
     <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
