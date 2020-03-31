@@ -18,7 +18,8 @@ class CafesController < ApplicationController
   end
 
   def show
-    @unshow_book_bar = false
+    @user = current_user
+    @unshow_action_bar = false
     @unshow_back_to_home = false
     @cafe = Cafe.find(params[:id])
     @markers = [{lat: @cafe.latitude, lng: @cafe.longitude}]
@@ -26,7 +27,7 @@ class CafesController < ApplicationController
     @cafe.reviews.each do |review|
       ratings << review.rating
     end
-    @rating = ratings.sum / ratings.length
+    (ratings.length == 0) ? @rating = 0 : @rating = ratings.sum / ratings.length
     @empty_stars = 5 - @rating
   end
 
@@ -35,10 +36,27 @@ class CafesController < ApplicationController
   end
 
   def create
-    @cafe = Cafe.new(cafe_params)
-    @cafe.user = current.user
+    cafe = params[:cafe]
+    @cafe = Cafe.new(name: cafe["name"], description: cafe["description"], neighbourhood: cafe["neighbourhood"], address: cafe["address"], city: cafe["city"], category: cafe["category"], contact: cafe["contact"])
+    @cafe.user = current_user
 
     if @cafe.save
+      @ambience = params["tags"]
+      @ambience.each do |ambience|
+        tag = Tag.where(name: ambience).first
+        CafeTag.create!(tag: tag, cafe: @cafe)
+      end
+
+      @amenities = params["amenities"].split(", ")
+      @amenities.each do |amenity|
+        tag_arr = Tag.where(name: amenity)
+        if tag_arr.empty?
+          tag = Tag.create!(tag_category: "amenity", name: amenity)
+        else
+          tag = tag_arr.first
+        end
+        CafeTag.create!(tag: tag, cafe: @cafe)
+      end
       redirect_to cafe_path(@cafe)
     else
       render :new
@@ -47,17 +65,52 @@ class CafesController < ApplicationController
 
   def edit
     @cafe = Cafe.find(params[:id])
+    amenities = CafeTag.where(cafe:Cafe.first).filter {|cafetag| cafetag.tag.tag_category == "amenity"}
+    @amenities = []
+    amenities.each do |amenity|
+      @amenities << amenity.tag.name
+    end
   end
 
   def update
     @cafe = Cafe.find(params[:id])
     @cafe.user = current_user
 
-    if @cafe.update(cafe_params)
+    if @cafe.update!(cafe_params)
+      @ambience = params["tags"]
+      CafeTag.where(cafe: @cafe).destroy_all
+      @ambience.each do |ambience|
+        tag = Tag.where(name: ambience).first
+        CafeTag.create!(tag: tag, cafe: @cafe)
+      end
+
+      @amenities = params["amenities"].split(", ")
+      @amenities.each do |amenity|
+        tag_arr = Tag.where(name: amenity)
+        if tag_arr.empty?
+          tag = Tag.create!(tag_category: "amenity", name: amenity)
+        else
+          tag = tag_arr.first
+        end
+        CafeTag.create!(tag: tag, cafe: @cafe)
+      end
       redirect_to cafe_path(@cafe)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @cafe = Cafe.find(params[:id])
+    @cafe.destroy
+    redirect_to user_bookings_path(current_user)
+  end
+
+  def dashboard
+    @user = current_user
+    @bookings = @user.bookings.uniq
+    @cafe = Cafe.where(user: current_user).first
+    @cafes = Cafe.where(user: current_user)
   end
 
   private

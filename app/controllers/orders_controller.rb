@@ -21,9 +21,18 @@ class OrdersController < ApplicationController
     redirect_to cafe_user_booking_path(@cafe, @booking.user, @booking)
   end
 
+  def index
+    @bookings = @user.bookings.uniq
+    @orders = []
+    @bookings.each do |booking|
+      (@orders << booking.orders).flatten!
+    end
+  end
+  
   private
 
   # def order_params
   #   params.require(:order).permit(:menu_item, :booking)
   # end
+  
 end

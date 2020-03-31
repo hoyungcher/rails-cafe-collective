@@ -1,4 +1,4 @@
-<h2>Edit your new Cafe:</h2>
+<h2>Add a new Cafe:</h2>
 <%= simple_form_for @cafe do |f| %>
   <%= f.input :name, placeholder: "Papa's Chicken" %>
   <%= f.input :description, placeholder: "Fusion Mexican Restaurant.." %>
@@ -8,8 +8,7 @@
   <%= f.input :category, collection: ["Bar", "Restaurant", "Cafe"] %>
   <%= f.input :contact, placeholder: "98989898" %>
   <label for="amenities">Amenities</label>
-  <% @amenities.nil? ? amenities = "" : amenities = @amenities.join(", ") %>
-  <input class="w-100 mb-3" type="text" name="amenities" placeholder="Wifi, Free Coffee, Free Parking" value="<%= amenities %>">
+  <input class="w-100 mb-3" type="text" name="amenities" placeholder="Wifi, Free Coffee, Free Parking">
   <label for="tags">Tags:</label>
   <select class="form-control select w-100 mb-5" name="tags[]" multiple>
     <% Tag.where(tag_category: "ambience").each do |tag| %>

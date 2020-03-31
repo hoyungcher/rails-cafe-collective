@@ -34,6 +34,7 @@ class BookingsController < ApplicationController
     @user = current_user
     @bookings = @user.bookings.uniq
     @cafe = Cafe.where(user: current_user).first
+    @cafes = Cafe.where(user: current_user)
   end
 
   def show
