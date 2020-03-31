@@ -38,7 +38,10 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @unshow_order_bar == false
+
     @booking = Booking.find(params[:id])
+    @order = Order.new()
     @cafe = Cafe.find(params[:cafe_id])
   end
 

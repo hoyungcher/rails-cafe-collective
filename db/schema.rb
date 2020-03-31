@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_104217) do
     t.integer "remaining_credits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active", default: false
+    t.boolean "active"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
