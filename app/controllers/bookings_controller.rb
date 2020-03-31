@@ -34,7 +34,19 @@ class BookingsController < ApplicationController
     @unshow_menu_bar = false
 
     @user = current_user
-    @bookings = @user.bookings.uniq
+    if @user.owner
+      @bookings = []
+      Cafe.where(user: @user).each do |cafe|
+        if cafe || cafe.bookings
+          cafe.bookings.uniq.each do |booking|
+            @bookings << booking
+          end
+        end
+      end
+    @bookings = @bookings.sort_by {|booking| booking.start_time}
+    else
+      @bookings = @user.bookings.uniq
+    end
     @cafe = Cafe.where(user: current_user).first
     @cafes = Cafe.where(user: current_user)
   end
