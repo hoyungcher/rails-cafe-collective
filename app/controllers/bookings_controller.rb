@@ -52,6 +52,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @unshow_menu_bar = false
     @unshow_order_bar == false
     @unshow_back_to_cafe = false
 

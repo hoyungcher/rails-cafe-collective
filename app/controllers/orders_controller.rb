@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     # @booking.remaining_credits = @booking.remaining_credits - @menu_item.price
     # @booking.save
 
-    @cafe = @order.menu_item.cafe
+    @cafe = params[:cafe_id]
     redirect_to cafe_user_booking_path(@cafe, @booking.user, @booking)
   end
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :cafes, only: [ :index, :show ] do
     resources :users, only: [:show] do
       resources :bookings, only: [:new, :create, :show ] do
-        resources :order, only: [:new, :create]
+        resources :orders, only: [:new, :create]
       end
     end
   end

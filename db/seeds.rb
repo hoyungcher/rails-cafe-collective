@@ -151,8 +151,8 @@ users.each_with_index do |user, index|
   time1 = 8
   hourly_slot = Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first
   booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat", total_credits: hourly_slot.price_per_hour * 2, remaining_credits: hourly_slot.price_per_hour * 2)
-  BookedHour.create(booking: booking1, hourly_slot: hourly_slot, paid: true)
-  BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
+  BookedHour.create!(booking: booking1, hourly_slot: hourly_slot, paid: true)
+  BookedHour.create!(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1 + 1).first, paid: true)
   # time2 = 10
   # booking2 = Booking.create(user: user, date: Date.today + 1, start_time: time2, duration: 2)
   # BookedHour.create(booking: booking1, hourly_slot: Cafe.find(Cafe.first.id + 2 + index).hourly_slots.where(start_time: time2).first, paid: true)
