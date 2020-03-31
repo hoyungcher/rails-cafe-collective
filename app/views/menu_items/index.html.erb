@@ -1,0 +1,23 @@
+<h1><%= @cafe.name.capitalize %> Menu</h1>
+<% @menu_items.sort_by(&:category).each do |menu_item|%>
+  <div class="menu-item">
+    <div class="menu-text">
+      <h3><%= menu_item.name.capitalize %></h3>
+      <%= menu_item.description %>
+    </div>
+    <div class="menu-price">
+      <h3><%= "$" + menu_item.price.to_s + ".00" %></h3>
+    </div>
+  </div>
+<% end %>
+
+<h2>Add a menu item</h2>
+
+<%= simple_form_for([@user, @cafe, @menu_item]) do |form| %>
+  <%= form.input :name, as: :text %>
+  <%= form.input :description, as: :text %>
+  <%= form.input :category, priority: ["drink"], collection: [ "food", "drink"]%>
+  <%= form.input :price, as: :integer %>
+  <%= form.button :submit, class: "btn btn-primary" %>
+<% end %>
+
