@@ -6,7 +6,9 @@ const initSlot = () => {
   if(setSeats) {
     setSeats.addEventListener('input', (event) => {
       hourlySlots.forEach((hourlySlot) => {
-        hourlySlot.value = setSeats.value
+        if (hourlySlot.disabled === false) {
+          hourlySlot.value = setSeats.value
+        }
       })
     })
   }

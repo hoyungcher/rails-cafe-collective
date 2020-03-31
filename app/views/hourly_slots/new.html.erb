@@ -1,78 +1,86 @@
-<div class="container">
-  <h1><%= @cafe.name %></h1>
-  <div class="date-today"><%= Date.today %>
-    <form method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
+  <div class="container">
+  <h1 style="text-align: center;"><%= @cafe.name %></h1>
+  <div class="date-today">
+    <div class="date-today-text d-flex justify-content-center mb-3">
+      <%= Date.today.strftime('%b %d') %>
+    </div>
+    <form class="form" method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <div class="set-defaults">
-      <div class="price-input">
-        <p>Set price per hour</p>
-        <input id="set-price" type="number" name="price" value="0">
+      <h5 style="font-weight: bold;">Quick Set</h5>
+      <div class="price-input form-group">
+        <label>Set Price Per Hour</label>
+        <input class='form-control' id="set-price" type="number" name="price" value="<%= @cafe.hourly_slots.first.price_per_hour %>">
       </div>
-      <div class="seats-input">
-        <p>Set number of seats</p>
-        <input id="set-seats"type="number" name="seats" value="0">
+      <div class="seats-input form-group">
+        <label>Set Seats</label>
+        <input class='form-control' id="set-seats"type="number" name="seats" value="<%= @cafe.hourly_slots.first.total_seats %>">
       </div>
     </div>
     <div class="slots">
-      <div class="slot-container">
-        <p>8.00am - 9.00am</p>
-        <input class="hourly-slots" type="number" name="8" value=<%= @seats["8"] || 0 %>>
+      <h5 style="font-weight: bold;">Slots</h5>
+      <div class="slot-container form-group">
+        <label class="slot-label">8.00am - 9.00am</label>
+        <input class="hourly-slots form-control" type="number" name="8" value=<%= @seats["8"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>9.00am - 10.00am</p>
-        <input class="hourly-slots" type="number" name="9" value=<%= @seats["9"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">9.00am - 10.00am</label>
+        <input class="hourly-slots form-control" type="number" name="9" value=<%= @seats["9"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>10.00am - 11.00am</p>
-        <input class="hourly-slots" type="number" name="10" value=<%= @seats["10"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">10.00am - 11.00am</label>
+        <input class="hourly-slots form-control" type="number" name="10" value=<%= @seats["10"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>11.00am - 12.00pm</p>
-        <input class="hourly-slots" type="number" name="11" value=<%= @seats["11"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">11.00am - 12.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="11" value=<%= @seats["11"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>12.00pm - 1.00pm</p>
-        <input class="hourly-slots" type="number" name="12" value=<%= @seats["12"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">12.00pm - 1.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="12" value=<%= @seats["12"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>1.00pm - 2.00pm</p>
-        <input class="hourly-slots" type="number" name="13" value=<%= @seats["13"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">1.00pm - 2.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="13" value=<%= @seats["13"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>2.00pm - 3.00pm</p>
-        <input class="hourly-slots" type="number" name="14" value=<%= @seats["14"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">2.00pm - 3.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="14" value=<%= @seats["14"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>3.00pm - 4.00pm</p>
-        <input class="hourly-slots" type="number" name="15" value=<%= @seats["15"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">3.00pm - 4.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="15" value=<%= @seats["15"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>4.00pm - 5.00pm</p>
-        <input class="hourly-slots" type="number" name="16" value=<%= @seats["16"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">4.00pm - 5.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="16" value=<%= @seats["16"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>5.00pm - 6.00pm</p>
-        <input class="hourly-slots" type="number" name="17" value=<%= @seats["17"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">5.00pm - 6.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="17" value=<%= @seats["17"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>6.00pm - 7.00pm</p>
-        <input class="hourly-slots" type="number" name="18" value=<%= @seats["18"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">6.00pm - 7.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="18" value=<%= @seats["18"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>7.00pm - 8.00pm</p>
-        <input class="hourly-slots" type="number" name="19" value=<%= @seats["19"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">7.00pm - 8.00pm</label>
+        <input class="hourly-slots form-control" type="number" name="19" value=<%= @seats["19"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>8.00pm - 9.00pm</p>
-        <input class="hourly-slots" type="number" name="20" value=<%= @seats["20"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">8.00pm - 9.00pm</label>
+        <input class="hourly-slots form-control"  type="number" name="20" value=<%= @seats["20"] || 0 %>>
       </div>
-      <div class="slot-container">
-        <p>9.00pm - 10.00pm</p>
-        <input class="hourly-slots" type="number" name="21" value=<%= @seats["21"] || 0 %>>
+      <div class="slot-container form-group">
+        <label class="slot-label">9.00pm - 10.00pm</label>
+        <input class="hourly-slots form-control"  type="number" name="21" value=<%= @seats["21"] || 0 %>>
       </div>
     </div>
-    <input type = "submit">
+    <div class="d-flex justify-content-center mt-3">
+      <input class="btn btn-link" type = "submit" value="Update">
+    </div>
     </form>
   </div>
 
 </div>
+<%= javascript_pack_tag 'init_hourlyslot' %>
