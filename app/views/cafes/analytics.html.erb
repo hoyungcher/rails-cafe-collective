@@ -1,21 +1,48 @@
 <div class="d-flex flex-column align-items-center mb-3">
   <h1> Analytics </h1>
-  <h5>Mar 2020</h5>
 </div>
-<%= line_chart @bookings.group_by_day(&:date).map{|k, v| [k, v.first.total_credits] }.to_h, xtitle: "Date", ytitle: "Revenue ($)" %>
-<div class="analytics-data d-flex flex-column align-items-center my-3">
+<div class="d-flex flex-column align-items-center mb-4">
+  <h5>Mar 2020</h5>
+  <%= line_chart @bookings.group_by_day(&:date).map{|k, v| [k, v.first.total_credits_cents / 100] }.to_h, xtitle: "Date", ytitle: "Revenue ($)" %>
+</div>
+<div class="analytics-data d-flex flex-column align-items-center">
   <h5>Total Revenue Earned</h5>
   <h3>
     <% total_revenue = [] %>
     <% @bookings.each do |booking| %>
     <% total_revenue << booking.total_credits %>
     <% end %>
-    <%= "$#{total_revenue.sum}" %>
+    <strong><%= "$#{total_revenue.sum}" %></strong>
   </h3>
-  <div class="coming-soon mt-5">
+  <div class="coming-soon my-4 w-100 d-flex flex-column align-items-center">
     <h5>Top 3 Menu Items</h5>
-    <p>Coming soon..</p>
-    <h5>Top 3 Customers</h5>
-    <p>Coming soon..</p>
+    <% top_items = @item_hash.sort_by{|k,v| -v}.first(3) %>
+    <table class="table mt-2">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Menu Item</th>
+        <th scope="col">Total Revenue ($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= top_items[0][0].capitalize %></td>
+        <td><%= top_items[0][1] %></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td><%= top_items[1][0].capitalize %></td>
+        <td><%= top_items[1][1] %></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td><%= top_items[2][0].capitalize %></td>
+        <td><%= top_items[2][1] %></td>
+      </tr>
+    </tbody>
+  </table>
   </div>
+
 </div>
