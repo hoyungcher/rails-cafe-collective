@@ -36,6 +36,8 @@ a {
   background: white;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  z-index: 999;
 }
 
 .top-navbar:hover {
