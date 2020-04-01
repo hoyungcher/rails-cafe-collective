@@ -32,7 +32,7 @@
 
   <div class="d-flex justify-content-between">
     <p>Total credits:</p>
-    <p>$<%= @booking.total_credits %> for <%= pluralize( @booking.duration, "hours" ) %></p>
+    <p>$<%= @booking.total_credits_cents / 100 %> for <%= pluralize( @booking.duration, "hours" ) %></p>
   </div>
 </div>
 
