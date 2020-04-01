@@ -6,6 +6,7 @@
   height: 60px;
   position: fixed;
   bottom: 0;
+  align-items: top;
   z-index: 999;
 }
 
@@ -20,9 +21,9 @@ a {
   text-decoration: none;
 }
 
-.active {
-  color: blue;
-}
+// .active {
+//   color: blue;
+// }
 
 .fas,
 .far {
@@ -54,8 +55,12 @@ a {
   display: flex;
   font-family: 'Pacifico', cursive;
   a {
-    color: black;
+    color: $gray;
   }
+  a:hover {
+    text-decoration: none;
+  }
+  font-size: 20px;
 }
 
 .sign-in-out {

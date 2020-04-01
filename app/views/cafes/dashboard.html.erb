@@ -13,15 +13,15 @@
 
 
         <div class="card-cafe-infos align-items-center">
-          <div class="cafe-name-description">
-            <h2 class="card-cafe-pricing my-1"><%= link_to cafe.name, cafe_path(cafe) %></h2>
-            <p class="card-cafe-pricing my-1"><%= cafe.address %></p>
+          <div class="cafe-name-description flex-grow-1">
+            <h2 class="card-cafe-pricing"><%= link_to cafe.name, cafe_path(cafe) %></h2>
+            <p class="card-cafe-pricing"><%= cafe.address %></p>
             <div class="menu-seats">
               <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
-                <h4 class='my-1 view-menu'>View Menu</h4>
+                <h4 class='my-1 view-menu text-left'>Manage Menu</h4>
               <% end %>
-              <%= link_to root_path class: 'my-1' do %>
-                <h4 class='my-1 set-seats'><%= link_to "Set seats & availabilities", new_user_cafe_hourly_slot_path(current_user, cafe) %></h4>
+              <%= link_to root_path do %>
+                <h4 class='my-1 set-seats text-left'><%= link_to "Set availabilities", new_user_cafe_hourly_slot_path(current_user, cafe) %></h4>
               <% end %>
             </div>
            </div>

@@ -1,5 +1,5 @@
-<h3 class="mb-0">Leave a review for</h3>
-<h3 class="mt-0 mb-4"><strong><%= @cafe.name %></strong></h3>
+<h2 class="mb-0">Leave a review for</h2>
+<h2 class="mt-0 mb-4"><strong><%= @cafe.name %></strong></h2>
 
 <%= simple_form_for [@user, @booking, @review] do |f| %>
   <label>How was your experience?</label>
@@ -12,6 +12,6 @@
   <%= f.input :content, as: :text, label: 'Leave a description of your rating!' %>
 
   <%= f.input :rating, as: :hidden%>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary btn-block" %>
 <% end %>
 <%= javascript_pack_tag '_review' %>

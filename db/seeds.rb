@@ -187,19 +187,6 @@ users.each_with_index do |user|
   end
 end
 
-puts "Creating past bookings for the first cafe..."
-#create random number of bookings for each day
-20.times do |index|
-  rand(1..3).times do |i|
-    start_time = 8 + i * 3
-    duration = rand(1..3)
-    hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
-    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
-    BookedHour.create!(booking: booking, hourly_slot: Cafe.first.hourly_slots.where(start_time: start_time).first, paid: true)
-  end
-end
-
-
 puts "Creating menu items..."
 Cafe.all.each do |cafe|
   MenuItem.create(name: "croque monsieur", category: "food", price: 10, cafe: cafe)
@@ -213,6 +200,19 @@ Cafe.all.each do |cafe|
   MenuItem.create(name: "mocha", category: "drink", price: 4, cafe: cafe)
   MenuItem.create(name: "chai latte", category: "drink", price: 5, cafe: cafe)
 end
+
+puts "Creating past bookings for the first cafe..."
+#create random number of bookings for each day
+20.times do |index|
+  rand(1..3).times do |i|
+    start_time = 8 + i * 3
+    duration = rand(1..3)
+    hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
+    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
+    BookedHour.create!(booking: booking, hourly_slot: Cafe.first.hourly_slots.where(start_time: start_time).first, paid: true)
+  end
+end
+
 
 
 puts "Seeds done!"
