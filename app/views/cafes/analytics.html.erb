@@ -1,0 +1,21 @@
+<div class="d-flex flex-column align-items-center mb-3">
+  <h1> Analytics </h1>
+  <h5>Mar 2020</h5>
+</div>
+<%= line_chart @bookings.group_by_day(&:date).map{|k, v| [k, v.first.total_credits] }.to_h, xtitle: "Date", ytitle: "Revenue ($)" %>
+<div class="analytics-data d-flex flex-column align-items-center my-3">
+  <h5>Total Revenue Earned</h5>
+  <h3>
+    <% total_revenue = [] %>
+    <% @bookings.each do |booking| %>
+    <% total_revenue << booking.total_credits %>
+    <% end %>
+    <%= "$#{total_revenue.sum}" %>
+  </h3>
+  <div class="coming-soon mt-5">
+    <h5>Top 3 Menu Items</h5>
+    <p>Coming soon..</p>
+    <h5>Top 3 Customers</h5>
+    <p>Coming soon..</p>
+  </div>
+</div>

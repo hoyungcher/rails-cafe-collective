@@ -192,7 +192,9 @@ puts "Creating past bookings for the first cafe..."
 20.times do |index|
   rand(1..3).times do |i|
     start_time = 8 + i * 3
-    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: rand(1..3))
+    duration = rand(1..3)
+    hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
+    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
     BookedHour.create!(booking: booking, hourly_slot: Cafe.first.hourly_slots.where(start_time: start_time).first, paid: true)
   end
 end

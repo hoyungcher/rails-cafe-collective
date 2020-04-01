@@ -21,6 +21,8 @@ gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem "chartkick"
+gem 'groupdate'
 
 
 group :development do
