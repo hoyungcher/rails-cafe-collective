@@ -9,7 +9,7 @@ class HourlySlotsController < ApplicationController
     @cafe = Cafe.find(params[:cafe_id])
     @user = User.find(params[:user_id])
     @time_slots_seats = params.values[3..-5]
-    @cafe.hourly_slots.where(date: Date.today).destroy_all
+    @cafe.hourly_slots.where(date: Date.today + 1).destroy_all
     @time_slots = params.keys[3..-5]
     @time_slots.each_with_index do |time, index|
       slot = HourlySlot.new(cafe: @cafe, start_time: time.to_i, total_seats: @time_slots_seats[index].to_i, price_per_hour: params["price"].to_i, date: Date.today)

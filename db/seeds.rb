@@ -211,7 +211,7 @@ puts "Creating past bookings for the first cafe..."
     duration = rand(1..3)
     hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
     total_credits = rand(5..10) * duration
-    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: total_credits)
+    booking = Booking.create!(user: User.find(User.first.id + i), date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: total_credits)
     BookedHour.create!(booking: booking, hourly_slot: Cafe.first.hourly_slots.where(start_time: start_time).first, paid: true)
     Order.create!(menu_item: MenuItem.where(cafe: Cafe.first).sample, booking: booking)
   end
