@@ -58,7 +58,7 @@
         <p>You currently have no past bookings.</p>
       </div>
     <% else %>
-      <% @bookings.each do |booking| %>
+      <% @bookings.sort_by {|booking| booking.date }.reverse.each do |booking| %>
         <% cafe = booking.booked_hours.first.hourly_slot.cafe %>
         <% if booking.date < Date.today %>
           <% if booking.start_time > 12 %>
