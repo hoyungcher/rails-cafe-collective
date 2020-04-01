@@ -187,6 +187,8 @@ users.each_with_index do |user|
   end
 end
 
+#Booking.new(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
+
 puts "Creating menu items..."
 Cafe.all.each do |cafe|
   MenuItem.create(name: "croque monsieur", category: "food", price: 10, cafe: cafe)
@@ -208,11 +210,11 @@ puts "Creating past bookings for the first cafe..."
     start_time = 8 + i * 3
     duration = rand(1..3)
     hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
-    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
+    total_credits = rand(5..10) * duration
+    booking = Booking.create!(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: total_credits)
     BookedHour.create!(booking: booking, hourly_slot: Cafe.first.hourly_slots.where(start_time: start_time).first, paid: true)
+    Order.create!(menu_item: MenuItem.where(cafe: Cafe.first).sample, booking: booking)
   end
 end
-
-
 
 puts "Seeds done!"
