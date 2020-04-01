@@ -187,7 +187,6 @@ users.each_with_index do |user|
   end
 end
 
-
 #Booking.new(user: User.all.sample, date: (Date.today - 1 - index), start_time: start_time, duration: duration, total_credits: (rand(5..10) * duration))
 
 puts "Creating menu items..."
@@ -217,6 +216,5 @@ puts "Creating past bookings for the first cafe..."
     Order.create!(menu_item: MenuItem.where(cafe: Cafe.first).sample, booking: booking)
   end
 end
-
 
 puts "Seeds done!"
