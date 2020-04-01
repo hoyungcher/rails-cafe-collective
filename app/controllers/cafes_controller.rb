@@ -115,6 +115,13 @@ class CafesController < ApplicationController
 
   def analytics
     @bookings = Cafe.where(user: current_user).first.bookings.filter{|book| book.date < Date.today}.sort{|booking| booking.date}.reverse
+    @menu_items = Cafe.where(user: current_user).first.menu_items
+    @item_hash = {}
+    @menu_items.each do |item|
+      price = item.price
+      order_count = item.orders.count
+      @item_hash["#{item.name}"] = price * order_count
+    end
   end
 
   private
