@@ -128,11 +128,15 @@ puts "Creating reviews..."
 #list of reviews for each cafe
 Cafe.all.each do |cafe|
   review1 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Great time here! Very friendly owner and staff. Would definitely recommend", rating: 5)
-  review2 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Food was quite pricey but environment is pretty chill. Still a pretty decent place to head to.", rating: 4)
-  review3 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Neutral experience. Decent but could be better. Only come if there aren't better options.", rating: 3)
-  review4 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Don't visit. Waste of time. Food is bad and expensive.", rating: 2)
-  review5 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Terrible experience!! No chargers as claimed, lousy wifi and even though we paid for the seats the owner treated us like second-class citizens. GET YOURSELF TOGETHER PLEASE. ", rating: 1)
-  reviews = [review1, review2, review3, review4, review5]
+  review2 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Loved working here. Had the best ambience, the friendliest service, and the coffee got me WIRED.", rating: 5)
+  review3 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Super reliable and productive workspace! Lots of sockets and fast wifi. New favorite spot.", rating: 5)
+  review4 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Food was quite pricey but environment is pretty chill. Still a pretty decent place to head to.", rating: 4)
+  review5 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Everything was great, except the wifi was a bit slow for Netflix. Probably means I shouldn't be watching Netflix...", rating: 4)
+  review6 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"I loved this place! Really reliable workspace with fast internet, plenty of power sockets, and great food - albeit a little pricy.", rating: 4)
+  review7 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Neutral experience. Decent but could be better. Only come if there aren't better options.", rating: 3)
+  review8 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Don't visit. Waste of time. Food is bad and expensive.", rating: 2)
+  review9 = Review.new(user: User.find(User.first.id + rand(0..9)), cafe: cafe, content:"Terrible experience!! No chargers as claimed, lousy wifi and even though we paid for the seats the owner treated us like second-class citizens. GET YOURSELF TOGETHER PLEASE.", rating: 1)
+  reviews = [review1, review2, review3, review4, review5, review6, review7, review8, review9]
 
   sample1 = reviews.sample.save
   reviews.delete(sample1)
@@ -140,6 +144,12 @@ Cafe.all.each do |cafe|
   reviews.delete(sample2)
   sample3 = reviews.sample.save
   reviews.delete(sample3)
+  sample4 = reviews.sample.save
+  reviews.delete(sample4)
+  sample5 = reviews.sample.save
+  reviews.delete(sample5)
+  sample6 = reviews.sample.save
+  reviews.delete(sample6)
 end
 
 puts "Creating hourly slots..."
@@ -191,12 +201,12 @@ end
 
 puts "Creating menu items..."
 Cafe.all.each do |cafe|
-  MenuItem.create(name: "croque monsieur", category: "food", price: 10, cafe: cafe)
-  MenuItem.create(name: "egg & cheese sandwich", category: "food", price: 7, cafe: cafe)
-  MenuItem.create(name: "ham & cheese croissant", category: "food", price: 8, cafe: cafe)
-  MenuItem.create(name: "french fries", category: "food", price: 6, cafe: cafe)
-  MenuItem.create(name: "caesar salad", category: "food", price: 7, cafe: cafe)
-  MenuItem.create(name: "tiramisu cup", category: "food", price: 6, cafe: cafe)
+  MenuItem.create(name: "croque monsieur", description: "a single layer of French ham and Gruyere pressed between two thin slices of bread", category: "food", price: 10, cafe: cafe)
+  MenuItem.create(name: "egg & cheese sandwich", description: "tasty, buttery, cheesy sandwich with egg", category: "food", price: 7, cafe: cafe)
+  MenuItem.create(name: "ham & cheese croissant", description: "tasty, buttery, cheesy croissants with ham", category: "food", price: 8, cafe: cafe)
+  MenuItem.create(name: "french fries", description: "delicious and versatile side dish perfect for any and every meal", category: "food", price: 6, cafe: cafe)
+  MenuItem.create(name: "caesar salad", description: "Caesar Salad with dressing of delicious olive oil, garlic, raw eggs, and anchovies.", category: "food", price: 7, cafe: cafe)
+  MenuItem.create(name: "tiramisu cup", description: "classic Italian dessert combining espresso-dipped ladyfingers and mascarpone cream", category: "food", price: 6, cafe: cafe)
   MenuItem.create(name: "espresso", category: "drink", price: 3, cafe: cafe)
   MenuItem.create(name: "flat white", category: "drink", price: 4, cafe: cafe)
   MenuItem.create(name: "mocha", category: "drink", price: 4, cafe: cafe)

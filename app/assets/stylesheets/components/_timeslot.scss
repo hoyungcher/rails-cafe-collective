@@ -69,7 +69,7 @@
 }
 
 .price-input input, .seats-input input, .slot-container input {
-  width: 50px;
+  width: 36px;
   margin-bottom: 0;
 }
 
@@ -104,8 +104,4 @@
 .slot-container .evening {
   background-color: $night;
   color: $gray;
-}
-
-input {
-    text-align: center;
 }

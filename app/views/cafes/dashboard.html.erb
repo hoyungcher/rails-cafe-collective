@@ -20,8 +20,8 @@
               <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
                 <h4 class='my-1 view-menu text-left'>Manage Menu</h4>
               <% end %>
-              <%= link_to root_path do %>
-                <h4 class='my-1 set-seats text-left'><%= link_to "Set availabilities", new_user_cafe_hourly_slot_path(current_user, cafe) %></h4>
+              <%= link_to new_user_cafe_hourly_slot_path(current_user, cafe) do %>
+                <h4 class='my-1 set-seats text-left'>Set Availabilities</h4>
               <% end %>
             </div>
            </div>
