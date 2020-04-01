@@ -26,8 +26,20 @@ class BookingsController < ApplicationController
       end
     end
     @booking.total_credits = (@booking.duration * @booking.booked_hours.first.hourly_slot.price_per_hour)
-    @booking.save
-    redirect_to user_bookings_path(@user)
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: "Booking for #{@cafe.name}",
+        amount: @booking.total_credits_cents,
+        currency: 'sgd',
+        quantity: 1
+      }],
+      success_url: user_bookings_url(@user),
+      cancel_url: cafe_url(@cafe)
+    )
+
+    @booking.update(checkout_session_id: session.id, state: 'pending')
+    redirect_to new_booking_payment_path(@booking)
   end
 
   def index
