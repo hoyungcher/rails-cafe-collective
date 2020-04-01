@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
   monetize :total_credits_cents
 
   def x_credits
-    total_credits - orders.map(&:menu_item).map(&:price).sum
+    (total_credits_cents / 100) - orders.map(&:menu_item).map(&:price).sum
   end
 end
 

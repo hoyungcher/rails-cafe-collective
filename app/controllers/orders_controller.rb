@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
     @order.menu_item = @menu_item
     @order.booking = @booking
     @order.save!
-
     # @booking.remaining_credits = @booking.remaining_credits - @menu_item.price
     # @booking.save
 

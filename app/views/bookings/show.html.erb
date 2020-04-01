@@ -73,14 +73,17 @@
     <% end%>
   <% end %>
 
-  <h1 class="text-center mt-3">Orders Made</h1>
 
-  <% Order.all.each do |order| %>
-    <% if order.menu_item.cafe == @cafe %>
-    <div class="d-flex justify-content-between">
-      <p><%= order.menu_item.name.capitalize %></p>
-      <p>$<%= order.menu_item.price %></p>
-    </div>
+  <% if false %>
+    <h1 class="text-center mt-3">Orders Made</h1>
+
+    <% Order.all.each do |order| %>
+      <% if order.menu_item.cafe == @cafe %>
+      <div class="d-flex justify-content-between">
+        <p><%= order.menu_item.name.capitalize %></p>
+        <p>$<%= order.menu_item.price %></p>
+      </div>
+      <% end %>
     <% end %>
   <% end %>
 
