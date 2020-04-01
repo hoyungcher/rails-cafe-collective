@@ -36,11 +36,11 @@
         <p><%= "#{cafe.address}" %></p>
       </div>
 
-      <% if ((Time.now.hour >= booking.start_time) || (Time.now.hour < (booking.start_time + booking.duration))) %>
+      <% if ((Time.now.hour >= booking.start_time) && (Time.now.hour < (booking.start_time + booking.duration))) %>
         <%= link_to "Check In", check_in_path(cafe, booking.user, booking), class: "btn btn-primary review-btn" %>
       <% else %>
       <div>
-        <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%b %d") %></h3>
+        <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%d %b, %Y") %></h3>
         <h3 class="card-cafe-pricing text-right"><%= "#{start_time_string} - #{end_time_string}" %></h3>
       </div>
       <% end %>
@@ -77,7 +77,7 @@
         <div class="card-product-infos d-flex justify-content-between">
           <div>
             <h2 class="mb-0"><%= "#{cafe.name}" %></h2>
-            <p class="mb-0 mt-0"><%= booking.date.strftime("%b %d") %> | <%= "#{start_time_string} - #{end_time_string}" %></p>
+            <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b") %> | <%= "#{start_time_string} - #{end_time_string}" %></p>
           </div>
           <div>
             <%= link_to "Review", new_user_booking_review_path(booking.user, booking), class: "btn btn-primary review-btn" %>

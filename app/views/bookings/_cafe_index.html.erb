@@ -38,7 +38,7 @@
             </div>
           </div>
           <div>
-            <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%d %b, %y") %></h3>
+            <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%d %b, %Y") %></h3>
             <h3 class="card-cafe-pricing text-right"><%= "#{start_time_string} - #{end_time_string}" %></h3>
           </div>
         </div>
@@ -82,7 +82,7 @@
             <div class="card-product-infos d-flex justify-content-between">
               <div>
                 <h2 class="mb-0"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
-                <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b, %y") %> | <%= start_time_string %> - <%= end_time_string %></p>
+                <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b") %> | <%= start_time_string %> - <%= end_time_string %></p>
               </div>
             </div>
           </div>

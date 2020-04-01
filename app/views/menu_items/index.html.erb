@@ -9,7 +9,7 @@
   <div class="d-flex justify-content-between align-items-start">
     <div class="flex-grow-1">
       <p><%= menu_item.name.capitalize %></p>
-      <p class="menu-description mr-2"><%= menu_item.description.capitalize %></p>
+      <p class="menu-description pr-2 mb-2"><%= menu_item.description %></p>
     </div>
     <p>$<%= menu_item.price %></p>
     <%= link_to user_cafe_menu_item_path(@user, @cafe, menu_item.id), data: { confirm: 'Are you sure?' }, method: :delete do %>
@@ -26,7 +26,7 @@
   <div class="d-flex justify-content-between align-items-start">
     <div class="flex-grow-1">
       <p><%= menu_item.name.capitalize %></p>
-      <p class="menu-description mr-2"><%= menu_item.description.capitalize %></p>
+      <p class="menu-description mr-2"><%= menu_item.description %></p>
     </div>
     <p>$<%= menu_item.price %></p>
     <%= link_to user_cafe_menu_item_path(@user, @cafe, menu_item.id), data: { confirm: 'Are you sure?' }, method: :delete do %>
