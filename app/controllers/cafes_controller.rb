@@ -113,6 +113,10 @@ class CafesController < ApplicationController
     @cafes = Cafe.where(user: current_user)
   end
 
+  def analytics
+    @bookings = Cafe.where(user: current_user).first.bookings.filter{|book| book.date < Date.today}.sort{|booking| booking.date}.reverse
+  end
+
   private
 
   def cafe_params

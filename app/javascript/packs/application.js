@@ -5,6 +5,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initSlot } from './init_slot';
 import { initBookmark } from './init_bookmark';
 import { changeLogoColor } from './navbar';
+require("chartkick")
+require("chart.js")
 
 initMapbox();
 initSlot();
