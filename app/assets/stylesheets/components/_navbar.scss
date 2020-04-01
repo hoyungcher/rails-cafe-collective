@@ -6,6 +6,7 @@
   height: 60px;
   position: fixed;
   bottom: 0;
+  z-index: 999;
 }
 
 .navbar-item {
@@ -36,6 +37,8 @@ a {
   background: white;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  z-index: 999;
 }
 
 .top-navbar:hover {

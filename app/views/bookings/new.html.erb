@@ -1,6 +1,6 @@
-<div class="container booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
-<h5 class="mt-4 text-center"><%= Date.today.strftime("%b %d") %></h5>
-<h5 class="cafe-price mt-4 text-center hidden"><%= @cafe.hourly_slots.first.price_per_hour %></h5>
+<div class="booking-container"><h1 class="text-center"><%= @cafe.name %> </h1>
+<h5 class="mt-4 text-center"><%= Date.today.strftime("Booking for %d %B, %Y") %></h5>
+<h5 class="cafe-price text-center hidden"><%= @cafe.hourly_slots.first.price_per_hour %></h5>
 
 <!-- hidden field for current user bookings-->
 
@@ -27,9 +27,9 @@
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
         <% if slot <= 0 %>
-          <%= "Slots unavailable" %>
+          <%= "Unavailable" %>
         <% else %>
-          <%= "Slots available: " + (slot).to_s %>
+          <%= "Available: " + (slot).to_s %>
         <% end %>
       </p>
     </div>
@@ -45,7 +45,7 @@
 <% if @show_booking_bar == true %>
   <div class="bottom-navbar justify-content-between p-3">
     <h6 class="align-self-center m-0"><span id="total-price">Total price: <strong><span id="current-price">$0</span></strong></span></h6>
-    <form class="d-flex flex-column align-items-center" action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
+    <form class="d-flex align-items-center" action="<%= cafe_user_bookings_path(@cafe, @user) %>" method="post">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input id="booking-data" name="booking"type="hidden">
       <input class="btn btn-primary" type="submit" value="Book Now">
