@@ -78,7 +78,9 @@
 
 
           <div class="card-product mb-2">
-            <img src="https://source.unsplash.com/1600x900/?<%= cafe.tags.first.name %>, cafe" alt="Card image cap" />
+            <div class="initials d-flex justify-content-center align-items-center">
+            <%= initials = booking.user.first_name.capitalize[0] + booking.user.last_name.capitalize[0] %>
+            </div>
             <div class="card-product-infos d-flex justify-content-between">
               <div>
                 <h2 class="mb-0"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
