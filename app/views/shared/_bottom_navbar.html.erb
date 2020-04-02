@@ -2,9 +2,9 @@
 <% if current_user %>
 <% if current_user.owner %>
   <div class="bottom-navbar active">
-    <a href="/users/<%= current_user.id %>/cafes/dashboard">
-      <div class="navbar-item align-middle" id="cafe-tab">
-        <i class="fas fa-coffee"></i>
+    <a href="/users/<%= current_user.id %>/cafes/analytics">
+      <div class="navbar-item align-middle" id="analytics-tab">
+        <i class="fas fa-chart-bar"></i>
       </div>
     </a>
     <a href="/users/<%= current_user.id %>/bookings">
@@ -21,9 +21,9 @@
         <i class="far fa-list-alt"></i>
       </div>
     </a>
-    <a href="/users/<%= current_user.id %>/cafes/analytics">
-      <div class="navbar-item align-middle" id="analytics-tab">
-        <i class="fas fa-chart-bar"></i>
+    <a href="/users/<%= current_user.id %>/cafes/dashboard">
+      <div class="navbar-item align-middle" id="cafe-tab">
+        <i class="fas fa-coffee"></i>
       </div>
     </a>
   </div>

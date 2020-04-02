@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.owner
-      dashboard_path(current_user)
+      analytics_path(current_user)
     else
       root_path
     end
