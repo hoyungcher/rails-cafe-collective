@@ -1,5 +1,9 @@
-<h2 class="mb-4">Your Bookmarked Cafes</h2>
-  <div class="cafe-container">
+<h2>Your Favorite Cafes</h2>
+<% if @bookmarks.first.present? %>
+  <p class="text-center mb-4">Want to go somewhere familiar today?</p>
+<% end %>
+
+  <div class="cafe-container mt-4">
       <% @bookmarks.each do |bookmark| %>
       <!-- average review rating -->
       <% ratings = [] %>
