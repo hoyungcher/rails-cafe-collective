@@ -1,49 +1,57 @@
 <h3>Pending orders</h3>
-<p id="no-pending-orders">No pending orders</p>
-<table class="undelivered-orders">
-  <tr>
-    <th>Booking ID</th>
-    <th>Customer Name</th>
-    <th>Menu item</th>
-    <th>Mark as delivered</th>
-  </tr>
-  <% @bookings.each do |booking|%>
-    <% booking.orders.select {|o| !o.delivered }.each do |order| %>
-      <tr class="undelivered-order">
-        <td><%= order.booking.id %></td>
-        <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
-        <td><%= order.menu_item.name %></td>
-        <td>
-          <%= link_to mark_as_delivered_path(@user, @cafe, order), method: "patch" do %>
-            <i class="fas fa-check"></i>
-          <% end %>
-        </td>
-      </tr>
+<p id="no-pending-orders" style="display:none;">No pending orders</p>
+<table class="undelivered-orders table mt-2">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Booking ID</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Menu item</th>
+      <th scope="col">Mark as served</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking|%>
+      <% booking.orders.select {|o| !o.delivered }.each do |order| %>
+        <tr class="undelivered-order">
+          <th scope="row"><%= order.booking.id %></th>
+          <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+          <td><%= order.menu_item.name.capitalize %></td>
+          <td>
+            <%= link_to mark_as_delivered_path(@user, @cafe, order), method: "patch" do %>
+              <i class="fas fa-check"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
+  </tbody>
 </table>
 
-<h3>Delivered orders</h3>
-<p id="no-delivered-orders">No delivered orders</p>
-<table class="delivered-orders">
-  <tr>
-    <th>Booking ID</th>
-    <th>Customer Name</th>
-    <th>Menu item</th>
-    <th>Time delivered</th>
-  </tr>
-  <% @bookings.each do |booking|%>
-    <% booking.orders.select {|o| o.delivered }.each do |order| %>
-      <tr class="delivered-order">
-        <td><%= order.booking.id %></td>
-        <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
-        <td><%= order.menu_item.name %></td>
-        <td>
-          <%= (order.updated_at + 28800).strftime("%k:%M") %>
-        </td>
-      </tr>
+<h3>Served orders</h3>
+<p id="no-delivered-orders">No served orders</p>
+<table class="delivered-orders table mt-2">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Booking ID</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Menu item</th>
+      <th scope="col">Time delivered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking|%>
+      <% booking.orders.select {|o| o.delivered }.each do |order| %>
+        <tr class="delivered-order">
+          <th scope="row"><%= order.booking.id %></td>
+          <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+          <td><%= order.menu_item.name %></td>
+          <td>
+            <%= (order.updated_at + 28800).strftime("%k:%M") %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
+  </tbody>
 </table>
 
 <%= javascript_pack_tag "orders" %>
