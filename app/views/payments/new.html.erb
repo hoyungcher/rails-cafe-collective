@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" style="background-color: white;">
   <div class="row py-4">
     <div class="col">
       <p style="font-size:28px;">Checkout summary</p>
-      <p>Work session at <strong><%= @booking.booked_hours.first.hourly_slot.cafe.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong></p>
+      <p>You are booking a productive session at </p>
+      <p style="font-size:20px;"><strong><%= @booking.booked_hours.first.hourly_slot.cafe.name %></strong></p>
       <p><strong>Address: </strong><%= @booking.booked_hours.first.hourly_slot.cafe.address %></p>
-      <p><strong>Date: </strong><%= @booking.date %></p>
+      <p><strong>Date: </strong><%= @booking.date.strftime('%A') %>, <%= @booking.date.strftime('%d %B %Y')  %></p>
       <p><strong>Time slot: </strong><%= @booking.start_time %>:00 - <%= @booking.start_time + @booking.duration %>:00 </p>
       <p><strong>Duration: </strong><%= @booking.duration %>
         <% if @booking.duration == 1 %>
@@ -13,7 +14,9 @@
           <%= "hours" %>
         <% end %>
       </p>
-
+      <p><strong>Amount: </strong><%= humanized_money_with_symbol @booking.total_credits %>.00</p>
+      <p>You will also receive <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong> of in-cafe credit to purchase food and drinks.</p>
+      <p>Please pay to confirm your booking.</p>
       <button id="pay" class="btn btn-primary">Pay <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong></button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
