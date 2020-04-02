@@ -31,6 +31,7 @@
       <i class="far fa-star"></i>
       <% end %>
     </span>
+    (<%= pluralize( @cafe.reviews.length, "reviews" ) %>)
   </div>
 
   <div class="cafe-tags d-flex flex-wrap">
@@ -40,17 +41,17 @@
       <% end %>
     <% end %>
   </div>
-  <div class="cafe-address"><strong>Address</strong>: <%= @cafe.address %></div>
   <div class="cafe-description"><%= @cafe.description %></div>
 
   <div class="cafe-amenities">
   <p class="show-heading">Amenities</p>
+    <div class="d-flex flex-wrap">
     <% @cafe.cafe_tags.each do |cafetag| %>
       <% if cafetag.tag.tag_category == "amenity" %>
-        <div>+ <%= cafetag.tag.name.capitalize %></div>
+        <div class="small-tag mr-2"><%= cafetag.tag.name %></div>
       <% end %>
     <% end %>
-
+  </div>
   </div>
 
   <div class="cafe-reviews">
@@ -69,7 +70,9 @@
     <p><%= review.content %></p>
     <% end %>
   </div>
-  <p class="show-heading">Location</p>
+
+  <p class="show-heading mb-2">Location</p>
+  <div class="cafe-address mt-0"><strong>Address</strong>: <%= @cafe.address %></div>
   <div
     id="map"
     style="width: 100%;
