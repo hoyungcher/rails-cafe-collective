@@ -27,9 +27,9 @@
       <p><%= time %>:00 - <%= time.to_i + 1 %>:00</p>
       <p>
         <% if slot <= 0 %>
-          <%= "Unavailable" %>
+          <%= "No seats available" %>
         <% else %>
-          <%= "Available: " + (slot).to_s %>
+          <%= (slot).to_s + " seats available" %>
         <% end %>
       </p>
     </div>
