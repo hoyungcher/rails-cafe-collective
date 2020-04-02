@@ -7,6 +7,11 @@
         <i class="fas fa-chart-bar"></i>
       </div>
     </a>
+    <a href="/users/<%= current_user.id %>/cafes/dashboard">
+      <div class="navbar-item align-middle" id="cafe-tab">
+        <i class="fas fa-coffee"></i>
+      </div>
+    </a>
     <a href="/users/<%= current_user.id %>/bookings">
       <div class="navbar-item align-middle" id="bookings-tab">
         <i class="far fa-calendar-alt"></i>
@@ -19,11 +24,6 @@
     <% end %>
       <div class="navbar-item align-middle" id="orders-tab">
         <i class="far fa-list-alt"></i>
-      </div>
-    </a>
-    <a href="/users/<%= current_user.id %>/cafes/dashboard">
-      <div class="navbar-item align-middle" id="cafe-tab">
-        <i class="fas fa-coffee"></i>
       </div>
     </a>
   </div>

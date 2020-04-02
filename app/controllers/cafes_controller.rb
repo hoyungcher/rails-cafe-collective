@@ -114,6 +114,7 @@ class CafesController < ApplicationController
   end
 
   def analytics
+    @cafe = Cafe.where(user: current_user).first
     @bookings = Cafe.where(user: current_user).first.bookings.filter{|book| book.date < Date.today}.sort{|booking| booking.date}.reverse
     @menu_items = Cafe.where(user: current_user).first.menu_items
     @item_hash = {}

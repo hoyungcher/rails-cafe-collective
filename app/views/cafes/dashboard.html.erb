@@ -1,6 +1,6 @@
+<h2 class="mb-4">Your Cafes</h2>
 
   <div class="cafes-div my-3">
-    <h5>Your Cafes</h5>
     <% @cafes.each do |cafe| %>
       <div class="card-cafe mb-2">
         <% if cafe.tags.empty? %>
@@ -27,11 +27,11 @@
           </div>
 
           <div>
-            <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
-              <h4 class='dashboard-btn text-center mt-0'>Manage Menu</h4>
-            <% end %>
             <%= link_to new_user_cafe_hourly_slot_path(current_user, cafe) do %>
-              <h4 class='dashboard-btn text-center mb-0'>Set Availabilities</h4>
+              <h4 class='dashboard-btn text-center mt-0'>Set Availabilities</h4>
+            <% end %>
+            <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
+              <h4 class='dashboard-btn text-center mb-0'>Manage Menu</h4>
             <% end %>
           </div>
         </div>

@@ -1,8 +1,8 @@
   <h1><%= @cafe.name %></h1>
-  <div class="date-today">
-    <div class="date-today-text d-flex mb-3">
+
+    <h5 class="mb-3 text-center">
       <%= (Date.today + 1).strftime("Availabilities for %d %B, %Y") %>
-    </div>
+    </h5>
 
     <form class="form" method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

@@ -1,6 +1,6 @@
 <div class="d-flex flex-column">
 
-  <h3>Today's Bookings</h3>
+  <h3 class="mb-3">Today's Bookings</h3>
   <% if @bookings.filter{|booking| booking.date == Date.today}.empty?  %>
     <div class="no-results mt-3">
       <p>You currently have no bookings for today.</p>
@@ -27,22 +27,18 @@
           <% end_time_string = "#{time_end} pm" %>
         <% end %>
 
-      <div class="card-cafe mb-2">
 
-        <div class="card-cafe-infos align-items-center">
-          <div class="customer-info">
-
-            <div>
-              <h2><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
-              <p><%= link_to cafe.name, cafe_path(cafe) %></p>
+          <div class="card-product mb-2">
+            <div class="initials d-flex justify-content-center align-items-center">
+            <%= initials = booking.user.first_name.capitalize[0] + booking.user.last_name.capitalize[0] %>
+            </div>
+            <div class="card-product-infos d-flex justify-content-between">
+              <div>
+                <h2 class="mb-0"><%= booking.user.first_name %> <%= booking.user.last_name %> at <%= link_to cafe.name, cafe_path(cafe) %></h2>
+                <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b, %Y") %> | <%= start_time_string %> - <%= end_time_string %></p>
+              </div>
             </div>
           </div>
-          <div>
-            <h3 class="card-cafe-pricing text-right"><%= booking.date.strftime("%d %b, %Y") %></h3>
-            <h3 class="card-cafe-pricing text-right"><%= "#{start_time_string} - #{end_time_string}" %></h3>
-          </div>
-        </div>
-      </div>
       <% end %>
     <% end %>
   <% end %>
@@ -50,7 +46,7 @@
 
 
   <div class="past-bookings">
-    <h3 class="mt-4 mb-4">Booking History</h3>
+    <h3 class="mt-4 mb-3">Booking History</h3>
     <% if @bookings.filter{|booking| booking.date < Date.today}.empty?  %>
       <div class="no-results">
         <p>You currently have no past bookings.</p>
@@ -83,8 +79,8 @@
             </div>
             <div class="card-product-infos d-flex justify-content-between">
               <div>
-                <h2 class="mb-0"><%= "#{booking.user.first_name} #{booking.user.last_name}" %></h2>
-                <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b") %> | <%= start_time_string %> - <%= end_time_string %></p>
+                <h2 class="mb-0"><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
+                <p class="mb-0 mt-0"><%= booking.date.strftime("%d %b, %Y") %> | <%= start_time_string %> - <%= end_time_string %></p>
               </div>
             </div>
           </div>
