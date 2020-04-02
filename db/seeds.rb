@@ -218,8 +218,8 @@ end
 puts "Creating past bookings for the first cafe..."
 #create random number of bookings for each day
 20.times do |index|
-  rand(1..3).times do |i|
-    start_time = 8 + i * 3
+  rand(5..10).times do |i|
+    start_time = 8 + i
     duration = rand(1..3)
     hourly_slot = Cafe.first.hourly_slots.where(start_time: start_time).first
     total_credits = rand(5..10) * duration

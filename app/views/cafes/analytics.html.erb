@@ -25,7 +25,7 @@
       <% @bookings.each do |booking| %>
       <% average_revenue << booking.total_credits %>
       <% end %>
-      <strong><%= "$#{average_revenue.sum / average_revenue.length }" %></strong>
+      <strong><%= "$#{average_revenue.empty? ? 0 : average_revenue.sum / average_revenue.length }" %></strong>
     </h3>
   </div>
 

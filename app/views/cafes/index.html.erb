@@ -22,6 +22,7 @@
         <p>No results found for cafes with selected filters. Please remove a filter or <%= link_to 'search everywhere', cafes_path %></p>
       </div>
       <% @cafes.each do |cafe| %>
+      <a class="div-link" href="<%= cafe_path(cafe) %>">
         <% unless cafe.hourly_slots.empty? %>
       <!-- average review rating -->
           <% ratings = [] %>
@@ -35,7 +36,6 @@
           <% prices << slot.price_per_hour %>
           <% end %>
           <% avg_price = (prices.inject{ |sum, el| sum + el }.to_f / prices.size) %>
-
           <div class="card-cafe"
           data-tags="<% cafe.cafe_tags.each do |cafetag| %><%=cafetag.tag.name%>,<% end %>"
           data-rating="<%= avg_rating %>" data-price="<%= avg_price %>" style="display: block;">
@@ -44,10 +44,10 @@
               $<%= avg_price.round(0) %> per hour
             </div>
 
-            <img src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
+            <img class="cafe-image" src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
             <div class="card-cafe-infos">
               <div>
-                <h2> <%= link_to cafe.name, cafe_path(cafe) %></h2>
+                <h2 class='cafe-name'> <%= cafe.name %></h2>
                 <p><%= cafe.neighbourhood %></p>
               </div>
 
@@ -69,6 +69,7 @@
               <% end %>
             </div>
           </div>
+          </a>
         <% end %>
       <% end %>
   </div>
