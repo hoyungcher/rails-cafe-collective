@@ -1,6 +1,6 @@
 <div class="d-flex flex-column">
 
-  <h3>Today's Bookings</h3>
+  <h3 class="mb-3">Today's Bookings</h3>
   <% if @bookings.filter{|booking| booking.date == Date.today}.empty?  %>
     <div class="no-results mt-3">
       <p>You currently have no bookings for today.</p>
@@ -46,7 +46,7 @@
 
 
   <div class="past-bookings">
-    <h3 class="mt-4 mb-4">Booking History</h3>
+    <h3 class="mt-4 mb-3">Booking History</h3>
     <% if @bookings.filter{|booking| booking.date < Date.today}.empty?  %>
       <div class="no-results">
         <p>You currently have no past bookings.</p>
