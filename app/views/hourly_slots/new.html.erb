@@ -1,7 +1,7 @@
   <h1><%= @cafe.name %></h1>
   <div class="date-today">
     <div class="date-today-text d-flex mb-3">
-      <%= Date.today.strftime("Availabilities for %d %B, %Y") %>
+      <%= (Date.today + 1).strftime("Availabilities for %d %B, %Y") %>
     </div>
 
     <form class="form" method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
