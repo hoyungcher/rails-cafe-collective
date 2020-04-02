@@ -89,24 +89,24 @@ Cafe.create(user: User.find(User.first.id + 39), name: "Baden Restaurant & Pub",
 
 puts "Creating tags..."
 #list of ambience tags
-Tag.create(tag_category: "ambience", name: "classic" )
-Tag.create(tag_category: "ambience", name: "elegant" )
-Tag.create(tag_category: "ambience", name: "energetic" )
-Tag.create(tag_category: "ambience", name: "friendly" )
+Tag.create(tag_category: "ambience", name: "nature decor" )
+Tag.create(tag_category: "ambience", name: "modern decor" )
 Tag.create(tag_category: "ambience", name: "minimalistic" )
-Tag.create(tag_category: "ambience", name: "industrial" )
-Tag.create(tag_category: "ambience", name: "modern" )
-Tag.create(tag_category: "ambience", name: "vintage" )
 Tag.create(tag_category: "ambience", name: "natural lighting" )
-Tag.create(tag_category: "ambience", name: "soft lighting" )
-Tag.create(tag_category: "ambience", name: "soft acoustic music" )
-Tag.create(tag_category: "ambience", name: "light jazz music" )
+Tag.create(tag_category: "ambience", name: "warm lighting" )
+Tag.create(tag_category: "ambience", name: "warm colors" )
+Tag.create(tag_category: "ambience", name: "brightly lit" )
+Tag.create(tag_category: "ambience", name: "neutral colors" )
+Tag.create(tag_category: "ambience", name: "ambient sound" )
+Tag.create(tag_category: "ambience", name: "background music" )
+Tag.create(tag_category: "ambience", name: "spacious" )
+Tag.create(tag_category: "ambience", name: "collaborative space" )
 
 #list of amenity tags
 Tag.create(tag_category: "amenity", name: "private rooms" )
 Tag.create(tag_category: "amenity", name: "daily storage space" )
-Tag.create(tag_category: "amenity", name: "booth seats" )
-Tag.create(tag_category: "amenity", name: "bar seats" )
+Tag.create(tag_category: "amenity", name: "free water" )
+Tag.create(tag_category: "amenity", name: "pet-friendly" )
 Tag.create(tag_category: "amenity", name: "free parking" )
 Tag.create(tag_category: "amenity", name: "nearby parking" )
 Tag.create(tag_category: "amenity", name: "lounge area" )
@@ -116,11 +116,13 @@ Tag.create(tag_category: "amenity", name: "high-speed wifi" )
 puts "Creating cafe tags..."
 #list of cafe tags for each cafe
 Cafe.all.each do |cafe|
-  tag1 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..5)))
-  tag2 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(6..9)))
-  tag3 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(10..11)))
-  tag4 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..15)))
-  tag5 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(16..19)))
+  tag1 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(0..2)))
+  tag2 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(3..7)))
+  tag3 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(8..11)))
+  tag4 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(12..13)))
+  tag5 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(14..16)))
+  tag6 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + rand(17..18)))
+  tag7 = CafeTag.create(cafe: cafe, tag: Tag.find(Tag.first.id + 19))
 end
 
 
