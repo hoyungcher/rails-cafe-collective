@@ -1,9 +1,20 @@
 <div class="container">
   <div class="row py-4">
     <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Booking of <strong><%= @booking.booked_hours.first.hourly_slot.cafe.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_credits %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
+      <p style="font-size:28px;">Checkout summary</p>
+      <p>Work session at <strong><%= @booking.booked_hours.first.hourly_slot.cafe.name %></strong> for <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong></p>
+      <p><strong>Address: </strong><%= @booking.booked_hours.first.hourly_slot.cafe.address %></p>
+      <p><strong>Date: </strong><%= @booking.date %></p>
+      <p><strong>Time slot: </strong><%= @booking.start_time %>:00 - <%= @booking.start_time + @booking.duration %>:00 </p>
+      <p><strong>Duration: </strong><%= @booking.duration %>
+        <% if @booking.duration == 1 %>
+          <%= "hour" %>
+        <% else %>
+          <%= "hours" %>
+        <% end %>
+      </p>
+
+      <button id="pay" class="btn btn-primary">Pay <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong></button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
