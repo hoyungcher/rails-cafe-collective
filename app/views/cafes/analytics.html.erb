@@ -3,7 +3,7 @@
 
 
 <div class="d-flex flex-column align-items-center my-4">
-  <h5>Mar 2020</h5>
+  <h5>Last 30 Days</h5>
   <%= line_chart @bookings.group_by_day(&:date).map{|k, v| [k, v.first.total_credits_cents / 100] }.to_h, xtitle: "Date", ytitle: "Revenue ($)" %>
 </div>
 <div class="analytics-data d-flex flex-column align-items-center">
