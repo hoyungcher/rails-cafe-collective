@@ -12,31 +12,32 @@
         <% end %>
 
 
-        <div class="card-cafe-infos align-items-center">
+
+        <div class="card-cafe-infos align-items-start">
           <div class="cafe-name-description flex-grow-1">
             <h2 class="card-cafe-pricing"><%= link_to cafe.name, cafe_path(cafe) %></h2>
             <p class="card-cafe-pricing"><%= cafe.address %></p>
-            <div class="menu-seats">
-              <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
-                <h4 class='my-1 view-menu text-left'>Manage Menu</h4>
-              <% end %>
-              <%= link_to new_user_cafe_hourly_slot_path(current_user, cafe) do %>
-                <h4 class='my-1 set-seats text-left'>Set Availabilities</h4>
-              <% end %>
-            </div>
-           </div>
-
-          <div class="cafe-edit-delete">
-            <%= link_to edit_user_cafe_path(@current_user, cafe) do %>
+        <div class="edit-delete-btns">
+          <%= link_to edit_user_cafe_path(@current_user, cafe) do %>
             <i class="fas fa-edit"></i>
-            <% end %>
+          <% end %>
 
-            <%= link_to user_cafe_path(@current_user, cafe), data: { confirm: 'Are you sure?' }, method: :delete do %>
-             <i class="far fa-trash-alt"></i>
-            <% end %>
+          <%= link_to user_cafe_path(@current_user, cafe), data: { confirm: 'Are you sure?' }, method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+          </div>
 
+          <div>
+            <%= link_to user_cafe_menu_items_path(@user, cafe) do %>
+              <h4 class='dashboard-btn text-center mt-0'>Manage Menu</h4>
+            <% end %>
+            <%= link_to new_user_cafe_hourly_slot_path(current_user, cafe) do %>
+              <h4 class='dashboard-btn text-center mb-0'>Set Availabilities</h4>
+            <% end %>
           </div>
         </div>
+
       </div>
     <% end %>
     <%= link_to new_user_cafe_path(current_user) do %>

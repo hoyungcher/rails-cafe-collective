@@ -7,7 +7,6 @@
 }
 
 .card-cafe h4 {
-  font-weight: bold;
   font-size: 12px;
 }
 
@@ -17,4 +16,12 @@
 
 .dashboard {
   margin-bottom: 100px;
+}
+
+.fa-edit,
+.fa-trash-alt {
+  font-size: 18px;
+  color: $gray;
+  margin-right: 4px;
+  margin-top: 8px;
 }
