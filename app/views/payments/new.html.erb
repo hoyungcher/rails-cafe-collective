@@ -17,30 +17,32 @@
       <% else %>
         <% end_time_string = "#{time_end} pm" %>
       <% end %>
+      <% end %>
 
-      <h2 class="mb-2 text-center">Checkout Summary</h2>
+      <h2 class="mb-4 text-center">Checkout Summary</h2>
 
-      <h5 class="mb-2 text-center">Ready to be productive? Here are your booking details for <%= @booking.booked_hours.first.hourly_slot.cafe.name %></h5>
+      <h5 class="mb-4 text-center">Ready to be productive? Here are your booking details for <%= @booking.booked_hours.first.hourly_slot.cafe.name %>.</h5>
 
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-1 mx-3">
         <p><strong>Address:</strong></p>
         <p><%= @booking.booked_hours.first.hourly_slot.cafe.address %></p>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-1 mx-3">
         <p><strong>Date:</strong></p>
         <p><%= @booking.date.strftime('%d %b, %Y') %></p>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-1 mx-3">
         <p><strong>Time:</strong></p>
         <p><%= start_time_string %> - <%= end_time_string %>(<%= pluralize( @booking.duration, "hours" ) %>)</p>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-1 mx-3">
         <p><strong>Amount:</strong></p>
         <p><%= humanized_money_with_symbol @booking.total_credits %>.00</p>
       </div>
-
-      <p>You will also receive <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong> of in-cafe credit to purchase food and drinks.</p>
-      <p class="my-2">Please pay to confirm your booking.</p>
+      <br>
+      <p class="text-center">You will also receive <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong> of in-cafe credit to purchase food and drinks.</p>
+      <p class="my-2 text-center">Please pay to confirm your booking.</p>
+      <br>
       <button id="pay" class="btn btn-primary btn-block">Pay <strong><%= humanized_money_with_symbol @booking.total_credits %>.00</strong></button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
