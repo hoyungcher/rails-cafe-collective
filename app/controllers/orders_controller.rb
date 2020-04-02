@@ -8,15 +8,15 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    @menu_item = MenuItem.find_by_name(params["order"]["menu_item"])
+    @cafe = Cafe.find(params[:cafe_id])
     @booking = Booking.find(params[:booking_id])
+    @menu_item = MenuItem.where("cafe_id = ? AND name = ?", @cafe.id, (params["order"]["menu_item"])).first
     @order.menu_item = @menu_item
     @order.booking = @booking
     @order.save!
     # @booking.remaining_credits = @booking.remaining_credits - @menu_item.price
     # @booking.save
 
-    @cafe = params[:cafe_id]
     redirect_to cafe_user_booking_path(@cafe, @booking.user, @booking)
   end
 

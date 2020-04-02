@@ -77,18 +77,17 @@
   <% end %>
 
 
-  <% if false %>
-    <h1 class="text-center mt-3">Orders Made</h1>
+  <h1 class="text-center mt-3">Orders Made</h1>
 
-    <% Order.all.each do |order| %>
-      <% if order.menu_item.cafe == @cafe %>
-      <div class="d-flex justify-content-between">
-        <p><%= order.menu_item.name.capitalize %></p>
-        <p>$<%= order.menu_item.price %></p>
-      </div>
-      <% end %>
+  <% Order.all.each do |order| %>
+    <% if order.menu_item.cafe == @cafe && (order.booking.user == current_user) && (order.booking.date == Date.today) %>
+    <div class="d-flex justify-content-between">
+      <p><%= order.menu_item.name.capitalize %></p>
+      <p>$<%= order.menu_item.price %></p>
+    </div>
     <% end %>
   <% end %>
+
 
   <div class="d-flex justify-content-between mt-2">
     <p><strong>Remaining credits:</strong></p>
