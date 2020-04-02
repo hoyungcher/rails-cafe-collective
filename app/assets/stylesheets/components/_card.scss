@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.card-cafe > img {
+.cafe-image {
   height: 200px;
   width: 100%;
   object-fit: cover;
@@ -115,4 +115,22 @@
 
 .booking-info-card p {
   margin: 0;
+}
+
+
+.div-link {
+  display: block;
+}
+
+.div-link {
+  text-decoration: none;
+  color: black;
+}
+
+.div-link, .div-link:hover, .div-link:active, .div-link:visited, .div-link:focus {
+    text-decoration:none;
+}
+
+.cafe-name {
+  color: #1446A0;
 }
