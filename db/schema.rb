@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_023029) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
+    t.string "amount_currency", default: "SGD", null: false
     t.string "state"
     t.integer "total_credits_cents", default: 0, null: false
     t.string "checkout_session_id"
