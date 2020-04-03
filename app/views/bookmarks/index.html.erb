@@ -1,7 +1,8 @@
 <h2>Your Favorite Cafes</h2>
-<% if @bookmarks.first.present? %>
+<% if @bookmarks.first.nil? %>
+  <p class="text-center mb-4"><%= link_to "Find a cafe", root_path %> to bookmark!</p>
+<% else %>
   <p class="text-center mb-4">Want to go somewhere familiar today?</p>
-<% end %>
 
   <div class="cafe-container mt-4">
       <% @bookmarks.each do |bookmark| %>
@@ -54,3 +55,4 @@
       </div>
       <% end %>
   </div>
+<% end %>
