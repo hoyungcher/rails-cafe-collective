@@ -159,14 +159,14 @@ puts "Creating hourly slots..."
 Cafe.all.each do |cafe|
   price = rand(4..8)
   12.times do |index|
-    HourlySlot.create(cafe: cafe, start_time: 8 + index, total_seats: rand(3..5), price_per_hour: price, date: Date.today)
+    HourlySlot.create(cafe: cafe, start_time: 8 + index, total_seats: rand(10..15), price_per_hour: price, date: Date.today)
   end
 end
 
 puts "Creating bookings and booked hours..."
 #list of user bookings
-users = User.where(owner: false)
-users.each_with_index do |user, index|
+users_without_first = User.where(owner: false)[1, 9]
+users_without_first.each_with_index do |user, index|
   time1 = 8
   hourly_slot = Cafe.find(Cafe.first.id + index).hourly_slots.where(start_time: time1).first
   booking1 = Booking.create(user: user, date: Date.today, start_time: time1, duration: 2, special_requests: "Window Seat", total_credits: hourly_slot.price_per_hour * 2, remaining_credits: hourly_slot.price_per_hour * 2)
@@ -181,6 +181,7 @@ users.each_with_index do |user, index|
 end
 
 #list of past bookings
+users = User.where(owner: false)
 users.each_with_index do |user|
   time2 = 9
   booking2 = Booking.create(user: user, date: (Date.today - 2), start_time: time2, duration: 4)
