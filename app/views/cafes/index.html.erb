@@ -22,7 +22,6 @@
         <p>No results found for cafes with selected filters. Please remove a filter or <%= link_to 'search everywhere', cafes_path %></p>
       </div>
       <% @cafes.each do |cafe| %>
-      <a class="div-link" href="<%= cafe_path(cafe) %>">
         <% unless cafe.hourly_slots.empty? %>
       <!-- average review rating -->
           <% ratings = [] %>
@@ -47,7 +46,7 @@
             <img class="cafe-image" src="https://source.unsplash.com/1600x900/?<%= cafe.category %>,<%= cafe.name %>" />
             <div class="card-cafe-infos">
               <div>
-                <h2 class='cafe-name'> <%= cafe.name %></h2>
+                <h2 class='cafe-name'> <%= link_to cafe.name, cafe_path(cafe) %></h2>
                 <p><%= cafe.neighbourhood %></p>
               </div>
 
@@ -69,7 +68,6 @@
               <% end %>
             </div>
           </div>
-          </a>
         <% end %>
       <% end %>
   </div>
