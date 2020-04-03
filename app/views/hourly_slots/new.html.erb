@@ -1,8 +1,15 @@
   <h1><%= @cafe.name %></h1>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <i class="fas fa-angle-left"></i>
 
-    <h5 class="mb-3 text-center">
-      <%= (Date.today + 1).strftime("Availabilities for %d %B, %Y") %>
-    </h5>
+      <h5 class="text-center m-0">
+        <%= (Date.today + 1).strftime("Availabilities for %d %B, %Y") %>
+      </h5>
+      <i class="fas fa-angle-right"></i>
+    </div>
+
+
+
 
     <form class="form" method="post" action="<%= user_cafe_hourly_slots_path(@user, @cafe) %>"  >
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
