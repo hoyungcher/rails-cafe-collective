@@ -1,6 +1,6 @@
 <h3>Pending orders</h3>
 <p class="text-center mt-3" id="no-pending-orders" style="display:none;">No pending orders</p>
-<table class="undelivered-orders table mt-3">
+<table class="undelivered-orders table mt-3 text-center">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Booking ID</th>
@@ -45,7 +45,7 @@
         <tr class="delivered-order">
           <th scope="row"><%= order.booking.id %></td>
           <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
-          <td><%= order.menu_item.name %></td>
+          <td><%= order.menu_item.name.capitalize %></td>
           <td>
             <%= (order.updated_at + 28800).strftime("%k:%M") %>
           </td>
